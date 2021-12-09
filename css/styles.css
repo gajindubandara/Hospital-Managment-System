@@ -1,0 +1,238 @@
+/*--- page ---*/
+
+body {
+	padding: 0;
+	margin: 0;
+	background: #f2f6e9;
+
+}
+
+/*--- navigation bar ---*/
+
+.navbar {
+	background: #6ab446;
+}
+
+.nav-link{
+	color: #fff;
+	cursor: pointer;
+
+}
+
+.navbar-brand {
+	color: white !important;
+	cursor: pointer;
+
+}
+
+.nav-link {
+	margin-right: 1em !important;
+}
+
+.active .nav-link:hover {
+	color: #000;
+	background-color: #666;
+}
+
+
+
+.navbar-collapse {
+	justify-content: flex-end;
+}
+
+/*--- feature section ---*/
+.center{
+	justify-content: center;
+}
+.box{
+	margin-top: 60px;
+	box-shadow: 5px 5px 5px 5px #898A89;
+	border-radius: 6px;
+	padding-bottom: 25px;
+}
+.features {
+	margin: 4em auto;
+	padding: 1em;
+	position: relative;
+}
+
+.feature-title {
+	color: #333;
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 25px;
+	font-family: auto;
+}
+
+.features img {
+	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+	margin-bottom: 16px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.features .text{
+	text-align: center;
+	padding-left: 40px;
+	padding-right: 40px;
+
+}
+.features .loginInfo{
+	display: block;
+	margin-right: auto;
+ 	margin-left: auto;
+	width: 75%;
+}
+.features .btn {
+	background-color: #589b37;
+	border: 1px solid #589b37;
+	color: #fff;
+	margin-top: 20px;
+	width: 50%!important;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.features .btn:hover {
+	background-color: #0E5C02;
+	border: 1px solid #0E5C02;
+}
+
+/*--- team section ---*/
+
+.background {
+	background: #dedec8;
+	padding: 4em 0;
+}
+
+.team {
+	color: #5e5e55;
+	padding: 0 180px;
+}
+
+.team .card-columns {
+	-webkit-column-count: 4;
+	-moz-column-count: 4;
+	column-count: 4;
+}
+
+.team .card {
+	background:none;
+	border: none;
+}
+
+.team .card-title {
+	font-size: 1.3rem;
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+
+/*--- footer ---*/
+
+.page-footer {
+	background-color: #222;
+	color: #ccc;
+	padding-top: 35px;
+
+
+
+
+}
+
+.footer-copyright {
+	color: #666;
+	padding-top: 20px;
+	padding-bottom: 30px;
+}
+
+/*--- media queries ---*/
+
+@media (max-width: 991.98px) {
+
+	.team {
+		padding: 0 15px;
+	}
+	
+}
+
+@media (max-width: 575.98px) {
+
+	.description {
+		left: 0;
+		padding: 0 15px;
+		position: absolute;
+		top: 10%;
+		transform: none;
+		text-align: center;
+	}
+	
+	.description h1 {
+		font-size: 2em;
+	}
+	
+	.description p {
+		font-size: 1.2rem;
+	}
+	
+	.features {
+		margin: 0;
+	}
+	
+	.team {
+		max-width: 60%;
+	}
+	
+	#demo-modal .btn {
+		min-width: auto;
+	}
+
+}
+/*--- collapsible card ---*/
+.colCard{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.collapsible {
+	background-color: #777;
+	color: white;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+}
+
+.active, .collapsible:hover {
+	background-color: #555;
+}
+
+.collapsible:after {
+	content: '\002B';
+	color: white;
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+}
+
+.active:after {
+	content: "\2212";
+}
+
+.content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	background-color: #f1f1f1;
+}
+colCard
