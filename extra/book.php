@@ -1,3 +1,6 @@
+<?php
+require("logincheck.php");
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -9,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
 
 </head>
 
 <body>
-<?php include 'nav & footer/adminNav.html'?>
+<?php include 'nav & footer/adminNav.php' ?>
 
 <header>
 
@@ -48,7 +51,7 @@
 </div>
 
 
-<?php include  'nav & footer/footer.html'?>
+<?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
