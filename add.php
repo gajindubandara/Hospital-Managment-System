@@ -31,19 +31,44 @@ require("logincheck.php");
                 <input type="text" class="form-control" placeholder="Name" name="">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Age" name="">
+                <input type="number" class="form-control" placeholder="Age" name="">
             </div>
             <div class="form-group">
                 <input type="number" class="form-control" placeholder="Contact Number" name="">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder=" Address" name="email">
+                <input type="email" class="form-control" placeholder=" Email" name="">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder=" Address" name="">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Consultant name" name="">
+            </div>
+                <div class="form-group"  >
+                    <select>
+                        <option value="0">Blood group:</option>
+                        <option value="1"name="" >O+</option>
+                        <option value="2"name="">BMW</option>
+                        <option value="3" name="">Citroen</option>
+                        <option value="4" name="">Ford</option>
+                    </select>
+                </div>
+            <div class="form-group">
+                <div class="addRadio">
+                    <input type="radio" name="male" value="male"  >
+                    <label>Male</label><br></div>
+                    <input type="radio" name="female" value="female">
+                    <label>Female</label><br>
+                    <input type="radio" name="other" value="other">
+                    <label>Other</label><br>
+
             </div>
             <input type="submit" class="btn btn-secondary btn-block" value="Add patient" name="">
         </div>
     </div>
 </div>
-
+<!--server php goes here-->
 
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
