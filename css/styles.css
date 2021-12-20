@@ -172,7 +172,7 @@ body {
 	.team {
 		padding: 0 15px;
 	}
-	
+
 }
 
 @media (max-width: 575.98px) {
@@ -185,23 +185,23 @@ body {
 		transform: none;
 		text-align: center;
 	}
-	
+
 	.description h1 {
 		font-size: 2em;
 	}
-	
+
 	.description p {
 		font-size: 1.2rem;
 	}
-	
+
 	.features {
 		margin: 0;
 	}
-	
+
 	.team {
 		max-width: 60%;
 	}
-	
+
 	#demo-modal .btn {
 		min-width: auto;
 	}
@@ -248,7 +248,18 @@ body {
 	transition: max-height 0.2s ease-out;
 	background-color: #f1f1f1;
 }
-/*--- add patient page ---*/
-.addRadio{
+/*---  patient list ---*/
+.tblBtn{
+	border: white;
+	border-radius: 6px;
+	background-color: #589b37;
+	color: white;    padding: 8px;
+	margin-right: 16px;
+	padding: 8px;
+}
 
+.tblBtn:hover {
+	color: white;
+	border-radius: 6px;
+	background-color: #006600;
 }
