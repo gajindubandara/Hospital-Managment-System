@@ -1,6 +1,5 @@
 <?php
 require("logincheck.php");
-include("config.php");
 ?>
 <!DOCTYPE html>
 
@@ -27,65 +26,22 @@ include("config.php");
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
             <h3 class="feature-title">Add new Diagnose</h3>
-            <form method="post" enctype="multipart/form-data">
-<!--            <div class="form-group">-->
-<!--                <input type="text" class="form-control" placeholder="Name" name="">-->
-<!--            </div>-->
-                <div class="form-group">
-            <select class="form-control" name="dPatient">
-                <?php
-                try {
-                    $conn = new PDO($db,$un,$password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-                    $query =$query ="SELECT `PID`, `Name` FROM `Patients` ";
-                    $result = $conn->query($query);
-                    foreach ($result as $r)
-                    {
-                        echo '<option value="'.$r[0].'">'.$r[1].'</option>';
-                    }
-
-                } catch (PDOException $th) {
-                    echo $th->getMessage();
-                }
-                ?>
-            </select>
-                </div>
             <div class="form-group">
-                <textarea class="form-control" placeholder="Diagnosis" rows="4" name="dDiagnosis"></textarea>
+                <input type="text" class="form-control" placeholder="Name" name="">
             </div>
             <div class="form-group">
-                <textarea class="form-control" placeholder="Medications" rows="4" name="dMedications"></textarea>
+                <input type="text" class="form-control" placeholder="Patient No" name="">
             </div>
             <div class="form-group">
-                <input type="date" class="form-control" name="dDate">
+                <textarea class="form-control" placeholder="Description" rows="4"></textarea>
             </div>
-            <input type="submit" class="btn btn-secondary btn-block" value="Add patient" name="addDiagnosis">
-            </form>
-            <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (isset($_POST['addDiagnosis'])) {
-                    try {
-                        $conn = new PDO($db, $un, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = "INSERT INTO `Diagnosis`( `Patient`, `Diagnosis`, `Medications`, `Date`) 
-                        VALUES (?,?,?,?)";
-                        $st = $conn->prepare($query);
-                        $st->bindValue(1, $_POST["dPatient"], PDO::PARAM_STR);
-                        $st->bindValue(2, $_POST["dDiagnosis"], PDO::PARAM_STR);
-                        $st->bindValue(3, $_POST["dMedications"], PDO::PARAM_STR);
-                        $st->bindValue(4, $_POST["dDate"], PDO::PARAM_STR);
-                        $st->execute();
-
-                        echo "<script> alert('Diagnosis Added Successfully!');</script>";
-
-
-                    } catch (PDOException $th) {
-                        echo $th->getMessage();
-
-                    }
-                }
-            }
-            ?>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Medications" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="">
+            </div>
+            <input type="submit" class="btn btn-secondary btn-block" value="Add patient" name="">
         </div>
     </div>
 </div>
