@@ -8,7 +8,7 @@ include("config.php");
 
 <head>
 
-    <title>Bootstrap Tutorial Sample Page</title>
+    <title>Add Patient</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -72,7 +72,7 @@ include("config.php");
                         <label>Other</label><br>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Add patient" name="btnAdd">
+                <input type="submit" class="btn btn-secondary btn-block" value="Add Patient" name="btnAdd">
             </div>
         </div>
     </div>

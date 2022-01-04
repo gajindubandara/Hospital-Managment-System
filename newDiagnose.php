@@ -8,7 +8,7 @@ include("config.php");
 
 <head>
 
-    <title>Bootstrap Tutorial Sample Page</title>
+    <title>New Diagnosis</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -59,7 +59,7 @@ include("config.php");
             <div class="form-group">
                 <input type="date" class="form-control" name="dDate">
             </div>
-            <input type="submit" class="btn btn-secondary btn-block" value="Add patient" name="addDiagnosis">
+            <input type="submit" class="btn btn-secondary btn-block" value="Add Diagnosis" name="addDiagnosis">
             </form>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {

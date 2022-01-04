@@ -1,5 +1,6 @@
 <?php
 require("logincheck.php");
+include("config.php");
 ?>
 <!DOCTYPE html>
 
@@ -7,7 +8,7 @@ require("logincheck.php");
 
 <head>
 
-  <title>Bootstrap Tutorial Sample Page</title>
+  <title>Report</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,48 +24,58 @@ require("logincheck.php");
 
 </header>
 
-<div class="container colCard ">
-  <p>Details</p>
-  <button class="collapsible">10th December 2021</button>
-  <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna
-      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-      ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <ul>
-
-      <li>hello</li>
-      <li>hello</li>
-      <li>hello</li>
-      <input type="submit" class="btn btn-secondary btn-block" value="Edit" name="">
-      <input type="submit" class="btn btn-secondary btn-block" value="Delete" name="">
-    </ul>
-  </div>
-  <button class="collapsible">10th November 2021</button>
-  <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna
-      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-      ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <ul>
-
-      <li>hello</li>
-      <li>hello</li>
-      <li>hello</li>
-      <input type="submit" class="btn btn-secondary btn-block" value="Edit" name="">
-      <input type="submit" class="btn btn-secondary btn-block" value="Delete" name="">
-    </ul>
-  </div>
-  <button class="collapsible">10th October 2021</button>
-  <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna
-      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-      ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <input type="submit" class="btn btn-secondary btn-block" value="Edit" name="">
-    <input type="submit" class="btn btn-secondary btn-block" value="Delete" name="">
-  </div>
+<div class="container features">
+    <div class="row center">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <h3 class="feature-title">Search by patient number</h3>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Patient Number" name="txtSearchD">
+                </div>
+                <input type="submit" class="btn btn-secondary btn-block" value="Search" name="btnSearchD">
+            </form>
+        </div>
+    </div>
 </div>
+
+
+
+<?php
+try {
+    $conn = new PDO($db, $un, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date` FROM `Diagnosis` 
+                                  JOIN Patients on Diagnosis.Patient= Patients.PID";
+    $result = $conn->query($query);
+    $query =$query ="SELECT `PID`, `Name` FROM `Patients` ";
+    if(isset($_POST["btnSearchD"]))
+    {
+        $query=$query. "where Name like '%".$_POST['txtSearch']."%'";
+    }
+
+
+    echo '<div class="container">';
+
+
+    $i = 0;
+    foreach ($result as $row) {
+        echo '<div class="card">';
+        echo '<h5 class="card-header">'.$row[4].'</h5>';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">'.$row[2].'</h5>';
+        echo '<p class="card-text">'.$row[3].'</p>';
+        echo '</div>';
+        echo '</div>';
+        $i++;
+    }
+
+    echo '</div>';
+
+} catch (PDOException $th) {
+    echo $th->getMessage();
+}
+?>
+
 <script src="js/collapsibleCards.js"></script>
 
 <?php include 'nav & footer/footer.php' ?>

@@ -263,3 +263,12 @@ body {
 	border-radius: 6px;
 	background-color: #006600;
 }
+/*---  patient report ---*/
+.card{
+	margin-top: 30px !important;
+	margin-bottom: 30px !important;
+}
+.card-header{
+	background-color: #343a40 !important;
+	color: white!important;
+}
