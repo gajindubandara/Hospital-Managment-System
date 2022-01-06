@@ -22,34 +22,42 @@ session_start();?>
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="box">
                 <h3 class="feature-title">Doctor</h3>
-<!--                <img src="images/maleplaceholder.png" class=" center">-->
+                <!--                <img src="images/maleplaceholder.png" class=" center">-->
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" name="D_UN" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Password" name="D_PW" required>
+                            <input type="password" class="form-control" placeholder="Password" name="D_PW" required>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-secondary btn-block" value="Login" name="logDoc">
                 </form>
                 <?php
-                if(isset($_POST["logDoc"]))
-                {
-                    $un = $_POST["D_UN"];
-                    $pw = $_POST["D_PW"];
-                    if($un == "admin" && $pw == "1234")
-                    {
-                        $_SESSION["d_un"] = $un;
-                        header("location:index.php");
+                if (isset($_POST["logDoc"])) {
+                    try {
+                        $conn = new PDO($db, $un, $password);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $query = $query = "SELECT `username` FROM `D-passwords` WHERE  `password`=? and `username`=? ";
+                        $st = $conn->prepare($query);
 
-                    }
-                    else
-                    {
-                        echo "Incorrect user name or password";
-                    }
+                        $st->bindValue(1, $_POST["D_PW"], PDO::PARAM_STR);
+                        $st->bindValue(2, $_POST["D_UN"], PDO::PARAM_STR);
+                        $st->execute();
+                        $result = $st->fetch();
+                        if($result[0] == $_POST["D_UN"])
+                        {
+                            $_SESSION["d_un"] =$result[0];
+                            header("location:index.php");
+                        }
+                        else{
+                            echo '<script>alert("Incorrect user name or password")</script>';
+                        }
 
+                    } catch (PDOException $th) {
+                        echo $th->getMessage();
+                    }
                 }
                 ?>
             </div>
@@ -57,14 +65,14 @@ session_start();?>
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="box">
                 <h3 class="feature-title">Patient</h3>
-<!--                <img src="images/maleplaceholder.png" class=" center">-->
+                <!--                <img src="images/maleplaceholder.png" class=" center">-->
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
                             <input type="number" class="form-control" placeholder="User ID" name="P_UN">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Password" name="P_PW">
+                            <input type="password" class="form-control" placeholder="Password" name="P_PW">
                         </div>
                     </div>
                     <input type="submit" class="btn btn-secondary btn-block" value="Login" name="logPac">
@@ -75,23 +83,20 @@ session_start();?>
                     try {
                         $conn = new PDO($db, $un, $password);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = $query = "SELECT  `PID` FROM `P-passwords` 
-                                            WHERE `Password`=? and `PID`=? ";
+                        $query = $query = "SELECT `PID` FROM `P-passwords` WHERE  `password`=? and`PID`=?";
                         $st = $conn->prepare($query);
 
-                        $st->bindValue(1, $_POST["P_UN"], PDO::PARAM_STR);
-                        $st->bindValue(2, $_POST["P_PW"], PDO::PARAM_STR);
+                        $st->bindValue(1, $_POST["P_PW"], PDO::PARAM_STR);
+                        $st->bindValue(2, $_POST["P_UN"], PDO::PARAM_STR);
                         $st->execute();
                         $result = $st->fetch();
-                        echo '<script>console.log("hello")</script>';
-                        echo '<script>console.log('.$result[0].')</script>';
                         if($result[0] == $_POST["P_UN"])
                         {
-                             $_SESSION["p_un"] =$result[0];
-                             header("location:index_p.php");
+                            $_SESSION["p_un"] =$result[0];
+                            header("location:index_p.php");
                         }
                         else{
-                            echo "Incorrect user name or password";
+                            echo '<script>alert("Incorrect user name or password")</script>';
                         }
 
                     } catch (PDOException $th) {
