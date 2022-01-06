@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php
+include("config.php");
+session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
 </head>
 
 <body>
-<?php include 'nav & footer/adminNav.php'?>
+<?php include 'nav & footer/commonNav.php' ?>
 
 <div class="container features">
     <div class="row center">
@@ -24,10 +26,10 @@
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" name="UN" required>
+                            <input type="text" class="form-control" placeholder="Username" name="D_UN" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Password" name="PW" required>
+                            <input type="text" class="form-control" placeholder="Password" name="D_PW" required>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-secondary btn-block" value="Login" name="logDoc">
@@ -35,11 +37,11 @@
                 <?php
                 if(isset($_POST["logDoc"]))
                 {
-                    $un = $_POST["UN"];
-                    $pw = $_POST["PW"];
+                    $un = $_POST["D_UN"];
+                    $pw = $_POST["D_PW"];
                     if($un == "admin" && $pw == "1234")
                     {
-                        $_SESSION["un"] = $un;
+                        $_SESSION["d_un"] = $un;
                         header("location:index.php");
 
                     }
@@ -59,20 +61,50 @@
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" name="">
+                            <input type="number" class="form-control" placeholder="User ID" name="P_UN">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Password" name="">
+                            <input type="text" class="form-control" placeholder="Password" name="P_PW">
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-secondary btn-block" value="Login" name="">
+                    <input type="submit" class="btn btn-secondary btn-block" value="Login" name="logPac">
                 </form>
+
+                <?php
+                if (isset($_POST["logPac"])) {
+                    try {
+                        $conn = new PDO($db, $un, $password);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $query = $query = "SELECT  `PID` FROM `P-passwords` 
+                                            WHERE `Password`=? and `PID`=? ";
+                        $st = $conn->prepare($query);
+
+                        $st->bindValue(1, $_POST["P_UN"], PDO::PARAM_STR);
+                        $st->bindValue(2, $_POST["P_PW"], PDO::PARAM_STR);
+                        $st->execute();
+                        $result = $st->fetch();
+                        echo '<script>console.log("hello")</script>';
+                        echo '<script>console.log('.$result[0].')</script>';
+                        if($result[0] == $_POST["P_UN"])
+                        {
+                             $_SESSION["p_un"] =$result[0];
+                             header("location:index_p.php");
+                        }
+                        else{
+                            echo "Incorrect user name or password";
+                        }
+
+                    } catch (PDOException $th) {
+                        echo $th->getMessage();
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
 </div>
 
-
+<img src="images/bg.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
