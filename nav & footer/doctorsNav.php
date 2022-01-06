@@ -20,13 +20,13 @@
                 <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="register.php">Patient Register</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="add.php">New Patient</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="newDiagnose.php">Diagnose</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="report.php">report(rmv)</a>
+                <a class="nav-link" href="newDiagnose.php"> Add Diagnose</a>
             </li>
             <li class="nav-item">
                 <form method="post">
@@ -38,7 +38,7 @@
 
                 if (isset($_POST["logout"]))
                 {
-                    unset($_SESSION["un"]);
+                    unset($_SESSION["d_un"]);
                     header("location:login.php");
                 }
                 ?>
