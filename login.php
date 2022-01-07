@@ -35,6 +35,7 @@ session_start();?>
                     <input type="submit" class="btn btn-secondary btn-block" value="Login" name="logDoc">
                 </form>
                 <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["logDoc"])) {
                     try {
                         $conn = new PDO($db, $un, $password);
@@ -59,6 +60,7 @@ session_start();?>
                         echo $th->getMessage();
                     }
                 }
+                }
                 ?>
             </div>
         </div>
@@ -79,11 +81,12 @@ session_start();?>
                 </form>
 
                 <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["logPac"])) {
                     try {
                         $conn = new PDO($db, $un, $password);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = $query = "SELECT `PID` FROM `P-passwords` WHERE  `password`=? and`PID`=?";
+                        $query = $query = "SELECT `PID` FROM `Patients` WHERE `password`=? and `PID`=?";
                         $st = $conn->prepare($query);
 
                         $st->bindValue(1, $_POST["P_PW"], PDO::PARAM_STR);
@@ -102,6 +105,7 @@ session_start();?>
                     } catch (PDOException $th) {
                         echo $th->getMessage();
                     }
+                }
                 }
                 ?>
             </div>

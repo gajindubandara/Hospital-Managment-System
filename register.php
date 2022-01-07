@@ -37,6 +37,7 @@ include("config.php");
     <div class="col-lg-4 col-md-4 col-sm-6">
         <form method="post" enctype="multipart/form-data">
             <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $conn = new PDO($db,$un,$password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -67,6 +68,7 @@ include("config.php");
 
             } catch (PDOException $th) {
                 echo $th->getMessage();
+            }
             }
             ?>
         </form>

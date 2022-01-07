@@ -49,6 +49,10 @@ include("config.php");
                     <input type="text" class="form-control" name="addAddress">
                 </div>
                 <div class="form-group">
+                    NIC:
+                    <input type="text" class="form-control" name="addNIC">
+                </div>
+                <div class="form-group">
                     Blood group:
                     <select class="form-control" name="addBG">
                         <option value="O+" name="">O positive</option>
@@ -72,6 +76,10 @@ include("config.php");
                         <label>Other</label><br>
                     </div>
                 </div>
+                <div class="form-group">
+                    Create a new password for the patient:
+                    <input type="text" class="form-control" name="addPW">
+                </div>
                 <input type="submit" class="btn btn-secondary btn-block" value="Add Patient" name="btnAdd">
             </div>
         </div>
@@ -85,8 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "INSERT INTO `Patients`( `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`) 
-                         VALUES (?,?,?,?,?,?,?)";
+            $query = "INSERT INTO `Patients`( `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`, `NIC`, `password`)  
+                         VALUES (?,?,?,?,?,?,?,?,?)";
             $st = $conn->prepare($query);
             $st->bindValue(1, $_POST["addName"], PDO::PARAM_STR);
             $st->bindValue(2, $_POST["addAge"], PDO::PARAM_STR);
@@ -95,6 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $st->bindValue(5, $_POST["addAddress"], PDO::PARAM_STR);
             $st->bindValue(6, $_POST["addBG"], PDO::PARAM_STR);
             $st->bindValue(7, $_POST["addGender"], PDO::PARAM_STR);
+            $st->bindValue(8, $_POST["addNIC"], PDO::PARAM_STR);
+            $st->bindValue(9, $_POST["addPW"], PDO::PARAM_STR);
             $st->execute();
 
             echo "<script> alert('Patient Added Successfully!');</script>";

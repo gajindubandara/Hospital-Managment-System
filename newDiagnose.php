@@ -34,18 +34,19 @@ include("config.php");
                 <div class="form-group">
             <select class="form-control" name="dPatient">
                 <?php
-                try {
-                    $conn = new PDO($db,$un,$password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-                    $query =$query ="SELECT `PID`, `Name` FROM `Patients` ";
-                    $result = $conn->query($query);
-                    foreach ($result as $r)
-                    {
-                        echo '<option value="'.$r[0].'">'.$r[1].'</option>';
-                    }
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    try {
+                        $conn = new PDO($db, $un, $password);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        $query = $query = "SELECT `PID`, `Name` FROM `Patients` ";
+                        $result = $conn->query($query);
+                        foreach ($result as $r) {
+                            echo '<option value="' . $r[0] . '">' . $r[1] . '</option>';
+                        }
 
-                } catch (PDOException $th) {
-                    echo $th->getMessage();
+                    } catch (PDOException $th) {
+                        echo $th->getMessage();
+                    }
                 }
                 ?>
             </select>
