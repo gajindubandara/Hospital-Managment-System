@@ -95,18 +95,11 @@ try {
     $conn = new PDO($db, $un, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date` FROM `Diagnosis` 
-                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num";
+                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
     $result = $conn->query($query);
-    $query = $query = "SELECT `PID`, `Name` FROM `Patients` ";
-    if (isset($_POST["btnSearchD"])) {
-        $query = $query . "where Name like '%" . $_POST['txtSearch'] . "%'";
-    }
-
 
     echo '<div class="container">';
 
-
-    $i = 0;
     foreach ($result as $row) {
         echo '<div class="card">';
         echo '<h5 class="card-header">' . $row[4] . '</h5>';
@@ -115,7 +108,6 @@ try {
         echo '<p class="card-text">' . $row[3] . '</p>';
         echo '</div>';
         echo '</div>';
-        $i++;
     }
 
     echo '</div>';
