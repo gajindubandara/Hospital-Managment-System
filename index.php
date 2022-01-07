@@ -48,7 +48,7 @@ include("config.php");
                 $num = $_POST["ps"];
                 $conn = new PDO($db, $un, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
+                $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC`, `Day` FROM `Patients` WHERE PID= $num ";
                 $result = $conn->query($query);
                 echo '<table class="table">';
 
@@ -89,6 +89,10 @@ include("config.php");
                     echo '<tr>';
                     echo '<td><b>NIC:</b></td>';
                     echo '<td>' . $row[8] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Date:</b></td>';
+                    echo '<td>' . $row[9] . '</td>';
                     echo '</tr>';
                     echo ' </tbody>';
 

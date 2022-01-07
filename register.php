@@ -32,16 +32,14 @@ include("config.php");
     </div>
 </div>
 
-
-<div class="row center">
-    <div class="col-lg-4 col-md-4 col-sm-6">
+<div class="container">
         <form method="post" enctype="multipart/form-data">
             <?php
 
             try {
                 $conn = new PDO($db,$un,$password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-                $query =$query ="SELECT `PID`, `Name` FROM `Patients` ";
+                $query =$query ="SELECT `PID`, `Name`, `Day` FROM `Patients` ";
                 if(isset($_POST["btnSearch"]))
                 {
                     $query=$query. "where Name like '%".$_POST['txtSearch']."%'";
@@ -52,6 +50,8 @@ include("config.php");
                 echo '<tr>
                             <th scope="col">Patient No.</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Name</th>
                           </tr>';
                 echo '</thead>';
                 $i=0;
@@ -60,6 +60,7 @@ include("config.php");
                     echo '<tr class="rw">';
                     echo '<td> <input type="hidden" name="PID[]" value="' . $row[0] . '">' . $row[0] . '</td>';
                     echo '<td><input type="hidden" name="Name[]" value="' . $row[1] . '">' . $row[1] . '</td>';
+                    echo '<td><input type="hidden" name="Name[]" value="' . $row[2] . '">' . $row[2] . '</td>';
                     echo '</tr>';
                     echo ' </tbody>';
                     $i++;
@@ -73,7 +74,6 @@ include("config.php");
             ?>
         </form>
 
-    </div>
 </div>
 
 <img src="images/list.jpeg" class="img-bg">
