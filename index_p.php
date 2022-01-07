@@ -31,11 +31,12 @@ session_start();
 <div class="row center" style="margin-top: 50px">
     <div class="col-md-4">
         <?php
+
         try {
             $num = $_SESSION["p_un"];
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender` FROM `Patients` WHERE PID= $num ";
+            $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
             $result = $conn->query($query);
             echo '<table class="table">';
 
@@ -73,8 +74,12 @@ session_start();
                 echo '<td><b>Gender:</b></td>';
                 echo '<td>' . $row[7] . '</td>';
                 echo '</tr>';
+                echo '<tr>';
+                echo '<td><b>NIC:</b></td>';
+                echo '<td>' . $row[8] . '</td>';
+                echo '</tr>';
                 echo ' </tbody>';
-                $i++;
+
 
             }
             echo '</table>';
@@ -83,6 +88,7 @@ session_start();
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
+
         ?>
     </div>
 </div>
@@ -114,6 +120,7 @@ try {
 
 } catch (PDOException $th) {
     echo $th->getMessage();
+
 }
 
 ?>
