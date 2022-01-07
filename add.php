@@ -26,7 +26,7 @@ include("config.php");
 <form method="post">
     <div class="container features">
         <div class="row center">
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="col-md-8 ">
                 <h3 class="feature-title">Add new patient</h3>
                 <div class="form-group">
                     Name:
@@ -67,7 +67,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Gender:
-                    <div class="addRadio" style="margin-left: 27%">
+                    <div class="addRadio" style="margin-left: 13%">
                         <input type="radio" name="addGender" value="Male" checked>
                         <label>Male</label><br>
                         <input type="radio" name="addGender" value="Female">
