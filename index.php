@@ -107,13 +107,8 @@ if (isset($_POST['find'])) {
         $conn = new PDO($db, $un, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date` FROM `Diagnosis` 
-                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num";
+                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
         $result = $conn->query($query);
-        $query = $query = "SELECT `PID`, `Name` FROM `Patients` ";
-        if (isset($_POST["btnSearchD"])) {
-            $query = $query . "where Name like '%" . $_POST['txtSearch'] . "%'";
-        }
-
 
         echo '<div class="container">';
 
