@@ -25,7 +25,7 @@ include("config.php");
 
 <div class="container features">
     <div class="row center">
-        <div class="col-lg-4 col-md-4 col-sm-6">
+        <div class="col-md-8">
             <h3 class="feature-title">Add new Diagnose</h3>
             <form method="post" enctype="multipart/form-data">
 <!--            <div class="form-group">-->
