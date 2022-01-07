@@ -3,7 +3,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background: #f2f6e9;
+	background: #ffffff;
 
 }
 
@@ -157,6 +157,7 @@ body {
 
 
 
+
 }
 
 .footer-copyright {
@@ -274,6 +275,15 @@ body {
 }
 /*---  bg image ---*/
 .img-bg{
-	height: 500px;
-	width: 100%;
+	height: 50%;
+	width: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*---  about us ---*/
+.aboutus{
+	text-align: center;
+
+
 }

@@ -76,7 +76,7 @@ include("config.php");
     </div>
 </div>
 
-<img src="images/bg.jpg" class="img-bg">
+<img src="images/list.png" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 
 

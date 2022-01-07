@@ -18,6 +18,7 @@ include("config.php");
 </head>
 
 <body>
+
 <?php include 'nav & footer/doctorsNav.php' ?>
 
 <header>
@@ -141,7 +142,7 @@ if (isset($_POST['find'])) {
 ?>
 
 <script src="js/collapsibleCards.js"></script>
-<img src="images/bg.jpg" class="img-bg">
+<img src="images/home.png" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
