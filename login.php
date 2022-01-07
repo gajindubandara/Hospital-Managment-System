@@ -113,7 +113,27 @@ session_start();?>
     </div>
 </div>
 
-<img src="images/bg.jpg" class="img-bg">
+<div class="container features ">
+    <div class="row center">
+        <div class=" col-md-12">
+            <div class="aboutus">
+                <h1>About Us</h1>
+                <p>
+                    Why do we use it?
+                    It is a long established fact that a reader will be distracted by the readab
+                    le content of a page when looking at its layout. The point of using Lorem
+                    Ipsum is that it has a more-or-less normal distribution of letters, as opposed t
+                    o using 'Content here, content here', making it look like readable English. Many
+                    desktop publishing packages and web page editors now use Lorem Ipsum as their de
+                    fault model text, and a search for 'lorem ipsum' will uncover many web sites still
+                    in their infancy. Various versions have evolved over the years, sometimes by accide
+                    nt, sometimes on purpose (injected humour and the like).
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
 <?php include 'nav & footer/footer.php' ?>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

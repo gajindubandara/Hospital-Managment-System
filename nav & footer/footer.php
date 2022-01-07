@@ -20,9 +20,11 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12">
         <h6 class="text-uppercase font-weight-bold">Contact</h6>
-          <p>Gajindu Bandara  +94 76 678 6225
-          <p>Ridmi Yatigammana  +94 71 954 3823
-          <p>Nilukshi Anandan  +94 76 642 1448
+          <uL>
+              <li>Gajindu Bandara  +94 76 678 6225</li>
+              <li>Ridmi Yatigammana  +94 71 954 3823</li>
+              <li> Nilukshi Anandan  +94 76 642 1448</li>
+          </uL>
 
 
       </div>
