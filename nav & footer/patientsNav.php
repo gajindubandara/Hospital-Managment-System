@@ -17,6 +17,9 @@
     <div class="collapse navbar-collapse" id="main-navigation">
         <ul class="navbar-nav" id="nav">
             <li class="nav-item">
+                <a class="nav-link" href="change_password.php">Change Password</a>
+            </li>
+            <li class="nav-item">
                 <form method="post">
                     <input class="logout" type="submit" name="logout" value="Logout" >
 

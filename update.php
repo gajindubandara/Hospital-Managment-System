@@ -91,7 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo '<script>console.log(' . $_POST["pName"] . ')</script>';
             $query = "UPDATE `Patients` SET `Name`=?,`Age`=?,`No`=?,`Email`=?,`Address`=?,`Day`=? WHERE `PID`=$editP";
             $st = $conn->prepare($query);
             $st->bindValue(1, $_POST["pName"], PDO::PARAM_STR);
