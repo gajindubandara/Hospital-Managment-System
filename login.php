@@ -21,6 +21,51 @@ session_start();?>
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="box">
+                <h3 class="feature-title">Admin</h3>
+                <!--                <img src="images/maleplaceholder.png" class=" center">-->
+                <form method="post">
+                    <div class="loginInfo">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" name="A_UN" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" name="A_PW" required>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-secondary btn-block" value="Login" name="logAdmin">
+                </form>
+                <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if (isset($_POST["logAdmin"])) {
+                        try {
+                            $conn = new PDO($db, $un, $password);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $query = $query = "SELECT `username` FROM `D-passwords` WHERE  `password`=? and `username`=? ";
+                            $st = $conn->prepare($query);
+
+                            $st->bindValue(1, $_POST["A_PW"], PDO::PARAM_STR);
+                            $st->bindValue(2, $_POST["A_UN"], PDO::PARAM_STR);
+                            $st->execute();
+                            $result = $st->fetch();
+                            if($result[0] == $_POST["A_UN"])
+                            {
+                                $_SESSION["a_un"] =$result[0];
+                                header("location:admin.php");
+                            }
+                            else{
+                                echo '<script>alert("Incorrect user name or password")</script>';
+                            }
+
+                        } catch (PDOException $th) {
+                            echo $th->getMessage();
+                        }
+                    }
+                }
+                ?>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="box">
                 <h3 class="feature-title">Doctor</h3>
                 <!--                <img src="images/maleplaceholder.png" class=" center">-->
                 <form method="post">

@@ -126,7 +126,7 @@ if (isset($_POST['find'])) {
 
         $i = 0;
         foreach ($result as $row) {
-            echo '<div class="card">';
+            echo '<div class="datacard">';
             echo '<h5 class="card-header">' . $row[4] . '</h5>';
             echo '<div class="card-body">';
             echo '<h5 class="card-title">' . $row[2] . '</h5>';

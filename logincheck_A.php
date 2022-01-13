@@ -1,8 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION["d_un"]))
+if(!isset($_SESSION["a_un"]))
 {
     header("location:login.php");
 }
-
 ?>
