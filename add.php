@@ -30,31 +30,31 @@ include("config.php");
                 <h3 class="feature-title">Add new patient</h3>
                 <div class="form-group">
                     Name:
-                    <input type="text" class="form-control" name="addName">
+                    <input type="text" class="form-control" name="addName" required>
                 </div>
                 <div class="form-group">
                     Age:
-                    <input type="number" class="form-control" name="addAge">
+                    <input type="number" class="form-control" name="addAge"required>
                 </div>
                 <div class="form-group">
                     Contact Number:
-                    <input type="number" class="form-control" name="addNum">
+                    <input type="number" class="form-control" name="addNum" required>
                 </div>
                 <div class="form-group">
                     Email:
-                    <input type="email" class="form-control" name="addEmail">
+                    <input type="email" class="form-control" name="addEmail" required>
                 </div>
                 <div class="form-group">
                     Address:
-                    <input type="text" class="form-control" name="addAddress">
+                    <input type="text" class="form-control" name="addAddress"required>
                 </div>
                 <div class="form-group">
                     NIC:
-                    <input type="text" class="form-control" name="addNIC">
+                    <input type="text" class="form-control" name="addNIC" required>
                 </div>
                 <div class="form-group">
                     Blood group:
-                    <select class="form-control" name="addBG">
+                    <select class="form-control" name="addBG" required>
                         <option value="O+" name="">O positive</option>
                         <option value="O-" name="">O negative</option>
                         <option value="A+" name="">A positive</option>
@@ -67,7 +67,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Gender:
-                    <div class="addRadio" style="margin-left: 13%">
+                    <div class="addRadio" style="margin-left: 13%" >
                         <input type="radio" name="addGender" value="Male" checked>
                         <label>Male</label><br>
                         <input type="radio" name="addGender" value="Female">
@@ -78,11 +78,15 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Create a new password for the patient:
-                    <input type="text" class="form-control" name="addPW">
+                    <input type="text" class="form-control" name="addPW" required>
+                    <?php
+                    $md5pw =md5($_POST["addPW"]);
+
+                    ?>
                 </div>
                 <div class="form-group">
                     Date:
-                    <input type="date" class="form-control" name="addDate">
+                    <input type="date" class="form-control" name="addDate" required>
                 </div>
                 <input type="submit" class="btn btn-secondary btn-block" value="Add Patient" name="btnAdd">
             </div>
@@ -108,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $st->bindValue(6, $_POST["addBG"], PDO::PARAM_STR);
             $st->bindValue(7, $_POST["addGender"], PDO::PARAM_STR);
             $st->bindValue(8, $_POST["addNIC"], PDO::PARAM_STR);
-            $st->bindValue(9, $_POST["addPW"], PDO::PARAM_STR);
+            $st->bindValue(9, $md5pw, PDO::PARAM_STR);
             $st->bindValue(10, $_POST["addDate"], PDO::PARAM_STR);
             $st->execute();
 

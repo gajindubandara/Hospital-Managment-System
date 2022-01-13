@@ -1,6 +1,7 @@
 <?php
 require("logincheck_D.php");
 include("config.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,11 @@ include("config.php");
 <body>
 <?php include 'nav & footer/doctorsNav.php' ?>
 
+<?php if(isset($_POST["btnEdit"])){
+    $_SESSION["editNo"] =$_POST["btnEdit"];
+    header("location:update.php");
+}?>
+
 <div class="container features">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
@@ -32,14 +38,14 @@ include("config.php");
     </div>
 </div>
 
-<div class="container">
+<div class="container features">
         <form method="post" enctype="multipart/form-data">
             <?php
 
             try {
                 $conn = new PDO($db,$un,$password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-                $query =$query ="SELECT `PID`, `Name`, `Day` FROM `Patients` ";
+                $query =$query ="SELECT `PID`, `Name`, `Day`,`Age`, `No`, `Email`, `Address`, `BG`, `Gender`, `NIC`, `password` FROM `Patients` ";
                 if(isset($_POST["btnSearch"]))
                 {
                     $query=$query. "where Name like '%".$_POST['txtSearch']."%'";
@@ -51,16 +57,25 @@ include("config.php");
                             <th scope="col">Patient No.</th>
                             <th scope="col">Name</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Name</th>
+                            <th scope="col"></th>
                           </tr>';
                 echo '</thead>';
                 $i=0;
                 foreach($result as $row)
                 {   echo '<tbody>';
                     echo '<tr class="rw">';
-                    echo '<td> <input type="hidden" name="PID[]" value="' . $row[0] . '">' . $row[0] . '</td>';
-                    echo '<td><input type="hidden" name="Name[]" value="' . $row[1] . '">' . $row[1] . '</td>';
-                    echo '<td><input type="hidden" name="Name[]" value="' . $row[2] . '">' . $row[2] . '</td>';
+                    echo '<td> <input type="hidden" name="pID[]" value="' . $row[0] . '">'. $row[0] . '</td>';
+                    echo '<td> <input type="hidden" name="pName[]" value="' . $row[1] . '">'. $row[1] . '</td>';
+                    echo '<td> <input type="hidden" name="pDay[]" value="' . $row[2] . '">'. $row[2] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pAge[]" value="' . $row[3] . '">'. $row[3] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pNo[]" value="' . $row[4] . '">'. $row[4] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pEmail[]" value="' . $row[5] . '">'. $row[5] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pAddress[]" value="' . $row[6] . '">'. $row[6] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pBG[]" value="' . $row[7] . '">'. $row[7] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pGender[]" value="' . $row[8] . '">'. $row[8] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pNIC[]" value="' . $row[9] . '">'. $row[9] . '</td>';
+                    echo '<td hidden> <input type="hidden" name="pPW[]" value="' . $row[10] . '">'. $row[10] . '</td>';
+                    echo '<td><button class="btn btn-secondary btn-block" name="btnEdit" type="submit"  value="' .$row[0] . '">Edit Profile </button></td>';
                     echo '</tr>';
                     echo ' </tbody>';
                     $i++;
@@ -70,6 +85,7 @@ include("config.php");
             } catch (PDOException $th) {
                 echo $th->getMessage();
             }
+
 
             ?>
         </form>
