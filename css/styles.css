@@ -219,7 +219,7 @@ body {
 	background-color: #006600;
 }
 /*---  patient report ---*/
-.card{
+.datacard{
 	margin-top: 30px !important;
 	margin-bottom: 30px !important;
 }
@@ -241,3 +241,6 @@ body {
 
 
 }
+
+
+
