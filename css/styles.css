@@ -80,22 +80,6 @@ body {
 	font-family: auto;
 }
 
-.features img {
-	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-	margin-bottom: 16px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.features .text{
-	text-align: center;
-	padding-left: 40px;
-	padding-right: 40px;
-
-}
 .features .loginInfo{
 	display: block;
 	margin-right: auto;
@@ -118,36 +102,6 @@ body {
 	border: 1px solid #0E5C02;
 }
 
-/*!*--- team section ---*!*/
-
-/*.background {*/
-/*	background: #dedec8;*/
-/*	padding: 4em 0;*/
-/*}*/
-
-/*.team {*/
-/*	color: #5e5e55;*/
-/*	padding: 0 180px;*/
-/*}*/
-
-/*.team .card-columns {*/
-/*	-webkit-column-count: 4;*/
-/*	-moz-column-count: 4;*/
-/*	column-count: 4;*/
-/*}*/
-
-/*.team .card {*/
-/*	background:none;*/
-/*	border: none;*/
-/*}*/
-
-/*.team .card-title {*/
-/*	font-size: 1.3rem;*/
-/*	margin-bottom: 0;*/
-/*	text-transform: uppercase;*/
-/*}*/
-
-/*--- footer ---*/
 
 .page-footer {
 	background-color: #222;

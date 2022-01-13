@@ -88,11 +88,12 @@ session_start();?>
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         $query = $query = "SELECT `PID` FROM `Patients` WHERE `password`=? and `PID`=?";
                         $st = $conn->prepare($query);
-
-                        $st->bindValue(1, $_POST["P_PW"], PDO::PARAM_STR);
+                        $enteredPW =md5($_POST["P_PW"]);
+                        $st->bindValue(1, $enteredPW, PDO::PARAM_STR);
                         $st->bindValue(2, $_POST["P_UN"], PDO::PARAM_STR);
                         $st->execute();
                         $result = $st->fetch();
+                        $pw =md5($_POST["P_PW"]);
                         if($result[0] == $_POST["P_UN"])
                         {
                             $_SESSION["p_un"] =$result[0];
