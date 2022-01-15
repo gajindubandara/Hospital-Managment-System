@@ -29,37 +29,17 @@ include("config.php");
         <div class="col-md-8">
             <h3 class="feature-title">Add new Diagnose</h3>
             <form method="post" enctype="multipart/form-data">
-<!--            <div class="form-group">-->
-<!--                <input type="text" class="form-control" placeholder="Name" name="">-->
-<!--            </div>-->
                 <div class="form-group">
-            <select class="form-control" name="dPatient">
-                <?php
-
-                    try {
-                        $conn = new PDO($db, $un, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = $query = "SELECT `PID`, `Name` FROM `Patients` ";
-                        $result = $conn->query($query);
-                        foreach ($result as $r) {
-                            echo '<option value="' . $r[0] . '">' . $r[1] . '</option>';
-                        }
-
-                    } catch (PDOException $th) {
-                        echo $th->getMessage();
-                    }
-
-                ?>
-            </select>
+                    <input type="number" class="form-control" placeholder="Patient Number" name="dPatient" required>
                 </div>
             <div class="form-group">
-                <textarea class="form-control" placeholder="Diagnosis" rows="4" name="dDiagnosis"></textarea>
+                <textarea class="form-control" placeholder="Diagnosis" rows="4" name="dDiagnosis" required></textarea>
             </div>
             <div class="form-group">
-                <textarea class="form-control" placeholder="Medications" rows="4" name="dMedications"></textarea>
+                <textarea class="form-control" placeholder="Medications" rows="4" name="dMedications" required></textarea>
             </div>
             <div class="form-group">
-                <input type="date" class="form-control" name="dDate">
+                <input type="date" class="form-control" name="dDate" required>
             </div>
             <input type="submit" class="btn btn-secondary btn-block" value="Add Diagnosis" name="addDiagnosis">
             </form>
@@ -82,7 +62,8 @@ include("config.php");
 
 
                     } catch (PDOException $th) {
-                        echo $th->getMessage();
+//                        echo $th->getMessage();
+                        echo"<script> alert('Invalid patient number!');</script>";
 
                     }
                 }
