@@ -239,8 +239,20 @@ body {
 .aboutus{
 	text-align: center;
 
+}
+/*---  record del btn ---*/
+.recordDel {
+	background-color: #589b37;
+	border: 1px solid #589b37;
+	color: #fff;
+	margin-top: 20px;
+	width: 125px;
+	display: block;
+	margin-left: auto;
+	border-radius: 4px;
 
 }
 
-
-
+.recordDel:hover {
+	background-color: #006600;
+}

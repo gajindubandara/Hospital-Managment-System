@@ -1,6 +1,7 @@
 <?php
 require("logincheck_D.php");
 include("config.php");
+session_start();
 ?>
 <!DOCTYPE html>
 
@@ -46,6 +47,7 @@ include("config.php");
         if (isset($_POST['find'])) {
             try {
                 $num = $_POST["ps"];
+                $_SESSION["ps"] =$_POST["ps"];
                 $conn = new PDO($db, $un, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC`, `Day` FROM `Patients` WHERE PID= $num ";
@@ -122,20 +124,22 @@ if (isset($_POST['find'])) {
         $result = $conn->query($query);
 
         echo '<div class="container">';
+        echo '<form method="post">';
 
 
         $i = 0;
         foreach ($result as $row) {
-            echo '<div class="datacard">';
+            echo '<div class="datacard features" style="border-radius: 6px;">';
             echo '<h5 class="card-header">' . $row[4] . '</h5>';
-            echo '<div class="card-body">';
+            echo '<div class="card-body" style="border: solid #343a40 1px; border-radius: 0px 0px 6px 6px; ">';
             echo '<h5 class="card-title">' . $row[2] . '</h5>';
             echo '<p class="card-text">' . $row[3] . '</p>';
+            echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="'.$row[4].'">Delete Record </button></td>';
             echo '</div>';
             echo '</div>';
             $i++;
         }
-
+        echo '</form>';
         echo '</div>';
 
     } catch (PDOException $th) {
@@ -144,7 +148,31 @@ if (isset($_POST['find'])) {
 }
 }
 ?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['delRecord'])) {
+        try {
+            $day= $_POST['delRecord'];
+            $num = $_SESSION["ps"];
+            $dayString= strval($day);
+            $numString= strval($num);
 
+            $conn = new PDO($db, $un, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query = "DELETE  FROM `Diagnosis` WHERE `Patient`='$numString' AND `Date`='$dayString'";
+            $st = $conn->prepare($query);
+            $st->execute();
+
+            echo "<script> alert('Record deleted!');</script>";
+
+
+        } catch (PDOException $th) {
+            echo $th->getMessage();
+
+        }
+    }
+}
+?>
 <script src="js/collapsibleCards.js"></script>
 <img src="images/home.png" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
