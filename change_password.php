@@ -1,5 +1,5 @@
 <?php
-require("logincheck_P.php");
+require("login-check/logincheck_P.php");
 include("config.php");
 session_start();
 ?>

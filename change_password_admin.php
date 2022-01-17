@@ -1,5 +1,5 @@
 <?php
-require("logincheck_A.php");
+require("login-check/logincheck_A.php");
 include("config.php");
 ?>
 <!DOCTYPE html>

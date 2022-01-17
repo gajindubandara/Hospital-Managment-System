@@ -25,7 +25,7 @@ session_start();
             {
                 echo '
             <li class="nav-item">
-                <a class="nav-link" href="index_d.php">Home</a>
+                <a class="nav-link" href="admin.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="report.php">Reports</a>
@@ -71,8 +71,7 @@ session_start();
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="change_password.php">Change Password</a>
-            </li>
-            <li class="nav-item">';
+            </li>';
             }?>
 
 
@@ -81,7 +80,7 @@ session_start();
                     <button class="logout" type="submit" name="logout">Logout <i class='fas fa-sign-out-alt' style='color:white'></i></button>
 
                 </form>
-<!--                <a class="nav-link" name="logout">Logout</a>-->
+
                 <?php
 
                 if (isset($_POST["logout"]))

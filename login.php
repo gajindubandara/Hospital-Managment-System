@@ -15,7 +15,7 @@ session_start();?>
 </head>
 
 <body>
-<?php include 'nav & footer/commonNav.php' ?>
+<?php include 'nav & footer/loginNav.php' ?>
 
 <div class="container features">
     <div class="row center">
