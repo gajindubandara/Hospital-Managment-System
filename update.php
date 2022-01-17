@@ -68,6 +68,7 @@ session_start();
 
 
                         echo '<input type="submit" class="btn btn-secondary btn-block" value="Update" name="btnUpdate">';
+                        echo '<input type="submit" class="btn btn-secondary btn-block" value="Cancel" name="btnCan">';
 
 
                     }
@@ -111,6 +112,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['btnCan'])) {
+        header("location:register.php");
+    }
+}
+?>
+
 <script src="js/collapsibleCards.js"></script>
 <img src="images/home.png" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
