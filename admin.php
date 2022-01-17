@@ -20,7 +20,7 @@ include("config.php");
 
 <body>
 
-<?php include 'nav & footer/adminNav.php' ?>
+<?php include 'nav & footer/nav.php' ?>
 
 <header>
 

@@ -18,7 +18,7 @@ session_start();
 </head>
 
 <body>
-<?php include 'nav & footer/doctorsNav.php' ?>
+<?php include 'nav & footer/nav.php' ?>
 
 <?php if(isset($_POST["btnEdit"])){
     $_SESSION["editNo"] =$_POST["btnEdit"];
