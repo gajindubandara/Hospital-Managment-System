@@ -1,5 +1,5 @@
 <?php
-require("logincheck_D.php");
+require("login-check/logincheck_A&D.php");
 include("config.php");
 session_start();
 ?>
@@ -18,7 +18,7 @@ session_start();
 </head>
 
 <body>
-<?php include 'nav & footer/doctorsNav.php' ?>
+<?php include 'nav & footer/nav.php' ?>
 
 <?php if(isset($_POST["btnEdit"])){
     $_SESSION["editNo"] =$_POST["btnEdit"];
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <th scope="col">Patient No.</th>
                             <th scope="col">Name</th>
                             <th scope="col">Date</th>
-                            <th scope="col">status</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                           </tr>';
@@ -179,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <th scope="col">Patient No.</th>
                             <th scope="col">Name</th>
                             <th scope="col">Date</th>
-                            <th scope="col">status</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                             

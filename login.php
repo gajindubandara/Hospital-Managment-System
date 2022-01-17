@@ -15,7 +15,7 @@ session_start();?>
 </head>
 
 <body>
-<?php include 'nav & footer/commonNav.php' ?>
+<?php include 'nav & footer/loginNav.php' ?>
 
 <div class="container features">
     <div class="row center">
@@ -95,7 +95,7 @@ session_start();?>
                         if($result[0] == $_POST["D_UN"])
                         {
                             $_SESSION["d_un"] =$result[0];
-                            header("location:index.php");
+                            header("location:index_d.php");
                         }
                         else{
                             echo '<script>alert("Incorrect user name or password")</script>';

@@ -1,5 +1,5 @@
 <?php
-require("logincheck_D.php" );
+require("login-check/logincheck_A&D.php");
 
 include("config.php");
 ?>
@@ -15,11 +15,12 @@ include("config.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </head>
 
 <body>
-<?php include 'nav & footer/doctorsNav.php' ?>
+<?php include 'nav & footer/nav.php' ?>
 <header>
 
 </header>

@@ -1,5 +1,5 @@
 <?php
-require("login-check/logincheck_A.php");
+require("login-check/logincheck_D.php");
 include("config.php");
 ?>
 <!DOCTYPE html>
@@ -34,51 +34,53 @@ include("config.php");
     </div>
     <div class="cards">
         <div class="card card-1" >
-<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+            <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
             <h2 class="card__title">Patient Register</h2>
             <p class="card__apply">
                 <a class="card__link" href="register.php"> Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
         <div class="card card-2">
-<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
-            <h2 class="card__title">View Patient History</h2>
+            <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+            <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <h2 class="card__title"> Patient Reports</h2>
             <p class="card__apply">
                 <a class="card__link" href="report.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
         <div class="card card-3">
-<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+            <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
             <h2 class="card__title">Add A New Diagnosis</h2>
             <p class="card__apply">
                 <a class="card__link" href="newDiagnose.php"> Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
         <div class="card card-4">
-<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+            <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
             <h2 class="card__title">Add A New Patient</h2>
             <p class="card__apply">
                 <a class="card__link" href="add.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
-        <div class="card card-5">
-            <h2 class="card__title">Reset Patient Password</h2>
-            <p class="card__apply">
-                <a class="card__link" href="change_password_admin.php">Click Here <i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-<!--        <div class="card card-1">-->
-<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
-<!--            <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>-->
-<!--            <p class="card__apply">-->
-<!--                <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>-->
-<!--            </p>-->
-<!--        </div>-->
+        <!--        <div class="card card-5">-->
+        <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+        <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+        <!--            <h2 class="card__title">Ut aliquip ex ea commodo consequat. Duis aute irure dolor.</h2>-->
+        <!--            <p class="card__apply">-->
+        <!--                <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>-->
+        <!--            </p>-->
+        <!--        </div>-->
+        <!--        <div class="card card-1">-->
+        <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+        <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+        <!--            <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>-->
+        <!--            <p class="card__apply">-->
+        <!--                <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>-->
+        <!--            </p>-->
+        <!--        </div>-->
     </div>
 </div>
 

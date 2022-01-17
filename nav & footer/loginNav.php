@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,30 +17,6 @@
     <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="navbar-nav" id="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="change_password.php">Change Password</a>
-            </li>
-            <li class="nav-item">
-                <form method="post">
-                    <input class="logout" type="submit" name="logout" value="Logout" >
-
-                </form>
-                <!--                <a class="nav-link" name="logout">Logout</a>-->
-                <?php
-
-                if (isset($_POST["logout"]))
-                {
-                    unset($_SESSION["p_un"]);
-                    header("location:login.php");
-                }
-                ?>
-            </li>
-
-        </ul>
-
-    </div>
 </nav>
 
 </body>
