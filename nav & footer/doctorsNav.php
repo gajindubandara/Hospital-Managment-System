@@ -17,7 +17,10 @@
     <div class="collapse navbar-collapse" id="main-navigation">
         <ul class="navbar-nav" id="nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="index_d.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="report.php">Reports</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="register.php">Patient Register</a>
@@ -30,7 +33,7 @@
             </li>
             <li class="nav-item">
                 <form method="post">
-                    <input class="logout" type="submit" name="logout" value="Logout" >
+                    <button class="logout" type="submit" name="logout">Logout <i class='fas fa-sign-out-alt' style='color:white'></i></button>
 
                 </form>
 <!--                <a class="nav-link" name="logout">Logout</a>-->

@@ -95,7 +95,7 @@ session_start();?>
                         if($result[0] == $_POST["D_UN"])
                         {
                             $_SESSION["d_un"] =$result[0];
-                            header("location:index.php");
+                            header("location:index_d.php");
                         }
                         else{
                             echo '<script>alert("Incorrect user name or password")</script>';

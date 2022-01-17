@@ -14,6 +14,7 @@ include("config.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </head>
 
@@ -25,128 +26,66 @@ include("config.php");
 
 </header>
 
-<div class="container features">
-    <div class="row center">
-        <div class="col-lg-4 col-md-4 col-sm-6">
-            <h3 class="feature-title">search for diagnosis report</h3>
-            <form method="post">
-                <div class="form-group">
-                    <input type="number" class="form-control" placeholder="Patient Number" name="ps">
-                </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Search" name="find">
-            </form>
+
+<div class="main-container">
+    <div class="heading">
+        <h1 class="heading__title">Clinic Management System</h1>
+        <p class="heading__credits"><a class="heading__link" target="_blank" >Design by Team 404</a></p>
+    </div>
+    <div class="cards">
+        <div class="card card-1" >
+<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <h2 class="card__title">Patient Register</h2>
+            <p class="card__apply">
+                <a class="card__link" href="https://www.google.lk/?gws_rd=cr,ssl&ei=nCzfVcTAEujjywO1roiIBA"> Click Here <i class="fas fa-arrow-right"></i></a>
+            </p>
         </div>
+        <div class="card card-2">
+<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <h2 class="card__title">View Patient History</h2>
+            <p class="card__apply">
+                <a class="card__link" href="#">Click Here <i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+        <div class="card card-3">
+<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <h2 class="card__title">Add A New Diagnosis</h2>
+            <p class="card__apply">
+                <a class="card__link" href="#"> Click Here <i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+        <div class="card card-4">
+<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+            <h2 class="card__title">Add A New Patient</h2>
+            <p class="card__apply">
+                <a class="card__link" href="#">Click Here <i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
+<!--        <div class="card card-5">-->
+<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+<!--            <h2 class="card__title">Ut aliquip ex ea commodo consequat. Duis aute irure dolor.</h2>-->
+<!--            <p class="card__apply">-->
+<!--                <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--        <div class="card card-1">-->
+<!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
+<!--            <h2 class="card__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>-->
+<!--            <p class="card__apply">-->
+<!--                <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>-->
+<!--            </p>-->
+<!--        </div>-->
     </div>
 </div>
-
-<div class="row center" style="margin-top: 50px">
-    <div class="col-md-4">
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['find'])) {
-                try {
-                    $num = $_POST["ps"];
-                    $conn = new PDO($db, $un, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC`, `Day` FROM `Patients` WHERE PID= $num ";
-                    $result = $conn->query($query);
-                    echo '<table class="table">';
-
-                    foreach ($result as $row) {
-                        echo '<tbody>';
-                        echo '<tr>';
-                        echo '<td><b>Patient Number:</b></td>';
-                        echo '<td>' . $row[0] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Name:</b></td>';
-                        echo '<td>' . $row[1] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Age:</b></td>';
-                        echo '<td>' . $row[2] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b> Phone Number:</b></td>';
-                        echo '<td>' . $row[3] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Email:</b></td>';
-                        echo '<td>' . $row[4] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Address:</b></td>';
-                        echo '<td>' . $row[5] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Blood Group:</b></td>';
-                        echo '<td>' . $row[6] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Gender:</b></td>';
-                        echo '<td>' . $row[7] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>NIC:</b></td>';
-                        echo '<td>' . $row[8] . '</td>';
-                        echo '</tr>';
-                        echo '<tr>';
-                        echo '<td><b>Date:</b></td>';
-                        echo '<td>' . $row[9] . '</td>';
-                        echo '</tr>';
-                        echo ' </tbody>';
-
-                    }
-                    echo '</table>';
-
-
-                } catch (PDOException $th) {
-                    echo $th->getMessage();
-                }
-            }
-        }
-        ?>
-    </div>
-</div>
-
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['find'])) {
-        try {
-            $num = $_POST["ps"];
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date` FROM `Diagnosis` 
-                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
-            $result = $conn->query($query);
-
-            echo '<div class="container">';
-
-
-            $i = 0;
-            foreach ($result as $row) {
-                echo '<div class="card">';
-                echo '<h5 class="card-header">' . $row[4] . '</h5>';
-                echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $row[2] . '</h5>';
-                echo '<p class="card-text">' . $row[3] . '</p>';
-                echo '</div>';
-                echo '</div>';
-                $i++;
-            }
-
-            echo '</div>';
-
-        } catch (PDOException $th) {
-            echo $th->getMessage();
-        }
-    }
-}
-?>
 
 <script src="js/collapsibleCards.js"></script>
-<img src="images/home.png" class="img-bg">
+<img src="images/add.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
