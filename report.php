@@ -51,7 +51,7 @@ session_start();
                 $_SESSION["ps"] =$_POST["ps"];
                 $conn = new PDO($db, $un, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC`, `Day` FROM `Patients` WHERE PID= $num ";
+                $query = $query = "SELECT `PID`, `Name`, `BDay`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC`, `Day` FROM `Patients` WHERE PID= $num ";
                 $result = $conn->query($query);
                 echo '<table class="table">';
 
@@ -66,7 +66,7 @@ session_start();
                     echo '<td>' . $row[1] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td><b>Age:</b></td>';
+                    echo '<td><b>Birth Date:</b></td>';
                     echo '<td>' . $row[2] . '</td>';
                     echo '</tr>';
                     echo '<tr>';

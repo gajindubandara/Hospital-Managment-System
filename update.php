@@ -37,7 +37,7 @@ session_start();
                     $editP = $_SESSION["editNo"];
                     $conn = new PDO($db, $un, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`,`Day` FROM `Patients` Where `PID`= $editP";
+                    $query = $query = "SELECT `PID`, `Name`, `BDay`, `No`, `Email`, `Address`,`Day` FROM `Patients` Where `PID`= $editP";
                     $result = $conn->query($query);
 
                     foreach ($result as $row) {
@@ -47,8 +47,8 @@ session_start();
                         echo '<input type="text" class="form-control" name="pName" value="' . $row[1] . '" required >';
                         echo '</div>';
 
-                        echo '  <div class="form-group"> Age:';
-                        echo '<input type="number" class="form-control" name="pAge" value="' . $row[2] . '" required >';
+                        echo '  <div class="form-group"> Birth Date:';
+                        echo '<input type="date" class="form-control" name="pAge" value="' . $row[2] . '" required >';
                         echo '</div>';
 
                         echo '  <div class="form-group"> Number:';
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "UPDATE `Patients` SET `Name`=?,`Age`=?,`No`=?,`Email`=?,`Address`=?,`Day`=? WHERE `PID`=$editP";
+            $query = "UPDATE `Patients` SET `Name`=?,`BDay`=?,`No`=?,`Email`=?,`Address`=?,`Day`=? WHERE `PID`=$editP";
             $st = $conn->prepare($query);
             $st->bindValue(1, $_POST["pName"], PDO::PARAM_STR);
             $st->bindValue(2, $_POST["pAge"], PDO::PARAM_STR);

@@ -35,8 +35,8 @@ include("config.php");
                     <input type="text" class="form-control" name="addName" required>
                 </div>
                 <div class="form-group">
-                    Age:
-                    <input type="number" class="form-control" name="addAge"required>
+                    Birth Date:
+                    <input type="date" class="form-control" name="addAge"required>
                 </div>
                 <div class="form-group">
                     Contact Number:
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "INSERT INTO `Patients`( `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`, `NIC`, `password`, `Day`)  
+            $query = "INSERT INTO `Patients`( `Name`, `BDay`, `No`, `Email`, `Address`, `BG`, `Gender`, `NIC`, `password`, `Day`)  
                          VALUES (?,?,?,?,?,?,?,?,?,?)";
             $st = $conn->prepare($query);
             $st->bindValue(1, $_POST["addName"], PDO::PARAM_STR);
