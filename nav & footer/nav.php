@@ -28,19 +28,10 @@ session_start();
                 <a class="nav-link" href="admin.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="report.php">Reports</a>
+                <a class="nav-link" href="manage_doctors.php">Manage Doctors</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="register.php">Patient Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="add.php">New Patient</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="newDiagnose.php"> Add Diagnose</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="change_password_admin.php"> Reset patient Password</a>
+                <a class="nav-link" href="manage_patients.php">Manage Patients</a>
             </li>';
             }
 
@@ -61,6 +52,9 @@ session_start();
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="newDiagnose.php"> Add Diagnose</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="change_Dpassword.php"> Change Password</a>
             </li>';
             }
             else if(isset($_SESSION["p_un"]))

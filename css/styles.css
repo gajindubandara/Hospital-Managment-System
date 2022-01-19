@@ -87,10 +87,11 @@ body {
 	width: 75%;
 }
 .features .btn {
-	background-color: #393939;
-	border: 1px solid #393939;
-	color: #fff;
+	background-color: #35b2f8;
+	border: none !important;
+	color: #4b4b4b;
 	margin-top: 20px;
+	font-weight: normal;
 	width: 50%!important;
 	display: block;
 	margin-left: auto;
@@ -98,8 +99,11 @@ body {
 }
 
 .features .btn:hover {
-	background-color: #616161;
-	border: 1px solid #616161;
+	/*background-color: #616161;*/
+	/*border: 1px solid #616161;*/
+	background-color: #35b2f8;
+	box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+	transform: scale(1.01);
 }
 
 
@@ -235,6 +239,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 /*---  about us ---*/
 .aboutus{
 	text-align: center;
@@ -242,9 +247,9 @@ body {
 }
 /*---  record del btn ---*/
 .recordDel {
-	background-color: #343434;
-	border: 1px solid #343434;
-	color: #fff;
+	background-color: #35b2f8;
+	border: none !important;
+	color: #4b4b4b;
 	margin-top: 20px;
 	width: 125px;
 	display: block;
@@ -254,7 +259,11 @@ body {
 }
 /*---  alert ---*/
 .recordDel:hover {
-	background-color: #4b4b4b;
+	/*background-color: #4b4b4b;*/
+	background-color: #35b2f8;
+	color: #4b4b4b;
+	box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+	transform: scale(1.01);
 }
 
 

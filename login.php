@@ -15,8 +15,7 @@ session_start();?>
 </head>
 
 <body>
-<?php include 'nav & footer/loginNav.php' ?>
-
+<?php include 'nav & footer/loginNav.php';?>
 <div class="container features">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
@@ -71,7 +70,7 @@ session_start();?>
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" name="D_UN" required>
+                            <input type="number" class="form-control" placeholder="Doctor ID" name="D_UN" required>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password" name="D_PW" required>
@@ -81,30 +80,31 @@ session_start();?>
                 </form>
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (isset($_POST["logDoc"])) {
-                    try {
-                        $conn = new PDO($db, $un, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = $query = "SELECT `username` FROM `D-passwords` WHERE  `password`=? and `username`=? ";
-                        $st = $conn->prepare($query);
+                    if (isset($_POST["logDoc"])) {
+                        try {
+                            $conn = new PDO($db, $un, $password);
+                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $query = $query = "SELECT `DID`,`Name` FROM `doctors` WHERE `Password`=? and `DID`=?";
+                            $st = $conn->prepare($query);
+                            $enteredPW =md5($_POST["D_PW"]);
+                            $st->bindValue(1, $enteredPW, PDO::PARAM_STR);
+                            $st->bindValue(2, $_POST["D_UN"], PDO::PARAM_STR);
+                            $st->execute();
+                            $result = $st->fetch();
+                            $pw =md5($_POST["D_PW"]);
+                            if($result[0] == $_POST["D_UN"])
+                            {
+                                $_SESSION["d_un"] =$result[0];
+                                header("location:index_d.php");
+                            }
+                            else{
+                                echo '<script>alert("Incorrect user name or password")</script>';
+                            }
 
-                        $st->bindValue(1, $_POST["D_PW"], PDO::PARAM_STR);
-                        $st->bindValue(2, $_POST["D_UN"], PDO::PARAM_STR);
-                        $st->execute();
-                        $result = $st->fetch();
-                        if($result[0] == $_POST["D_UN"])
-                        {
-                            $_SESSION["d_un"] =$result[0];
-                            header("location:index_d.php");
+                        } catch (PDOException $th) {
+                            echo $th->getMessage();
                         }
-                        else{
-                            echo '<script>alert("Incorrect user name or password")</script>';
-                        }
-
-                    } catch (PDOException $th) {
-                        echo $th->getMessage();
                     }
-                }
                 }
                 ?>
             </div>

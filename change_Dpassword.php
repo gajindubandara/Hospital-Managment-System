@@ -1,6 +1,7 @@
 <?php
-require("login-check/logincheck_A.php");
+require("login-check/logincheck_D.php");
 include("config.php");
+session_start();
 ?>
 <!DOCTYPE html>
 
@@ -8,7 +9,7 @@ include("config.php");
 
 <head>
 
-    <title>Change Patient Password</title>
+    <title>Change Password</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -29,13 +30,10 @@ include("config.php");
 <div class="container features">
     <div class="row center">
         <div class="col-md-6">
-            <h3 class="feature-title">Change Patient Password</h3>
+            <h3 class="feature-title">Change Password</h3>
             <form method="post">
-                <div class="form-group">Patient Number:
-                    <input type="text" class="form-control"  name="pNO" required>
-                </div>
-                <div class="form-group"> NIC Number:
-                    <input type="text" class="form-control"  name="pNIC" required>
+                <div class="form-group">Old Password:
+                    <input type="password" class="form-control"  name="pOPW" required>
                 </div>
                 <div class="form-group"> New password:
                     <input type="password" class="form-control"  name="pNPW" required>
@@ -43,31 +41,31 @@ include("config.php");
                 <div class="form-group"> Reenter the new password:
                     <input type="password" class="form-control"  name="pRNPW" required>
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Reset password" name="reset">
+                <input type="submit" class="btn btn-secondary btn-block" value="Change Password" name="change">
             </form>
         </div>
     </div>
 </div>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["reset"])) {
+    if (isset($_POST["change"])) {
         try {
-            $pNum=$_POST["pNO"];
+            $num = $_SESSION["d_un"];
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT `PID`,`NIC` FROM `Patients` where `PID`=$pNum";
+            $query = $query = "SELECT `Password` FROM `doctors` Where `DID`= $num";
             $st = $conn->prepare($query);
             $st->execute();
             $result = $st->fetch();
+            $pw =md5($_POST["pOPW"]);
 
-            if($result [0] ==$_POST["pNO"] && $result [1] ==$_POST["pNIC"]){
-
-
+            if($pw== $result[0])
+            {
                 if ($_POST["pNPW"] == $_POST["pRNPW"]){
 
                     $conn = new PDO($db, $un, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = "UPDATE `Patients` SET `password`=? Where `PID`=$pNum";
+                    $query = "UPDATE `doctors` SET `Password`=? Where `DID`=$num";
                     $st = $conn->prepare($query);
                     $npw =md5($_POST["pNPW"]);
                     $st->bindValue(1, $npw, PDO::PARAM_STR);
@@ -76,22 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }else{
                     echo "<script> alert('The reentered password dose not match to the new password! ');</script>";
                 }
-
-
             }
             else{
-                echo '<script>alert("Patient number & the NIC does not match!")</script>';
-
+                echo '<script>alert("Enter the correct old password")</script>';
             }
-//            $pw =md5($_POST["pOPW"]);
-//
-//            if($pw== $result[0])
-//            {
-//
-//            }
-//            else{
-//                echo '<script>alert("Enter the correct old password")</script>';
-//            }
 
         } catch (PDOException $th) {
             echo $th->getMessage();

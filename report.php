@@ -9,7 +9,7 @@ session_start();
 
 <head>
 
-    <title>Home</title>
+    <title>Patient Reports</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -115,40 +115,53 @@ session_start();
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-if (isset($_POST['find'])) {
-    try {
-        $num = $_POST["ps"];
-        $conn = new PDO($db, $un, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date` FROM `Diagnosis` 
+    if (isset($_POST['find'])) {
+        try {
+            $num = $_POST["ps"];
+            $conn = new PDO($db, $un, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date`,`doc` FROM `Diagnosis` 
                                   JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
-        $result = $conn->query($query);
+            $result = $conn->query($query);
 
-        echo '<div class="container">';
-        echo '<form method="post">';
+            echo '<div class="container">';
+            echo '<form method="post">';
 
-
-        $i = 0;
-        foreach ($result as $row) {
-            echo '<div class="datacard features" style="border-radius: 6px;">';
-            echo '<h5 class="card-header">' . $row[4] . '</h5>';
-            echo '<div class="card-body" style="border: solid #343a40 1px; border-radius: 0px 0px 6px 6px; ">';
-            echo '<h5 class="card-title">' . $row[2] . '</h5>';
-            echo '<p class="card-text">' . $row[3] . '</p>';
-            echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="'.$row[4].'">Delete Record </button></td>';
+            foreach ($result as $row) {
+                $docName = $row[5];
+                try {
+                    $conn = new PDO($db, $un, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $query = $query = "SELECT `Name`, `No`, `Email`, `Gender`, `NIC`, `Password`, `Day`, `Address`, `Status` FROM `doctors` WHERE `DID`=$docName";
+                    $result = $conn->query($query);
+                    foreach ($result as $docRow) {
+                        $name = $docRow[0];
+                    }
+                } catch (PDOException $th) {
+                    echo $th->getMessage();
+                }
+                echo '<div class="datacard features" style="border-radius: 6px;">';
+                echo '<h5 class="card-header">' . $row[4] . '</h5>';
+                echo '<div class="card-body" style="border: solid #343a40 1px; border-radius: 0px 0px 6px 6px; ">';
+                echo '<h5 class="card-title">' . $row[2] . '</h5>';
+                echo '<p class="card-text">' . $row[3] . '</p>';
+                echo '<p class="card-text" style="color: gray; text-align: end;"> Diagnosed by Dr.' . $name . '</p>';
+                echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="' . $row[4] . '">Delete Record </button></td>';
+                echo '</div>';
+                echo '</div>';
+            }
+            echo '</form>';
             echo '</div>';
-            echo '</div>';
-            $i++;
+
+        } catch (PDOException $th) {
+            echo $th->getMessage();
         }
-        echo '</form>';
-        echo '</div>';
-
-    } catch (PDOException $th) {
-        echo $th->getMessage();
     }
 }
-}
 ?>
+<?php
+?>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['delRecord'])) {
