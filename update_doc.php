@@ -1,5 +1,5 @@
 <?php
-require("login-check/logincheck_A&D.php");
+require("login-check/logincheck_A.php");
 include("config.php");
 session_start();
 ?>
@@ -9,7 +9,7 @@ session_start();
 
 <head>
 
-    <title>Update Patient</title>
+    <title>Update Doctor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -34,37 +34,34 @@ session_start();
                 <?php
 
                 try {
-                    $editP = $_SESSION["editNo"];
+                    $editP = $_SESSION["editDNo"];
                     $conn = new PDO($db, $un, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = $query = "SELECT `PID`, `Name`, `BDay`, `No`, `Email`, `Address`,`Day` FROM `Patients` Where `PID`= $editP";
+                    $query = $query = "SELECT `DID`, `Name`, `No`, `Email`, `Address`,`Day` FROM `doctors` Where `DID`= $editP";
                     $result = $conn->query($query);
 
                     foreach ($result as $row) {
 
 
                         echo '  <div class="form-group"> Name:';
-                        echo '<input type="text" class="form-control" name="pName" value="' . $row[1] . '" required >';
+                        echo '<input type="text" class="form-control" name="dName" value="' . $row[1] . '" required >';
                         echo '</div>';
 
-                        echo '  <div class="form-group"> Birth Date:';
-                        echo '<input type="date" class="form-control" name="pAge" value="' . $row[2] . '" required >';
-                        echo '</div>';
 
                         echo '  <div class="form-group"> Number:';
-                        echo '<input type="number" class="form-control" name="pNo" value="' . $row[3] . '" required >';
+                        echo '<input type="number" class="form-control" name="dNo" value="' . $row[2] . '" required >';
                         echo '</div>';
 
                         echo '  <div class="form-group"> Email:';
-                        echo '<input type="email" class="form-control" name="pEmail" value="' . $row[4] . '" required >';
+                        echo '<input type="email" class="form-control" name="dEmail" value="' . $row[3] . '" required >';
                         echo '</div>';
 
                         echo '  <div class="form-group"> Address:';
-                        echo '<input type="text" class="form-control" name="pAddress" value="' . $row[5] . '" required >';
+                        echo '<input type="text" class="form-control" name="dAddress" value="' . $row[4] . '" required >';
                         echo '</div>';
 
                         echo '  <div class="form-group"> Modified Date:';
-                        echo '<input type="date" class="form-control" name="pDay" value="' . $row[6] . '" required >';
+                        echo '<input type="date" class="form-control" name="dDay" value="' . $row[5] . '" required >';
                         echo '</div>';
 
 
@@ -93,17 +90,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "UPDATE `Patients` SET `Name`=?,`BDay`=?,`No`=?,`Email`=?,`Address`=?,`Day`=? WHERE `PID`=$editP";
+            $query = "UPDATE `doctors` SET `Name`=?,`No`=?,`Email`=?,`Address`=?,`Day`=? WHERE `DID`=$editP";
             $st = $conn->prepare($query);
-            $st->bindValue(1, $_POST["pName"], PDO::PARAM_STR);
-            $st->bindValue(2, $_POST["pAge"], PDO::PARAM_STR);
-            $st->bindValue(3, $_POST["pNo"], PDO::PARAM_STR);
-            $st->bindValue(4, $_POST["pEmail"], PDO::PARAM_STR);
-            $st->bindValue(5, $_POST["pAddress"], PDO::PARAM_STR);
-            $st->bindValue(6, $_POST["pDay"], PDO::PARAM_STR);
+            $st->bindValue(1, $_POST["dName"], PDO::PARAM_STR);
+            $st->bindValue(2, $_POST["dNo"], PDO::PARAM_STR);
+            $st->bindValue(3, $_POST["dEmail"], PDO::PARAM_STR);
+            $st->bindValue(4, $_POST["dAddress"], PDO::PARAM_STR);
+            $st->bindValue(5, $_POST["dDay"], PDO::PARAM_STR);
             $st->execute();
 
-            echo "<script> alert('Patient updated Successfully!');</script>";
+            echo "<script> alert('Doctor updated Successfully!');</script>";
 
 
         } catch (PDOException $th) {
@@ -116,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnCan'])) {
-        header("location:register.php");
+        header("location:doc_register.php");
     }
 }
 ?>

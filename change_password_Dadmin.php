@@ -8,7 +8,7 @@ include("config.php");
 
 <head>
 
-    <title>Change Patient Password</title>
+    <title>Change Doctor Password</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -29,9 +29,9 @@ include("config.php");
 <div class="container features">
     <div class="row center">
         <div class="col-md-6">
-            <h3 class="feature-title">Change Patient Password</h3>
+            <h3 class="feature-title">Change Doctor Password</h3>
             <form method="post">
-                <div class="form-group">Patient Number:
+                <div class="form-group">Doctor Number:
                     <input type="text" class="form-control"  name="pNO" required>
                 </div>
                 <div class="form-group"> NIC Number:
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pNum=$_POST["pNO"];
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT `PID`,`NIC` FROM `Patients` where `PID`=$pNum";
+            $query = $query = "SELECT `DID`,`NIC` FROM `doctors` where `DID`=$pNum";
             $st = $conn->prepare($query);
             $st->execute();
             $result = $st->fetch();
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $conn = new PDO($db, $un, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = "UPDATE `Patients` SET `password`=? Where `PID`=$pNum";
+                    $query = "UPDATE `doctors` SET `Password`=? Where `DID`=$pNum";
                     $st = $conn->prepare($query);
                     $npw =md5($_POST["pNPW"]);
                     $st->bindValue(1, $npw, PDO::PARAM_STR);
@@ -80,18 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             }
             else{
-                echo '<script>alert("Patient number & the NIC does not match!")</script>';
+                echo '<script>alert("Doctor number & the NIC does not match!")</script>';
 
             }
-//            $pw =md5($_POST["pOPW"]);
-//
-//            if($pw== $result[0])
-//            {
-//
-//            }
-//            else{
-//                echo '<script>alert("Enter the correct old password")</script>';
-//            }
 
         } catch (PDOException $th) {
             echo $th->getMessage();

@@ -1,5 +1,5 @@
 <?php
-require("login-check/logincheck_D.php");
+require("login-check/logincheck_A.php");
 include("config.php");
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ include("config.php");
 
 <head>
 
-    <title>Home</title>
+    <title>Manage Patients</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -44,7 +44,7 @@ include("config.php");
         <div class="card card-2">
             <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
             <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
-            <h2 class="card__title"> Patient Reports</h2>
+            <h2 class="card__title">View Patient History</h2>
             <p class="card__apply">
                 <a class="card__link" href="report.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
@@ -65,14 +65,12 @@ include("config.php");
                 <a class="card__link" href="add.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
-        <!--        <div class="card card-5">-->
-        <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-        <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
-        <!--            <h2 class="card__title">Ut aliquip ex ea commodo consequat. Duis aute irure dolor.</h2>-->
-        <!--            <p class="card__apply">-->
-        <!--                <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>-->
-        <!--            </p>-->
-        <!--        </div>-->
+        <div class="card card-5">
+            <h2 class="card__title">Reset Patient Password</h2>
+            <p class="card__apply">
+                <a class="card__link" href="change_password_admin.php">Click Here <i class="fas fa-arrow-right"></i></a>
+            </p>
+        </div>
         <!--        <div class="card card-1">-->
         <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
         <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->

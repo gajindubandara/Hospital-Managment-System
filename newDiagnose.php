@@ -9,7 +9,7 @@ include("config.php");
 
 <head>
 
-    <title>Add Diagnosis</title>
+    <title>New Diagnosis</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -50,21 +50,23 @@ include("config.php");
                     try {
                         $conn = new PDO($db, $un, $password);
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = "INSERT INTO `Diagnosis`( `Patient`, `Diagnosis`, `Medications`, `Date`) 
-                        VALUES (?,?,?,?)";
+                        $query ="INSERT INTO `Diagnosis`(`Patient`, `Diagnosis`, `Medications`, `Date`,`Doc`) 
+                            VALUES (?,?,?,?,?)";
                         $st = $conn->prepare($query);
+                        $doc =$_SESSION["d_un"];
                         $st->bindValue(1, $_POST["dPatient"], PDO::PARAM_STR);
                         $st->bindValue(2, $_POST["dDiagnosis"], PDO::PARAM_STR);
                         $st->bindValue(3, $_POST["dMedications"], PDO::PARAM_STR);
                         $st->bindValue(4, $_POST["dDate"], PDO::PARAM_STR);
+                        $st->bindValue(5, $doc, PDO::PARAM_STR);
                         $st->execute();
 
                         echo "<script> alert('Diagnosis Added Successfully!');</script>";
 
 
                     } catch (PDOException $th) {
-//                        echo $th->getMessage();
-                        echo"<script> alert('Invalid patient number!');</script>";
+                        echo $th->getMessage();
+//                        echo"<script> alert('Invalid patient number!');</script>";
 
                     }
                 }
