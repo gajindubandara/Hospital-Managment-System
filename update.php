@@ -19,7 +19,7 @@ session_start();
 
 </head>
 
-<body>
+<body class="bg">
 <header>
 
 </header>
@@ -28,9 +28,9 @@ session_start();
 
 <div class="container features">
     <div class="row center">
-        <div class="col-md-8">
+        <div class="col-md-8 CardBgCol">
             <form method="post" enctype="multipart/form-data">
-                <h3 class="feature-title">Add new Diagnose</h3>
+                <h3 class="feature-title">Update patient profile</h3>
                 <?php
 
                 try {
@@ -68,8 +68,8 @@ session_start();
                         echo '</div>';
 
 
-                        echo '<input type="submit" class="btn btn-secondary btn-block" value="Update" name="btnUpdate">';
-                        echo '<input type="submit" class="btn btn-secondary btn-block" value="Cancel" name="btnCan">';
+                        echo '<input type="submit" class="btn btn-primary" value="Update" name="btnUpdate">';
+                        echo '<input type="submit" style="margin-top: 10px;margin-bottom: 10px;" class="btn btn-primary" value="Cancel" name="btnCan">';
 
 
                     }

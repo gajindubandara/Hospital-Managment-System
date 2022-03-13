@@ -19,7 +19,7 @@ session_start();
 
 </head>
 
-<body>
+<body class="bg">
 
 <?php include 'nav & footer/nav.php' ?>
 
@@ -35,14 +35,14 @@ session_start();
                 <div class="form-group">
                     <input type="number" class="form-control" placeholder="Patient Number" name="ps">
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Search" name="find">
+                <input type="submit" class="btn btn-primary" value="Search" name="find">
             </form>
         </div>
     </div>
 </div>
 
 <div class="row center" style="margin-top: 50px">
-    <div class="col-md-4">
+    <div class=" CardBgCol col-md-4">
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['find'])) {
@@ -104,7 +104,7 @@ session_start();
 
 
             } catch (PDOException $th) {
-                echo $th->getMessage();
+                echo "<script> alert('Enter the account number');</script>";
             }
         }
         }
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $num = $_POST["ps"];
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date`,`doc` FROM `Diagnosis` 
+            $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date`,`doc` FROM `Diagnosis`
                                   JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
             $result = $conn->query($query);
 
@@ -140,13 +140,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } catch (PDOException $th) {
                     echo $th->getMessage();
                 }
-                echo '<div class="datacard features" style="border-radius: 6px;">';
+                echo '<div class="datacard features CardBgCol" style="border-radius: 6px;">';
                 echo '<h5 class="card-header">' . $row[4] . '</h5>';
                 echo '<div class="card-body" style="border: solid #343a40 1px; border-radius: 0px 0px 6px 6px; ">';
                 echo '<h5 class="card-title">' . $row[2] . '</h5>';
                 echo '<p class="card-text">' . $row[3] . '</p>';
-                echo '<p class="card-text" style="color: gray; text-align: end;"> Diagnosed by Dr.' . $name . '</p>';
-                echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="' . $row[4] . '">Delete Record </button></td>';
+                echo '<p class="card-text" style="color: #4b4a4a; text-align: end;"> Diagnosed by Dr.' . $name . '</p>';
+                if(isset($_SESSION["a_un"])) {
+                    echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="' . $row[4] . '">Delete Record </button></td>';
+                }
                 echo '</div>';
                 echo '</div>';
             }
@@ -154,13 +156,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '</div>';
 
         } catch (PDOException $th) {
-            echo $th->getMessage();
+
         }
     }
 }
 ?>
-<?php
-?>
+
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -187,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<script src="js/collapsibleCards.js"></script>
+
 <img src="images/home.png" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

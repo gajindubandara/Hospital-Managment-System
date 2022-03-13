@@ -5,7 +5,7 @@ session_start();
 ?>
 <head>
 
-    <title>Home</title>
+    <title>My Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -14,7 +14,7 @@ session_start();
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </head>
-<body>
+<body class="bg">
 <?php include 'nav & footer/nav.php' ?>
 
 <header>
@@ -24,20 +24,20 @@ session_start();
 <div class="container features">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
-            <h3 class="feature-title">Personal Report</h3>
+            <h3 class="feature-title">My Profile</h3>
         </div>
     </div>
 </div>
 
 <div class="row center" style="margin-top: 50px">
-    <div class="col-md-4">
+    <div class=" CardBgCol col-md-4">
         <?php
 
         try {
             $num = $_SESSION["p_un"];
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT `PID`, `Name`, `Age`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
+            $query = $query = "SELECT `PID`, `Name`, `Bday`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
             $result = $conn->query($query);
             echo '<table class="table">';
 
@@ -52,7 +52,7 @@ session_start();
                 echo '<td>' . $row[1] . '</td>';
                 echo '</tr>';
                 echo '<tr>';
-                echo '<td><b>Age:</b></td>';
+                echo '<td><b>Birth Date:</b></td>';
                 echo '<td>' . $row[2] . '</td>';
                 echo '</tr>';
                 echo '<tr>';
@@ -95,38 +95,6 @@ session_start();
 </div>
 
 
-<?php
-
-try {
-    $num = $_SESSION["p_un"];
-    $conn = new PDO($db, $un, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date` FROM `Diagnosis` 
-                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
-    $result = $conn->query($query);
-
-    echo '<div class="container">';
-
-    foreach ($result as $row) {
-        echo '<div class="datacard">';
-        echo '<h5 class="card-header">' . $row[4] . '</h5>';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">' . $row[2] . '</h5>';
-        echo '<p class="card-text">' . $row[3] . '</p>';
-        echo '</div>';
-        echo '</div>';
-    }
-
-    echo '</div>';
-
-} catch (PDOException $th) {
-    echo $th->getMessage();
-
-}
-
-?>
-
-<script src="js/collapsibleCards.js"></script>
 <img src="images/add.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

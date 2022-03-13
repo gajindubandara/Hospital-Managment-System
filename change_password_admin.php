@@ -18,7 +18,7 @@ include("config.php");
 
 </head>
 
-<body>
+<body class="bg">
 
 <?php include 'nav & footer/nav.php' ?>
 
@@ -28,7 +28,7 @@ include("config.php");
 
 <div class="container features">
     <div class="row center">
-        <div class="col-md-6">
+        <div class="col-md-6 CardBgCol">
             <h3 class="feature-title">Change Patient Password</h3>
             <form method="post">
                 <div class="form-group">Patient Number:
@@ -43,7 +43,7 @@ include("config.php");
                 <div class="form-group"> Reenter the new password:
                     <input type="password" class="form-control"  name="pRNPW" required>
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Reset password" name="reset">
+                <input type="submit" class="btn btn-primary"  value="Reset password" name="reset" style="margin-bottom: 10px">
             </form>
         </div>
     </div>

@@ -19,7 +19,7 @@ session_start();
 
 </head>
 
-<body>
+<body class="bg">
 
 <?php include 'nav & footer/nav.php' ?>
 
@@ -29,7 +29,7 @@ session_start();
 
 <div class="container features">
     <div class="row center">
-        <div class="col-md-6">
+        <div class="col-md-6 CardBgCol">
             <h3 class="feature-title">Change Password</h3>
             <form method="post">
                 <div class="form-group">Old Password:
@@ -41,7 +41,7 @@ session_start();
                 <div class="form-group"> Reenter the new password:
                     <input type="password" class="form-control"  name="pRNPW" required>
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Change Password" name="change">
+                <input type="submit" class="btn btn-primary" value="Change Password" name="change" style="margin-bottom: 10px">
             </form>
         </div>
     </div>

@@ -19,7 +19,7 @@ session_start();
 
 </head>
 
-<body>
+<body class="bg">
 
 <?php include 'nav & footer/nav.php' ?>
 
@@ -29,7 +29,7 @@ session_start();
 
 
 <div class="row center" style="margin-top: 50px">
-    <div class="col-md-4">
+    <div class="col-md-4 CardBgCol">
         <?php
                 try {
                     $dnum=$_SESSION["viewDNo"];
