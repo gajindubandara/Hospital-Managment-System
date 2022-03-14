@@ -140,9 +140,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } catch (PDOException $th) {
                     echo $th->getMessage();
                 }
-                echo '<div class="datacard features CardBgCol" style="border-radius: 6px;">';
-                echo '<h5 class="card-header">' . $row[4] . '</h5>';
-                echo '<div class="card-body" style="border: solid #343a40 1px; border-radius: 0px 0px 6px 6px; ">';
+                echo '<div class="datacard features CardBgCol">';
+                echo '<h5 class="dataCard-header">' . $row[4] . '</h5>';
+                echo '<div class="dataCard-body">';
                 echo '<h5 class="card-title">' . $row[2] . '</h5>';
                 echo '<p class="card-text">' . $row[3] . '</p>';
                 echo '<p class="card-text" style="color: #4b4a4a; text-align: end;"> Diagnosed by Dr.' . $name . '</p>';

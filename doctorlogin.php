@@ -15,7 +15,7 @@ session_start();?>
 </head>
 
 <body class="bg">
-<?php include 'nav & footer/loginNav.php';?>
+<?php include 'nav & footer/loginNavA&D.php';?>
 <div class="container features">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">

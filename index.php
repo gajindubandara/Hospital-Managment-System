@@ -62,7 +62,55 @@ session_start();?>
 
 
 <div class="container features CardBgCol">
-    <h1 class="cardTitle">Clinic Management System</h1>
+    <div class="heading" style="margin-top: 0px !important;">
+        <h1 class="heading__title" style="margin-top: 30px !important;">Clinic Management System</h1>
+        <p class="heading__credits" style="margin-bottom: 30px !important;"><a class="heading__link" target="_blank" >Designed by Team 404</a></p>
+    </div>
+<!--    <h1 class="cardTitle">Clinic Management System</h1>-->
+</div>
+
+
+
+<div class="container features CardBgCol ">
+    <h1 class="cardTitle">Our Features...</h1>
+    <div class="row justify-content-center">
+    <div class="col-md-12 ">
+
+
+    <div class="row justify-content-end">
+        <div class="card text-white bg-primary mb-3" style="max-width: 35rem; height: 210px;">
+            <div class="card-body">
+                <h2 class="card-title">Primary card title</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-start">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 35rem; height: 210px;">
+            <div class="card-body">
+                <h2 class="card-title">Primary card title</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <div class="card text-white bg-success mb-3" style="max-width: 35rem; height: 210px;">
+            <div class="card-body">
+                <h2 class="card-title">Primary card title</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+</div>
 </div>
 
 
