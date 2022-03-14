@@ -1,5 +1,5 @@
 <?php
-require("login-check/logincheck_A&D.php");
+require("login-check/logincheck_D.php");
 
 include("config.php");
 ?>
@@ -19,7 +19,7 @@ include("config.php");
 
 </head>
 
-<body>
+<body class="bg">
 <?php include 'nav & footer/nav.php' ?>
 <header>
 
@@ -27,7 +27,7 @@ include("config.php");
 
 <div class="container features">
     <div class="row center">
-        <div class="col-md-8">
+        <div class="col-md-8 CardBgCol">
             <h3 class="feature-title">Add new Diagnose</h3>
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
@@ -40,9 +40,12 @@ include("config.php");
                 <textarea class="form-control" placeholder="Medications" rows="4" name="dMedications" required></textarea>
             </div>
             <div class="form-group">
-                <input type="date" class="form-control" name="dDate" required>
+                Date:
+                <?php $date = date("Y-m-d");
+                echo $date;
+                ?>
             </div>
-            <input type="submit" class="btn btn-secondary btn-block" value="Add Diagnosis" name="addDiagnosis">
+            <input type="submit" class="btn btn-primary" value="Add Diagnosis" name="addDiagnosis" style="margin-bottom: 10px">
             </form>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -57,7 +60,7 @@ include("config.php");
                         $st->bindValue(1, $_POST["dPatient"], PDO::PARAM_STR);
                         $st->bindValue(2, $_POST["dDiagnosis"], PDO::PARAM_STR);
                         $st->bindValue(3, $_POST["dMedications"], PDO::PARAM_STR);
-                        $st->bindValue(4, $_POST["dDate"], PDO::PARAM_STR);
+                        $st->bindValue(4, $date, PDO::PARAM_STR);
                         $st->bindValue(5, $doc, PDO::PARAM_STR);
                         $st->execute();
 

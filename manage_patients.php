@@ -18,7 +18,7 @@ include("config.php");
 
 </head>
 
-<body>
+<body class="bg">
 
 <?php include 'nav & footer/nav.php' ?>
 
@@ -44,19 +44,19 @@ include("config.php");
         <div class="card card-2">
             <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
             <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
-            <h2 class="card__title">View Patient History</h2>
+            <h2 class="card__title">View Patient Records</h2>
             <p class="card__apply">
                 <a class="card__link" href="report.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
-        <div class="card card-3">
-            <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
-            <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->
-            <h2 class="card__title">Add A New Diagnosis</h2>
-            <p class="card__apply">
-                <a class="card__link" href="newDiagnose.php"> Click Here <i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
+<!--        <div class="card card-3">-->
+<!--                        <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--                        <p class="card__exit"><i class="fas fa-times"></i></p>-->
+<!--            <h2 class="card__title">Add A New Diagnosis</h2>-->
+<!--            <p class="card__apply">-->
+<!--                <a class="card__link" href="newDiagnose.php"> Click Here <i class="fas fa-arrow-right"></i></a>-->
+<!--            </p>-->
+<!--        </div>-->
         <div class="card card-4">
             <!--            <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
             <!--            <p class="card__exit"><i class="fas fa-times"></i></p>-->

@@ -19,7 +19,7 @@ include("config.php");
 
 </head>
 
-<body>
+<body class="bg">
 <?php include 'nav & footer/nav.php' ?>
 
 <header>
@@ -28,7 +28,7 @@ include("config.php");
 <form method="post">
     <div class="container features">
         <div class="row center">
-            <div class="col-md-8 ">
+            <div class="col-md-8 CardBgCol">
                 <h3 class="feature-title">Add new patient</h3>
                 <div class="form-group">
                     Name:
@@ -88,9 +88,11 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Date:
-                    <input type="date" class="form-control" name="addDate" required>
+                    <?php $date = date("Y-m-d");
+                    echo $date;
+                    ?>
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Add Patient" name="btnAdd">
+                <input type="submit" class="btn btn-primary" value="Add Patient" name="btnAdd" style="margin-bottom: 10px">
             </div>
         </div>
     </div>
@@ -115,14 +117,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $st->bindValue(7, $_POST["addGender"], PDO::PARAM_STR);
             $st->bindValue(8, $_POST["addNIC"], PDO::PARAM_STR);
             $st->bindValue(9, $md5pw, PDO::PARAM_STR);
-            $st->bindValue(10, $_POST["addDate"], PDO::PARAM_STR);
+            $st->bindValue(10, $date, PDO::PARAM_STR);
             $st->execute();
 
             echo "<script> alert('Patient Added Successfully!');</script>";
 
 
         } catch (PDOException $th) {
-            echo $th->getMessage();
+            echo "<script> alert('There is an existing account to this NIC number! Please check again.');</script>";
 
         }
     }

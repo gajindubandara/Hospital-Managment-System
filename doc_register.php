@@ -17,7 +17,7 @@ session_start();
 
 </head>
 
-<body>
+<body class="bg">
 <?php include 'nav & footer/nav.php' ?>
 
 <?php
@@ -40,15 +40,15 @@ if(isset($_POST["btnView"])){
             <h3 class="feature-title">Search by Doctor Name</h3>
             <form method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Patient Name" name="txtSearch">
+                    <input type="text" class="form-control" placeholder="Doctors Name" name="txtSearch">
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Search" name="btnSearch">
+                <input type="submit" class="btn btn-primary"  value="Search" name="btnSearch">
             </form>
         </div>
     </div>
 </div>
 
-<div class="container features">
+<div class="container features CardBgCol">
     <form method="post" enctype="multipart/form-data">
         <?php
 
@@ -90,8 +90,8 @@ if(isset($_POST["btnView"])){
                         $iconColor ="red";
                     }
                     echo '<td style="vertical-align: middle;"><i class="fas fa-circle" style="color:'.$iconColor.'"></i> '.$row[3].'</td>';
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-secondary btn-block" style="margin: auto; width:80px !important;" name="btnStat" type="submit"  value="' .$row[0] . '">'.$showStatus.' </button></td>';
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-secondary btn-block" style="margin: auto" name="btnEdit" type="submit"  value="' .$row[0]. '">Edit  </button></td>';
+                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto; width:80px !important;" name="btnStat" type="submit"  value="' .$row[0] . '">'.$showStatus.' </button></td>';
+                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnEdit" type="submit"  value="' .$row[0]. '">Edit  </button></td>';
                     echo '</tr>';
                     echo ' </tbody>';
 
@@ -147,9 +147,9 @@ if(isset($_POST["btnView"])){
                         $iconColor ="red";
                     }
                     echo '<td style="vertical-align: middle;"><i class="fas fa-circle" style="color:'.$iconColor.'"></i> '.$row[3].'</td>';
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-secondary btn-block" style="margin: auto; width:80px !important;" name="btnStat" type="submit"  value="' .$row[0] . '">'.$showStatus.' </button></td>';
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-secondary btn-block" style="margin: auto" name="btnEdit" type="submit"  value="' .$row[0]. '">Edit  </button></td>';
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-secondary btn-block" style="margin: auto" name="btnView" type="submit"  value="' .$row[0]. '">View  </button></td>';
+                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto; width:80px !important;" name="btnStat" type="submit"  value="' .$row[0] . '">'.$showStatus.' </button></td>';
+                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnEdit" type="submit"  value="' .$row[0]. '">Edit  </button></td>';
+                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnView" type="submit"  value="' .$row[0]. '">View  </button></td>';
 
                     echo '</tr>';
                     echo ' </tbody>';

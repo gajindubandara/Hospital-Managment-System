@@ -27,12 +27,26 @@ session_start();
             <li class="nav-item">
                 <a class="nav-link" href="admin.php">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="manage_doctors.php">Manage Doctors</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Manage Doctors
+                </a>
+                <div class="dropdown-menu" style="background-color:#343434" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" style="color: white" href="doc_register.php">Doctors Register</a>
+                    <a class="dropdown-item" style="color: white" href="add_doctor.php">Add A New Doctor</a>
+                    <a class="dropdown-item" style="color: white" href="change_password_Dadmin.php">Reset Doctor Password</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="manage_patients.php">Manage Patients</a>
-            </li>';
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Manage Patients
+                </a>
+                <div class="dropdown-menu" style="background-color:#343434" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" style="color: white" href="register.php">Patient Register</a>
+                    <a class="dropdown-item" style="color: white" href="report.php">View Patient Records</a>
+                    <a class="dropdown-item" style="color: white" href="add.php">Add A New Patient</a>
+                    <a class="dropdown-item" style="color: white" href="change_password_admin.php">Reset Patient Password</a>
+                </div>';
             }
 
             else if (isset($_SESSION["d_un"]))
@@ -61,11 +75,20 @@ session_start();
             {
                 echo '
             <li class="nav-item">
-                <a class="nav-link" href="index_p.php">Home</a>
+                <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="change_password.php">Change Password</a>
-            </li>';
+                <a class="nav-link" href="myprofile.php"> <i class="fas fa-user-alt"></i> My Profile</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="myrecords.php">My Records</a>
+            </li>
+            
+            
+            
+            
+            
+            ';
             }?>
 
 
@@ -76,13 +99,17 @@ session_start();
                 </form>
 
                 <?php
-
-                if (isset($_POST["logout"]))
-                {
-                    unset($_SESSION["a_un"]);
-                    unset($_SESSION["d_un"]);
-                    unset($_SESSION["p_un"]);
-                    header("location:login.php");
+                if (isset($_POST["logout"])) {
+                    if (isset($_SESSION["p_un"])) {
+                        unset($_SESSION["p_un"]);
+                        header("location:login.php");
+                    } elseif (isset($_SESSION["a_un"])) {
+                        unset($_SESSION["a_un"]);
+                        header("location:adminlogin.php");
+                    } elseif (isset($_SESSION["d_un"])) {
+                        unset($_SESSION["d_un"]);
+                        header("location:doctorlogin.php");
+                    }
                 }
                 ?>
             </li>

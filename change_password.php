@@ -41,7 +41,7 @@ session_start();
                 <div class="form-group"> Reenter the new password:
                     <input type="password" class="form-control"  name="pRNPW" required>
                 </div>
-                <input type="submit" class="btn btn-secondary btn-block" value="Change Password" name="change">
+                <input type="submit" class="btn btn-primary" value="Change Password" name="change">
             </form>
         </div>
     </div>

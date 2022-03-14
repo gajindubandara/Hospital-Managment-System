@@ -18,7 +18,7 @@ include("config.php");
 
 </head>
 
-<body>
+<body class="bg">
 
 <?php include 'nav & footer/nav.php' ?>
 
