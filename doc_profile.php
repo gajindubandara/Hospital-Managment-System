@@ -30,6 +30,7 @@ session_start();
 
 <div class="row center" style="margin-top: 50px">
     <div class="col-md-4 CardBgCol">
+        <form method="post">
         <?php
                 try {
                     $dnum=$_SESSION["viewDNo"];
@@ -84,8 +85,17 @@ session_start();
                 }
 
         ?>
+            <input type="submit" class="btn btn-primary" value="Back" name="change" style="margin-bottom: 10px">
+        </form>
     </div>
 </div>
+<?php
+if (isset($_POST["change"])) {
+
+echo '<script>window.location.href = "doc_register.php";</script>';
+}
+
+?>
 
 <script src="js/collapsibleCards.js"></script>
 <img src="images/home.png" class="img-bg">

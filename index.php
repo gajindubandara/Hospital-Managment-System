@@ -24,61 +24,86 @@ session_start();?>
      include 'nav & footer/loginNav.php';
  }
 ?>
-<div class="col-md-12" >
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="images/bg.jpg" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>hello</h1>
-                    <p>...</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="images/bg.jpg"" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>asfsa</h1>
-                    <p>...</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="images/bg.jpg"" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>asf</h1>
-                    <p>...</p>
-                </div>
+<!--<div class="col-md-12" >-->
+<!--    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">-->
+<!--        <div class="carousel-inner">-->
+<!--            <div class="carousel-item active">-->
+<!--                <img class="d-block w-100" src="images/bg.jpg" alt="First slide">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>hello</h1>-->
+<!--                    <p>...</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <img class="d-block w-100" src="images/bg.jpg"" alt="Second slide">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>asfsa</h1>-->
+<!--                    <p>...</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <img class="d-block w-100" src="images/bg.jpg"" alt="Third slide">-->
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h1>asf</h1>-->
+<!--                    <p>...</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
+<!--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--            <span class="sr-only">Previous</span>-->
+<!--        </a>-->
+<!--        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">-->
+<!--            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--            <span class="sr-only">Next</span>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="container features CardBgCol">
+    <h1 class="cardTitle">Clinic Management System</h1>
+</div>
+
+
+
+<div class="container features CardBgCol">
+    <h1 class="cardTitle">Our System...</h1>
+    <div class="row center">
+        <div class="col-lg-4 col-md-3 col-sm-6">
+            <div class="numCard">
+                <h1 class="h1">20+</h1>
+                <h5 class="h5">Hospitals</h5>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        <div class="col-lg-4 col-md-3 col-sm-6">
+            <div class="numCard">
+                <h1 class="h1">100+</h1>
+                <h5 class="h5">Doctors</h5>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6">
+            <div class="numCard">
+                <h1 class="h1">1000+</h1>
+                <h5 class="h5">Patients</h5>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<div class="container features">
-    <h1 style="text-align: center;margin:10px 0px 10px 0px">Clinic Management System</h1>
-</div>
+
 
 <div class="container features ">
     <div class="row center">
-        <div class=" col-md-12">
-            <div class="aboutus">
-                <h1>About Us</h1>
-                <p>
-                    Why do we use it?
-                    It is a long established fact that a reader will be distracted by the readab
-                    le content of a page when looking at its layout. The point of using Lorem
-                    Ipsum is that it has a more-or-less normal distribution of letters, as opposed t
-                    o using 'Content here, content here', making it look like readable English. Many
-                    desktop publishing packages and web page editors now use Lorem Ipsum as their de
-                    fault model text, and a search for 'lorem ipsum' will uncover many web sites still
-                    in their infancy. Various versions have evolved over the years, sometimes by accide
-                    nt, sometimes on purpose (injected humour and the like).
+        <div class=" col-md-12 CardBgCol">
+            <div >
+                <h1 class="cardTitle">About Application</h1>
+                <p class="aboutUs">
+                    We are a group of Cardiff Metropolitan University first-year students in the United Kingdom. To
+                    address the current difficulties in government hospital clinic systems, we developed a Clinic
+                    Management System. This program includes a number of features that will benefit clinical personnel,
+                    doctors, and patients.
                 </p>
 
             </div>

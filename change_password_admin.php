@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //            }
 
         } catch (PDOException $th) {
-            echo $th->getMessage();
+            echo '<script>alert("Enter a correct patient number")</script>';
         }
     }
 }

@@ -232,11 +232,6 @@ body {
 	margin-right: auto;
 }
 
-/*---  about us ---*/
-.aboutus{
-	text-align: center;
-
-}
 /*---  record del btn ---*/
 .recordDel {
 	background-color:#007bff;
@@ -429,4 +424,32 @@ body {
 .CardBgCol {
 	background-color: rgba(225, 225, 225, 0.7);
 	border-radius: 30px;
+}
+.numCard{
+	width: 300px;
+	background-image: linear-gradient(to bottom right, #1344db, #03ece6);
+	padding: 30px;
+	border-radius: 44px;
+	margin: 20px auto 20px auto;
+
+}
+
+.numCard .h1 {
+	margin: auto;
+	text-align: center;
+	font-family: "Lucida Console", "Courier New", monospace;
+}
+.numCard .h5 {
+	margin: auto;
+	text-align: center;
+	margin-top: 10px;
+	font-family: "Lucida Console", "Courier New", monospace;
+}
+.cardTitle{
+	text-align: center;
+	margin:30px 0px 30px 0px;
+}
+.aboutUs {
+	padding: 0 20px 0 20px;
+	margin-bottom: 50px;
 }

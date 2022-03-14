@@ -116,7 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnCan'])) {
-        header("location:register.php");
+//        header("location:register.php");
+        echo '<script>window.location.href = "register.php";</script>';
     }
 }
 ?>
