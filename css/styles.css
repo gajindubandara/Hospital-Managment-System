@@ -249,6 +249,10 @@ body {
 	border-radius: 4px;
 
 }
+.recordDel:hover{
+	background-color: #006ae0;
+
+}
 /*!*---  alert ---*!*/
 /*.recordDel:hover {*/
 /*	!*background-color: #4b4b4b;*!*/

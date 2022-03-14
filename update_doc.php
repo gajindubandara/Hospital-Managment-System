@@ -61,7 +61,8 @@ session_start();
                         echo '</div>';
 
                         echo '  <div class="form-group"> Modified Date:';
-                        echo '<input type="date" class="form-control" name="dDay" value="' . $row[5] . '" required >';
+                        $date = date("Y-m-d");
+                        echo  $date;
                         echo '</div>';
 
 
@@ -96,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $st->bindValue(2, $_POST["dNo"], PDO::PARAM_STR);
             $st->bindValue(3, $_POST["dEmail"], PDO::PARAM_STR);
             $st->bindValue(4, $_POST["dAddress"], PDO::PARAM_STR);
-            $st->bindValue(5, $_POST["dDay"], PDO::PARAM_STR);
+            $st->bindValue(5, $date, PDO::PARAM_STR);
             $st->execute();
 
             echo "<script> alert('Doctor updated Successfully!');</script>";

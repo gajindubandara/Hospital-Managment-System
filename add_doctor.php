@@ -62,7 +62,7 @@ include("config.php");
                     </div>
                 </div>
                 <div class="form-group">
-                    Create a new password for the patient:
+                    Create a new password for the doctor:
                     <input type="text" class="form-control" name="addDPW" required>
                     <?php
                     $md5pw =md5($_POST["addDPW"]);

@@ -67,9 +67,8 @@ if(isset($_POST["btnView"])){
                 echo '<table class="table" style="border:solid #dee2e6 1px;">';
                 echo '<thead class="thead-dark">';
                 echo '<tr>
-                            <th scope="col">Patient No.</th>
+                            <th scope="col">Doctor No.</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Date</th>
                             <th scope="col">Status</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -80,7 +79,6 @@ if(isset($_POST["btnView"])){
                     echo '<tr class="rw">';
                     echo '<td> <input type="hidden" name="pID[]" value="' . $row[0] . '">'. $row[0] . '</td>';
                     echo '<td> <input type="hidden" name="pName[]" value="' . $row[1] . '">'. $row[1] . '</td>';
-                    echo '<td> <input type="hidden" name="pDay[]" value="' . $row[2] . '">'. $row[2] . '</td>';
                     if($row[3] =="Active"){
                         $showStatus = "Remove";
                         $iconColor ="green";
@@ -123,7 +121,6 @@ if(isset($_POST["btnView"])){
                 echo '<tr>
                             <th scope="col">Doctor No.</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Date</th>
                             <th scope="col">Status</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -136,7 +133,6 @@ if(isset($_POST["btnView"])){
                     echo '<tr class="rw">';
                     echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" value="' . $row[0] . '">'. $row[0] . '</td>';
                     echo '<td style="vertical-align: middle;"> <input type="hidden" name="pName[]" value="' . $row[1] . '">'. $row[1] . '</td>';
-                    echo '<td style="vertical-align: middle;"> <input type="hidden" name="pDay[]" value="' . $row[2] . '">'. $row[2] . '</td>';
 
                     if($row[3] =="Active"){
                         $showStatus = "Remove";

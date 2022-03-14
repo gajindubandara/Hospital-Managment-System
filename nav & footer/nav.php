@@ -83,6 +83,9 @@ session_start();
              <li class="nav-item">
                 <a class="nav-link" href="myrecords.php">My Records</a>
             </li>
+              <li class="nav-item">
+                <a class="nav-link" href="change_password.php">Change Password</a>
+            </li>
             
             
             
