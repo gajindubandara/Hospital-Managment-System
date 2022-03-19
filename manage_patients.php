@@ -19,7 +19,7 @@ include("config.php");
 <div class="main-container">
     <div class="heading">
         <h1 class="heading__title">Clinic Management System</h1>
-        <p class="heading__credits"><a class="heading__link" target="_blank">Designed by Team 404</a></p>
+        <p class="heading__credits"><a class="heading__link" target="_blank">Designed by Team Error 404</a></p>
     </div>
     <div class="cards">
         <div class="card card-1">

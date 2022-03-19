@@ -65,54 +65,66 @@ session_start();?>
 <div class="container features CardBgCol">
     <div class="heading" style="margin-top: 0px !important;">
         <h1 class="heading__title" style="margin-top: 30px !important;">Clinic Management System</h1>
-        <p class="heading__credits" style="margin-bottom: 30px !important;"><a class="heading__link" target="_blank" >Designed by Team 404</a></p>
+        <p class="heading__credits" style="margin-bottom: 0px !important; font-size: 20px"> Our System Software helps deliver superior healthcare delivery for doctors, clinics and hospitals.</p>
+        <p class="heading__credits" style="    margin-bottom: 10px !important;"> Designed by Team Error 404</p>
+        <img src="images/favicon.ico" class="img-bg">
     </div>
-<!--    <h1 class="cardTitle">Clinic Management System</h1>-->
 </div>
 
 
 
-<div class="container features CardBgCol ">
-    <h1 class="cardTitle">Our Features...</h1>
-    <div class="row justify-content-center">
-    <div class="col-md-12 ">
 
+<!--<div class="container features CardBgCol ">-->
+<!--    <h1 class="cardTitle">Our Features...</h1>-->
+<!--    <div class="row justify-content-center">-->
+<!---->
+<!---->
+<!---->
+<!--         <div class="row justify-content-end">-->
+<!--                <div class="card text-white bg-primary mb-3" style="max-width: 35rem; height: 210px;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h2 class="card-title">Primary card title</h2>-->
+<!--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
+<!--                            the-->
+<!--                            card's content.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            <div class="card text-white bg-success mb-3" style="max-width: 35rem; height: 210px;">-->
+<!--                <div class="card-body">-->
+<!--                    <h2 class="card-title">Primary card title</h2>-->
+<!--                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
+<!--                        the-->
+<!--                        card's content.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            </div>-->
+<!---->
+<!--            <div class="row justify-content-start">-->
+<!--                <div class="card text-white bg-secondary mb-3" style="max-width: 35rem; height: 210px;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h2 class="card-title">Primary card title</h2>-->
+<!--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
+<!--                            the-->
+<!--                            card's content.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--          </div>-->
+<!---->
+<!--           <div class="row justify-content-end">-->
+<!--                <div class="card text-white bg-success mb-3" style="max-width: 35rem; height: 210px;">-->
+<!--                    <div class="card-body">-->
+<!--                        <h2 class="card-title">Primary card title</h2>-->
+<!--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
+<!--                            the-->
+<!--                            card's content.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!---->
+<!--</div>-->
 
-    <div class="row justify-content-end">
-        <div class="card text-white bg-primary mb-3" style="max-width: 35rem; height: 210px;">
-            <div class="card-body">
-                <h2 class="card-title">Primary card title</h2>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-start">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 35rem; height: 210px;">
-            <div class="card-body">
-                <h2 class="card-title">Primary card title</h2>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-end">
-        <div class="card text-white bg-success mb-3" style="max-width: 35rem; height: 210px;">
-            <div class="card-body">
-                <h2 class="card-title">Primary card title</h2>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
-        </div>
-    </div>
-
-
-
-</div>
-</div>
-</div>
 
 
 
@@ -143,55 +155,30 @@ session_start();?>
 
 
 
-<div class="container features ">
-    <div class="row center">
-        <div class=" col-md-12 CardBgCol">
-            <div >
-                <h1 class="cardTitle">About Application</h1>
-                <p class="aboutUs">
-                    We are a group of Cardiff Metropolitan University first-year students in the United Kingdom. To
-                    address the current difficulties in government hospital clinic systems, we developed a Clinic
-                    Management System. This program includes a number of features that will benefit clinical personnel,
-                    doctors, and patients.
-                </p>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="wrapper">
-</section>
-
-
-
-
-
-    </div>
-</section>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--<div class="container features ">-->
+<!---->
+<!--    <div class="row center CardBgCol">-->
+<!---->
+<!--        <div class=" col-md-6 ">-->
+<!--                <h1 class="cardTitle">About Us!</h1>-->
+<!--                <p class="aboutUs">-->
+<!--                    We are a group of Cardiff Metropolitan University first-year students in the United Kingdom. To-->
+<!--                    address the current difficulties in government hospital clinic systems, we developed a Clinic-->
+<!--                    Management System. This program includes a number of features that will benefit clinical personnel,-->
+<!--                    doctors, and patients.-->
+<!--                </p>-->
+<!---->
+<!--        </div>-->
+<!---->
+<!---->
+<!--        <div class=" col-md-6 ">-->
+<!--            <img src="images/img.jpg" style="width: 50px">-->
+<!--        </div>-->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
+<!---->
+<!--</div>-->
 
 
 
