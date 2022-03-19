@@ -1,30 +1,20 @@
 <?php
 require("login-check/logincheck_A.php");
-
 include("config.php");
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <title>New Doctor</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
 </head>
-
 <body class="bg">
-<?php include 'nav & footer/nav.php' ?>
-
-<header>
-</header>
-
 <form method="post">
     <div class="container features">
         <div class="row center">
@@ -44,7 +34,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Address:
-                    <input type="text" class="form-control" name="addDAddress"required>
+                    <input type="text" class="form-control" name="addDAddress" required>
                 </div>
                 <div class="form-group">
                     NIC:
@@ -52,7 +42,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Gender:
-                    <div class="addRadio" style="margin-left: 13%" >
+                    <div class="addRadio" style="margin-left: 13%">
                         <input type="radio" name="addDGender" value="Male" checked>
                         <label>Male</label><br>
                         <input type="radio" name="addDGender" value="Female">
@@ -65,8 +55,7 @@ include("config.php");
                     Create a new password for the doctor:
                     <input type="text" class="form-control" name="addDPW" required>
                     <?php
-                    $md5pw =md5($_POST["addDPW"]);
-
+                    $md5pw = md5($_POST["addDPW"]);
                     ?>
                 </div>
                 <div class="form-group">
@@ -75,20 +64,19 @@ include("config.php");
                     echo $date;
                     ?>
                 </div>
-                <input type="submit" class="btn btn-primary"  value="Add Doctor" name="btnAddD" style="margin-bottom: 10px">
+                <input type="submit" class="btn btn-primary" value="Add Doctor" name="btnAddD"
+                       style="margin-bottom: 10px">
             </div>
         </div>
     </div>
 </form>
-<!--server php goes here-->
-
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnAddD'])) {
         try {
             $conn = new PDO($db, $un, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query =  "INSERT INTO `doctors`( `Name`, `No`, `Email`, `Address`, `Gender`, `NIC`, `Password`, `Day`) 
+            $query = "INSERT INTO `doctors`( `Name`, `No`, `Email`, `Address`, `Gender`, `NIC`, `Password`, `Day`) 
                 VALUES (?,?,?,?,?,?,?,?)";
             $st = $conn->prepare($query);
             $st->bindValue(1, $_POST["addDName"], PDO::PARAM_STR);
@@ -100,18 +88,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $st->bindValue(7, $md5pw, PDO::PARAM_STR);
             $st->bindValue(8, $date, PDO::PARAM_STR);
             $st->execute();
-
             echo "<script> alert('Doctor Added Successfully!');</script>";
-
-
         } catch (PDOException $th) {
             echo "<script> alert('There is an existing account to this NIC number! Please check again.');</script>";
-
         }
     }
 }
 ?>
-<img src="images/add.jpg" class="img-bg">
+<img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -122,8 +106,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-
 </body>
-
 </html>

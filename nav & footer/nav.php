@@ -5,7 +5,8 @@
     <title>Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -16,10 +17,8 @@
     </button>
     <div class="collapse navbar-collapse" id="main-navigation">
         <ul class="navbar-nav" id="nav">
-
             <?php
-            if(isset($_SESSION["a_un"]))
-            {
+            if (isset($_SESSION["a_un"])) {
                 echo '
             <li class="nav-item">
                 <a class="nav-link" href="admin.php">Home</a>
@@ -44,10 +43,7 @@
                     <a class="dropdown-item" style="color: white" href="add.php">Add A New Patient</a>
                     <a class="dropdown-item" style="color: white" href="change_password_admin.php">Reset Patient Password</a>
                 </div>';
-            }
-
-            else if (isset($_SESSION["d_un"]))
-            {
+            } else if (isset($_SESSION["d_un"])) {
                 echo '
             <li class="nav-item">
                 <a class="nav-link" href="index_d.php">Home</a>
@@ -67,9 +63,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="change_Dpassword.php"> Change Password</a>
             </li>';
-            }
-            else if(isset($_SESSION["p_un"]))
-            {
+            } else if (isset($_SESSION["p_un"])) {
                 echo '
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
@@ -82,22 +76,13 @@
             </li>
               <li class="nav-item">
                 <a class="nav-link" href="change_password.php">Change Password</a>
-            </li>
-            
-            
-            
-            
-            
-            ';
-            }?>
-
-
+            </li> ';
+            } ?>
             <li class="nav-item">
                 <form method="post">
-                    <button class="logout" type="submit" name="logout">Logout <i class='fas fa-sign-out-alt' style='color:white'></i></button>
-
+                    <button class="logout" type="submit" name="logout">Logout <i class='fas fa-sign-out-alt'
+                                                                                 style='color:white'></i></button>
                 </form>
-
                 <?php
                 if (isset($_POST["logout"])) {
                     if (isset($_SESSION["p_un"])) {
@@ -113,11 +98,8 @@
                 }
                 ?>
             </li>
-
         </ul>
-
     </div>
 </nav>
-
 </body>
 </html>

@@ -4,27 +4,19 @@ require("login-check/logincheck_A&D.php");
 include("config.php");
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <title>New Patient</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
 </head>
-
 <body class="bg">
 <?php include 'nav & footer/nav.php' ?>
-
-<header>
-</header>
-
 <form method="post">
     <div class="container features">
         <div class="row center">
@@ -36,7 +28,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Birth Date:
-                    <input type="date" class="form-control" name="addAge"required>
+                    <input type="date" class="form-control" name="addAge" required>
                 </div>
                 <div class="form-group">
                     Contact Number:
@@ -48,7 +40,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Address:
-                    <input type="text" class="form-control" name="addAddress"required>
+                    <input type="text" class="form-control" name="addAddress" required>
                 </div>
                 <div class="form-group">
                     NIC:
@@ -69,7 +61,7 @@ include("config.php");
                 </div>
                 <div class="form-group">
                     Gender:
-                    <div class="addRadio" style="margin-left: 13%" >
+                    <div class="addRadio" style="margin-left: 13%">
                         <input type="radio" name="addGender" value="Male" checked>
                         <label>Male</label><br>
                         <input type="radio" name="addGender" value="Female">
@@ -83,8 +75,7 @@ include("config.php");
                     <input type="text" class="form-control" name="addPW" required>
                     <?php
                     error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-                    $md5pw =md5($_POST["addPW"]);
-                    
+                    $md5pw = md5($_POST["addPW"]);
                     ?>
                 </div>
                 <div class="form-group">
@@ -93,13 +84,12 @@ include("config.php");
                     echo $date;
                     ?>
                 </div>
-                <input type="submit" class="btn btn-primary" value="Add Patient" name="btnAdd" style="margin-bottom: 10px">
+                <input type="submit" class="btn btn-primary" value="Add Patient" name="btnAdd"
+                       style="margin-bottom: 10px">
             </div>
         </div>
     </div>
 </form>
-<!--server php goes here-->
-
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnAdd'])) {
@@ -120,19 +110,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $st->bindValue(9, $md5pw, PDO::PARAM_STR);
             $st->bindValue(10, $date, PDO::PARAM_STR);
             $st->execute();
-
             echo "<script> alert('Patient Added Successfully!');</script>";
-
-
         } catch (PDOException $th) {
             echo "<script> alert('There is an existing account to this NIC number! Please check again.');</script>";
-
         }
     }
 }
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
-<img src="images/add.jpg" class="img-bg">
+<img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -143,8 +129,5 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-
 </body>
-
 </html>

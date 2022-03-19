@@ -5,23 +5,17 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <head>
-
-    <title>My Profile</title>
+    <title>My Records</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
 </head>
 <body class="bg">
 <?php include 'nav & footer/nav.php' ?>
-
-<header>
-
-</header>
-
 <div class="container features">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
@@ -29,19 +23,15 @@ session_start();
         </div>
     </div>
 </div>
-
 <?php
-
 try {
     $num = $_SESSION["p_un"];
     $conn = new PDO($db, $un, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date`,`doc` FROM `Diagnosis` 
+    $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date`,`doc` FROM `Diagnosis` 
                                   JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
     $result = $conn->query($query);
-
     echo '<div class="container">';
-
     foreach ($result as $row) {
         $docName = $row[5];
         try {
@@ -64,18 +54,13 @@ try {
         echo '</div>';
         echo '</div>';
     }
-
     echo '</div>';
-
 } catch (PDOException $th) {
     echo $th->getMessage();
-
 }
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
-
-
-<img src="images/add.jpg" class="img-bg" style="height: 500px">
+<img src="images/img.jpg" class="img-bg" style="height: 500px">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -87,6 +72,5 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
 

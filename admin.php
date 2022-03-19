@@ -3,37 +3,26 @@ require("login-check/logincheck_A.php");
 include("config.php");
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <title>Home</title>
+    <title>Home-Admin</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
 </head>
-
 <body class="bg">
-
 <?php include 'nav & footer/nav.php' ?>
-
-<header>
-
-</header>
-
-
 <div class="main-container">
     <div class="heading">
         <h1 class="heading__title">Clinic Management System</h1>
-        <p class="heading__credits"><a class="heading__link" target="_blank" >Designed by Team 404</a></p>
+        <p class="heading__credits"><a class="heading__link" target="_blank">Designed by Team 404</a></p>
     </div>
     <div class="cards">
-        <div class="card card-1" >
+        <div class="card card-1">
             <h2 class="card__title"> Manage Doctors </h2>
             <p class="card__apply">
                 <a class="card__link" href="manage_doctors.php"> Click Here <i class="fas fa-arrow-right"></i></a>
@@ -45,12 +34,10 @@ include("config.php");
                 <a class="card__link" href="manage_patients.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
-
     </div>
 </div>
-
 <script src="js/collapsibleCards.js"></script>
-<img src="images/add.jpg" class="img-bg">
+<img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -61,8 +48,5 @@ include("config.php");
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-
 </body>
-
 </html>
