@@ -1,6 +1,7 @@
 <?php
 require("login-check/logincheck_D.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -72,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $st->execute();
                     echo "<script> alert('Password updated Successfully!');</script>";
                 }else{
-                    echo "<script> alert('The reentered password dose not match to the new password! ');</script>";
+                    echo "<script> alert('The reentered password does not match to the new password! ');</script>";
                 }
             }
             else{
@@ -84,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
 
 

@@ -1,6 +1,7 @@
 <?php
 require("login-check/logincheck_A&D.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -108,6 +109,7 @@ session_start();
             }
         }
         }
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
     </div>
 </div>
@@ -160,6 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
 
 
@@ -187,6 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
 
 <img src="images/home.png" class="img-bg">

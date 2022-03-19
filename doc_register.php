@@ -1,6 +1,7 @@
 <?php
 require("login-check/logincheck_A.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -102,6 +103,7 @@ if(isset($_POST["btnView"])){
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
 
 
@@ -156,6 +158,7 @@ if(isset($_POST["btnView"])){
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
 
 
@@ -192,7 +195,7 @@ if(isset($_POST["btnView"])){
                         $st = $conn->prepare($query);
                         $st->bindValue(1, "Inactive", PDO::PARAM_STR);
                         $st->execute();
-                        echo "<script> alert('Doctor removed!');</script>";
+                        echo "<script> alert('Doctor Removed!');</script>";
 
 
                     }
@@ -203,6 +206,7 @@ if(isset($_POST["btnView"])){
                 }
             }
         }
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
     </form>
 

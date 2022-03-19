@@ -1,7 +1,9 @@
 <?php
 require("login-check/logincheck_P.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
+
 ?>
 <head>
 
@@ -89,7 +91,7 @@ session_start();
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
-
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
     </div>
 </div>

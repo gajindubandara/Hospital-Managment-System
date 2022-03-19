@@ -1,6 +1,7 @@
 <?php
 require("login-check/logincheck_A.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -77,7 +78,7 @@ session_start();
                     echo $th->getMessage();
                 }
 
-
+                error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                 ?>
             </form>
 
@@ -109,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

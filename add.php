@@ -82,8 +82,9 @@ include("config.php");
                     Create a new password for the patient:
                     <input type="text" class="form-control" name="addPW" required>
                     <?php
+                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                     $md5pw =md5($_POST["addPW"]);
-
+                    
                     ?>
                 </div>
                 <div class="form-group">
@@ -129,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
 <img src="images/add.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>

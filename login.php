@@ -1,6 +1,8 @@
 <?php
 include("config.php");
-session_start();?>
+session_start();
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +65,7 @@ session_start();?>
                     }
                 }
                 }
+                error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                 ?>
             </div>
         </div>

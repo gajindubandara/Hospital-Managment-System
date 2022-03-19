@@ -1,6 +1,7 @@
 <?php
 require("login-check/logincheck_A.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ session_start();
                 } catch (PDOException $th) {
                     echo $th->getMessage();
                 }
-
+                error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
             <input type="submit" class="btn btn-primary" value="Back" name="change" style="margin-bottom: 10px">
         </form>

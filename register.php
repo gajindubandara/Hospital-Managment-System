@@ -1,6 +1,7 @@
 <?php
 require("login-check/logincheck_A&D.php");
 include("config.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
 <!DOCTYPE html>
@@ -97,6 +98,7 @@ session_start();
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
 
 
@@ -151,6 +153,7 @@ session_start();
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
 
 
@@ -198,7 +201,7 @@ session_start();
                 }
             }
         }
-
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         ?>
     </form>
 
