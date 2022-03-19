@@ -87,13 +87,13 @@
                 if (isset($_POST["logout"])) {
                     if (isset($_SESSION["p_un"])) {
                         unset($_SESSION["p_un"]);
-                        header("location:login.php");
+                        echo '<script>window.location.href = "login.php";</script>';
                     } elseif (isset($_SESSION["a_un"])) {
                         unset($_SESSION["a_un"]);
-                        header("location:adminlogin.php");
+                        echo '<script>window.location.href = "adminlogin.php";</script>';
                     } elseif (isset($_SESSION["d_un"])) {
                         unset($_SESSION["d_un"]);
-                        header("location:doctorlogin.php");
+                        echo '<script>window.location.href = "doctorlogin.php";</script>';
                     }
                 }
                 ?>

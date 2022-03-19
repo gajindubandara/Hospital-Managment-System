@@ -15,6 +15,7 @@ include("config.php");
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body class="bg">
+<?php include 'nav & footer/nav.php' ?>
 <form method="post">
     <div class="container features">
         <div class="row center">
@@ -55,6 +56,7 @@ include("config.php");
                     Create a new password for the doctor:
                     <input type="text" class="form-control" name="addDPW" required>
                     <?php
+                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                     $md5pw = md5($_POST["addDPW"]);
                     ?>
                 </div>
