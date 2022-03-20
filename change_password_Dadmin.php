@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "<script> alert('The reentered password dose not match to the new password! ');</script>";
                 }
             } else {
-                echo '<script>alert("Doctor number & the NIC does not match!")</script>';
+                echo '<script>alert("The doctors number & the NIC do not match!")</script>';
             }
         } catch (PDOException $th) {
             echo '<script>alert("Enter the correct doctor number")</script>';
