@@ -47,6 +47,7 @@ session_start(); ?>
                             $pw = md5($_POST["D_PW"]);
                             if ($result[0] == $_POST["D_UN"]) {
                                 $_SESSION["d_un"] = $result[0];
+                                $_SESSION["d_name"] = $result[1];
                                 echo '<script>window.location.href = "index_d.php";</script>';
                             } else {
                                 echo '<script>alert("Incorrect user name or password")</script>';

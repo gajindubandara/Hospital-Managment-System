@@ -19,7 +19,11 @@ include("config.php");
 <div class="main-container">
     <div class="heading">
         <h1 class="heading__title">Clinic Management System</h1>
-        <p class="heading__credits"><a class="heading__link" target="_blank">Designed by Team Error 404</a></p>
+        <p class="heading__credits"style="margin-bottom: 10px !important;" >Designed by Team Error 404</p>
+        <?php
+        $name =$_SESSION["d_name"] ;
+        echo '<p class="heading__credits" style="font-size: xx-large;">Welcome! Dr.'.$name.'</p>';?>
+        </p>
     </div>
     <div class="cards">
         <div class="card card-1">

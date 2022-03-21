@@ -93,6 +93,7 @@
                         echo '<script>window.location.href = "adminlogin.php";</script>';
                     } elseif (isset($_SESSION["d_un"])) {
                         unset($_SESSION["d_un"]);
+                        unset($_SESSION["d_name"]);
                         echo '<script>window.location.href = "doctorlogin.php";</script>';
                     }
                 }
