@@ -15,8 +15,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <h6 class="text-uppercase font-weight-bold">Clinic Management System</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat
-                    ante luctus eu. Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+                <p>Computerized clinic management system to make your life more easier and more efficient</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <h6 class="text-uppercase font-weight-bold">Contact</h6>
@@ -27,6 +26,7 @@
                 </uL>
             </div>
         </div>
+        <div class="footer-copyright">&copy; Copyright 2022, Clinic Management System - Version 1.0 </div>
     </div>
 </footer>
 </body>
