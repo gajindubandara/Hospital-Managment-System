@@ -16,14 +16,14 @@ session_start();
 </head>
 <body class="bg">
 <?php include 'nav & footer/nav.php' ?>
-<div class="container features">
+<div class="container features" style="margin-bottom: 0px !important;">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
             <h3 class="feature-title">My Profile</h3>
         </div>
     </div>
 </div>
-<div class="container features">
+<div class="container features" style="margin-top: 0px !important;">
     <div class="row center" style="margin-top: 50px">
         <div class=" CardBgCol col-md-8">
             <?php
