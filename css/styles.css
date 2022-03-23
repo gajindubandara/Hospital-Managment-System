@@ -137,13 +137,13 @@ body {
 }
 
 /*---  bg image ---*/
-.img-bg {
-    height: 50%;
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+/*.img-bg {*/
+/*    height: 50%;*/
+/*    width: 50%;*/
+/*    display: block;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*}*/
 
 /*---  record del btn ---*/
 .recordDel {
@@ -285,7 +285,43 @@ body {
     opacity: 0.7;
     border-radius: 133px
 }
+.heart {
 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    border-radius: 133px;
+    animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+    0% {
+        width: 30%;
+    }
+
+    50% {
+        width: 32%;
+    }
+
+    100% {
+        width: 30%;
+    }
+}
+.heart-box{
+    height: max-content;
+
+}
+@media (max-width: 375px) {
+    .heart-box {
+        height: 120px !important;
+    }
+}
+@media (max-width: 2800px) {
+    .heart-box {
+        height: 350px;
+    }
+}
 /* site back */
 .bg {
     background-image: url('../images/background.jpg');
@@ -327,6 +363,27 @@ body {
 }
 
 .aboutUs {
-    padding: 0 20px 0 20px;
-    margin-bottom: 50px;
+    padding: 0 40px 0 40px;
+    color: #656565;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+/* index map */
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    margin: 20px 0px 20px 0px;
+    border-radius: 10px;
+}
+
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }
