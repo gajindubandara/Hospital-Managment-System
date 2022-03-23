@@ -23,62 +23,64 @@ session_start();
         </div>
     </div>
 </div>
-<div class="row center" style="margin-top: 50px">
-    <div class=" CardBgCol col-md-4">
-        <?php
-        try {
-            $num = $_SESSION["p_un"];
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "SELECT `PID`, `Name`, `Bday`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
-            $result = $conn->query($query);
-            echo '<table class="table">';
-            foreach ($result as $row) {
-                echo '<tbody>';
-                echo '<tr>';
-                echo '<td><b>Patient Number:</b></td>';
-                echo '<td>' . $row[0] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>Name:</b></td>';
-                echo '<td>' . $row[1] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>Birth Date:</b></td>';
-                echo '<td>' . $row[2] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b> Phone Number:</b></td>';
-                echo '<td>' . $row[3] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>Email:</b></td>';
-                echo '<td>' . $row[4] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>Address:</b></td>';
-                echo '<td>' . $row[5] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>Blood Group:</b></td>';
-                echo '<td>' . $row[6] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>Gender:</b></td>';
-                echo '<td>' . $row[7] . '</td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><b>NIC:</b></td>';
-                echo '<td>' . $row[8] . '</td>';
-                echo '</tr>';
-                echo ' </tbody>';
+<div class="container features">
+    <div class="row center" style="margin-top: 50px">
+        <div class=" CardBgCol col-md-8">
+            <?php
+            try {
+                $num = $_SESSION["p_un"];
+                $conn = new PDO($db, $un, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $query = "SELECT `PID`, `Name`, `Bday`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
+                $result = $conn->query($query);
+                echo '<table class="table">';
+                foreach ($result as $row) {
+                    echo '<tbody>';
+                    echo '<tr>';
+                    echo '<td><b>Patient Number:</b></td>';
+                    echo '<td>' . $row[0] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Name:</b></td>';
+                    echo '<td>' . $row[1] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Birth Date:</b></td>';
+                    echo '<td>' . $row[2] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b> Phone Number:</b></td>';
+                    echo '<td>' . $row[3] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Email:</b></td>';
+                    echo '<td>' . $row[4] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Address:</b></td>';
+                    echo '<td>' . $row[5] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Blood Group:</b></td>';
+                    echo '<td>' . $row[6] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Gender:</b></td>';
+                    echo '<td>' . $row[7] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>NIC:</b></td>';
+                    echo '<td>' . $row[8] . '</td>';
+                    echo '</tr>';
+                    echo ' </tbody>';
+                }
+                echo '</table>';
+            } catch (PDOException $th) {
+                echo $th->getMessage();
             }
-            echo '</table>';
-        } catch (PDOException $th) {
-            echo $th->getMessage();
-        }
-        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-        ?>
+            error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+            ?>
+        </div>
     </div>
 </div>
 <img src="images/img.jpg" class="img-bg" style="margin-top: 10px">
