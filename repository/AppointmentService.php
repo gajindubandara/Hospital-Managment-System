@@ -62,7 +62,7 @@ class AppointmentService implements IAppointment
     {
         try{
             $conn=getCon();
-            $query = "SELECT `id`, `pid`, `date`, `token`, `did`,`state` FROM `bookings` WHERE `pid`=$nic AND `state`='active'";
+            $query = "SELECT `id`, `pid`, `date`, `token`, `did`,`state` FROM `bookings` WHERE `pid`=$nic AND `state`='active' ORDER BY `date`";
             $result = $conn->query($query);
             return $result;
         }catch(SQLiteException $ex){
