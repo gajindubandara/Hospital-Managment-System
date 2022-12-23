@@ -1,9 +1,11 @@
 <?php
-require("login-check/logincheck_P.php");
+require("login-check/logincheck_A&D.php");
 include("config.php");
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>My Records</title>
     <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
@@ -19,48 +21,76 @@ session_start();
 <div class="container features">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
-            <h3 class="feature-title">My Records</h3>
+            <h3 class="feature-title">Patient Report</h3>
         </div>
     </div>
 </div>
+
 <?php
+
 try {
     $num = $_SESSION["p_un"];
-    $conn = new PDO($db, $un, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "SELECT  `Patient`,Name, `Diagnosis`, `Medications`, `Date`,`doc` FROM `Diagnosis` 
-                                  JOIN Patients on Diagnosis.Patient= Patients.PID WHERE PID = $num ORDER BY `Date` DESC";
-    $result = $conn->query($query);
-    echo '<div class="container">';
+
+    include 'repository/DiagnosisService.php';
+    include 'repository/DoctorService.php';
+    $ap = new DiagnosisService();
+    $result=$ap->getPatientDiagnosis($num);
+    $doc = new DoctorService();
+
+
+
+
+    echo '<div class="container features">
+            <div class="row center" >
+            <div class=" CardBgCol col-md-8">';
+    echo '<form method="post">';
     foreach ($result as $row) {
-        $docName = $row[5];
-        try {
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = $query = "SELECT `Name`, `No`, `Email`, `Gender`, `NIC`, `Password`, `Day`, `Address`, `Status` FROM `doctors` WHERE `DID`=$docName";
-            $result = $conn->query($query);
-            foreach ($result as $docRow) {
-                $name = $docRow[0];
-            }
-        } catch (PDOException $th) {
-            echo $th->getMessage();
-        }
+
         echo '<div class="datacard features CardBgCol">';
-        echo '<h5 class="dataCard-header">' . $row[4] . '</h5>';
+        echo '<h5 class="dataCard-header">' . $row[2] . '</h5>';
         echo '<div class="dataCard-body">';
-        echo '<h5 class="card-title">' . $row[2] . '</h5>';
-        echo '<p class="card-text">' . $row[3] . '</p>';
-        echo '<p class="card-text" style="color: #4b4a4a; text-align: end;"> Diagnosed by Dr.' . $name . '</p>';
+        echo '<h5 class="card-title">' . $row[3] . '</h5>';
+        echo '<p class="card-text">' . $row[4] . '</p>';
+        echo '<p class="card-text">*** ' . $row[5] . '</p>';
+        $docName=$doc->getDoctor($row[1]);
+        foreach ($docName as $r) {
+            echo '<p class="card-text" style="color: #4b4a4a; text-align: end;"> Diagnosed by Dr. ' . $r[0] . '</p>';
+        }
+        if (isset($_SESSION["a_un"])) {
+            echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="' . $row[4] . '">Delete Record </button></td>';
+        }
         echo '</div>';
         echo '</div>';
     }
-    echo '</div>';
+    echo '</form>';
+    echo '</div></div></div>';
 } catch (PDOException $th) {
-    echo $th->getMessage();
+
 }
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
-<img src="images/img.jpg" class="img-bg" >
+<?php
+//if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//    if (isset($_POST['delRecord'])) {
+//        try {
+//            $day = $_POST['delRecord'];
+//            $num = $_SESSION["ps"];
+//            $dayString = strval($day);
+//            $numString = strval($num);
+//            $conn = new PDO($db, $un, $password);
+//            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//            $query = "DELETE  FROM `Diagnosis` WHERE `Patient`='$numString' AND `Date`='$dayString'";
+//            $st = $conn->prepare($query);
+//            $st->execute();
+//            echo "<script> alert('Record deleted!');</script>";
+//        } catch (PDOException $th) {
+//            echo $th->getMessage();
+//        }
+//    }
+//}
+//error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+//?>
+<img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -73,4 +103,3 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         crossorigin="anonymous"></script>
 </body>
 </html>
-

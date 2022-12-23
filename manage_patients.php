@@ -19,7 +19,6 @@ include("config.php");
 <div class="main-container">
     <div class="heading">
         <h1 class="heading__title">Clinic Management System</h1>
-        <p class="heading__credits"><a class="heading__link" target="_blank">Designed by Team Error 404</a></p>
     </div>
     <div class="cards">
         <div class="card card-1">
@@ -29,21 +28,9 @@ include("config.php");
             </p>
         </div>
         <div class="card card-2">
-            <h2 class="card__title">View Patient Records</h2>
-            <p class="card__apply">
-                <a class="card__link" href="report.php">Click Here <i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        <div class="card card-4">
             <h2 class="card__title">Add A New Patient</h2>
             <p class="card__apply">
-                <a class="card__link" href="add.php">Click Here <i class="fas fa-arrow-right"></i></a>
-            </p>
-        </div>
-        <div class="card card-5">
-            <h2 class="card__title">Reset Patient Password</h2>
-            <p class="card__apply">
-                <a class="card__link" href="change_password_admin.php">Click Here <i class="fas fa-arrow-right"></i></a>
+                <a class="card__link" href="registration.php">Click Here <i class="fas fa-arrow-right"></i></a>
             </p>
         </div>
     </div>

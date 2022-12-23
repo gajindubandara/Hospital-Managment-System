@@ -135,15 +135,6 @@ body {
     padding: 10px;
 }
 
-/*---  bg image ---*/
-/*.img-bg {*/
-/*    height: 50%;*/
-/*    width: 50%;*/
-/*    display: block;*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*}*/
-
 /*---  record del btn ---*/
 .recordDel {
     background-color: #007bff;
@@ -154,7 +145,6 @@ body {
     display: block;
     margin-left: auto;
     border-radius: 4px;
-
 }
 
 .recordDel:hover {

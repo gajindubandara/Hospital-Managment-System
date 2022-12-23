@@ -1,5 +1,5 @@
 <?php
-require("login-check/logincheck_A.php");
+//require("login-check/logincheck_A.php");
 include("config.php");
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
@@ -22,47 +22,61 @@ session_start();
     <div class="row center" style="margin-top: 50px">
         <div class="col-md-8 CardBgCol">
             <form method="post">
+                <h3 class="feature-title">profile</h3>
                 <?php
                 try {
-                    $dnum = $_SESSION["viewDNo"];
-                    $conn = new PDO($db, $un, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = "SELECT `DID`, `Name`, `No`, `Email`, `Address`, `Gender`,`NIC`, `Day` FROM `doctors` WHERE DID= $dnum ";
-                    $result = $conn->query($query);
+                    $dnum = $_SESSION["d_un"];
+
+                    include 'repository/DoctorService.php';
+                    $profile = new DoctorService();
+                    $result=$profile->getDoctor($dnum);
+
                     echo '<table class="table">';
                     foreach ($result as $row) {
                         echo '<tbody>';
                         echo '<tr>';
-                        echo '<td><b>Doctor Number:</b></td>';
+                        echo '<td><b>Name:</b></td>';
                         echo '<td>' . $row[0] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
-                        echo '<td><b>Name:</b></td>';
+                        echo '<td><b>NIC:</b></td>';
                         echo '<td>' . $row[1] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
                         echo '<td><b> Phone Number:</b></td>';
-                        echo '<td>' . $row[2] . '</td>';
+                        echo '<td>' . $row[4] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
                         echo '<td><b>Email:</b></td>';
-                        echo '<td>' . $row[3] . '</td>';
+                        echo '<td>' . $row[2] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
                         echo '<td><b>Address:</b></td>';
-                        echo '<td>' . $row[4] . '</td>';
+                        echo '<td>' . $row[8] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
                         echo '<td><b>Gender:</b></td>';
                         echo '<td>' . $row[5] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
-                        echo '<td><b>NIC:</b></td>';
+                        echo '<td><b>Specialized Field:</b></td>';
                         echo '<td>' . $row[6] . '</td>';
                         echo '</tr>';
                         echo '<tr>';
-                        echo '<td><b>Date:</b></td>';
+                        echo '<td><b>Qualifications:</b></td>';
                         echo '<td>' . $row[7] . '</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<td><b>Rate per Session:</b></td>';
+                        echo '<td>' . $row[9] . '</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<td><b>Patients per Day:</b></td>';
+                        echo '<td>' . $row[10] . '</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<td><b>Available Days:</b></td>';
+                        echo '<td>' . $row[11] . '</td>';
                         echo '</tr>';
                         echo ' </tbody>';
                     }
@@ -72,6 +86,7 @@ session_start();
                 }
                 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                 ?>
+                <input type="submit" class="btn btn-primary" value="Edit Information" name="edit" style="margin-bottom: 10px">
                 <input type="submit" class="btn btn-primary" value="Back" name="change" style="margin-bottom: 10px">
             </form>
         </div>
@@ -79,7 +94,10 @@ session_start();
 </div>
 <?php
 if (isset($_POST["change"])) {
-    echo '<script>window.location.href = "doc_register.php";</script>';
+    echo '<script>window.location.href = "index_d.php";</script>';
+}
+if (isset($_POST["edit"])) {
+    echo '<script>window.location.href = "update_doc.php";</script>';
 }
 ?>
 <script src="js/collapsibleCards.js"></script>

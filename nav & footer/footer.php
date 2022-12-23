@@ -15,12 +15,12 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
                 <h6 class="text-uppercase font-weight-bold">Clinic Management System</h6>
-                <p>Team Error 404 compliant CLINIC MANAGEMENT SYSTEM. Best Value EHR. 100+ Health Care providers trust & love TEAM ERROR 404.</p>
+<!--                <p>Team Error 404 compliant CLINIC MANAGEMENT SYSTEM. Best Value EHR. 100+ Health Care providers trust & love TEAM ERROR 404.</p>-->
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <h6 class="text-uppercase font-weight-bold">Contact</h6>
                 <uL>
-                    <li>teamerorr404@gmail.com</li>
+                    <li>devteam@gmail.com</li>
                     <li>+94 123456789</li>
                 </uL>
             </div>

@@ -16,177 +16,108 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
-<body class="bg">
+<body class="bg" >
 <?php include 'nav & footer/nav.php' ?>
-<?php if (isset($_POST["btnEdit"])) {
-    $_SESSION["editNo"] = $_POST["btnEdit"];
-    echo '<script>window.location.href = "update.php";</script>';
-} ?>
-<div class="container features">
-    <div class="row center">
-        <div class="col-lg-4 col-md-4 col-sm-6">
-            <h3 class="feature-title">Search by Patient Name</h3>
-            <form method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Patient Name" name="txtSearch">
-                </div>
-                <input type="submit" class="btn btn-primary" value="Search" name="btnSearch">
-            </form>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <h3 class="feature-title" style="text-align: center;margin-top: 30px">Search for a patient</h3>
+            <input type="text" class="form-control" id="search" placeholder="Type the NIC">
+            <div class="row justify-content-md-center">
+            </div>
         </div>
     </div>
 </div>
-<div class="container features CardBgCol">
-    <form method="post" enctype="multipart/form-data">
-        <?php
-        try {
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "SELECT `PID`, `Name`, `Day`,`Status` FROM `Patients` ";
-            if (isset($_POST["btnSearch"])) {
-                $query = $query . "where Name like '%" . $_POST['txtSearch'] . "%'";
-                $click = true;
-            }
-            $result = $conn->query($query);
-            if ($click == true) {
-                echo '<table class="table" style="border:solid #dee2e6 1px;">';
-                echo '<thead class="thead-dark">';
-                echo '<tr>
-               <th scope="col">Patient No.</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Status</th>';
-                if (isset($_SESSION["a_un"])) {
-                    echo '<th scope="col"></th>';
-                }
-                echo '<th scope="col"></th>';
-                echo '</tr>';
-                echo '</thead>';
-                foreach ($result as $row) {
-                    echo '<tbody>';
-                    echo '<tr class="rw">';
-                    echo '<td> <input type="hidden" name="pID[]" value="' . $row[0] . '">' . $row[0] . '</td>';
-                    echo '<td> <input type="hidden" name="pName[]" value="' . $row[1] . '">' . $row[1] . '</td>';
-                    echo '<td> <input type="hidden" name="pDay[]" value="' . $row[2] . '">' . $row[2] . '</td>';
-                    if ($row[3] == "Active") {
-                        $showStatus = "Remove";
-                        $iconColor = "green";
-                    } else {
-                        $showStatus = "Add";
-                        $iconColor = "red";
-                    }
-                    echo '<td style="vertical-align: middle;"><i class="fas fa-circle" style="color:' . $iconColor . '"></i> ' . $row[3] . '</td>';
-                    if (isset($_SESSION["a_un"])) {
-                        echo '<td style="vertical-align: middle;"><button class="btn btn-primary" style="margin: auto; width:80px !important;" name="btnStat" type="submit"  value="' . $row[0] . '">' . $showStatus . ' </button></td>';
-                    }
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary" style="margin: auto" name="btnEdit" type="submit"  value="' . $row[0] . '">Edit  </button></td>';
-                    echo '</tr>';
-                    echo ' </tbody>';
-                }
-                echo '</table>';
-            }
-        } catch (PDOException $th) {
-            echo $th->getMessage();
-        }
-        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-        ?>
-        <?php
-        try {
-            if ($click == false) {
-                $conn = new PDO($db, $un, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query = "SELECT `PID`, `Name`, `Day`,`Status` FROM `Patients` ORDER BY `Status` ASC ";
-                $result = $conn->query($query);
-                echo '<table class="table" style="border:solid #dee2e6 1px;">';
-                echo '<thead class="thead-dark">';
-                echo '<tr>
-                            <th scope="col">Patient No.</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Status</th>';
-                if (isset($_SESSION["a_un"])) {
-                    echo '<th scope="col"></th>';
-                }
-                echo '<th scope="col"></th>';
-                echo '</tr>';
-                echo '</thead>';
-                foreach ($result as $row) {
-                    echo '<tbody>';
-                    echo '<tr class="rw">';
-                    echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" value="' . $row[0] . '">' . $row[0] . '</td>';
-                    echo '<td style="vertical-align: middle;"> <input type="hidden" name="pName[]" value="' . $row[1] . '">' . $row[1] . '</td>';
-                    if ($row[3] == "Active") {
-                        $showStatus = "Remove";
-                        $iconColor = "green";
-                    } else {
-                        $showStatus = "Add";
-                        $iconColor = "red";
-                    }
-                    echo '<td style="vertical-align: middle;"><i class="fas fa-circle" style="color:' . $iconColor . '"></i> ' . $row[3] . '</td>';
-                    if (isset($_SESSION["a_un"])) {
-                        echo '<td style="vertical-align: middle;"><button class="btn btn-primary" style="margin: auto; width:80px !important;" name="btnStat" type="submit"  value="' . $row[0] . '">' . $showStatus . ' </button></td>';
-                    }
-                    echo '<td style="vertical-align: middle;"><button class="btn btn-primary" style="margin: auto" name="btnEdit" type="submit"  value="' . $row[0] . '">Edit  </button></td>';
 
-                    echo '</tr>';
-                    echo ' </tbody>';
-                }
-                echo '</table>';
-            }
-        } catch (PDOException $th) {
-            echo $th->getMessage();
-        }
-        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-        ?>
-        <?php
-        if (isset($_POST['btnStat'])) {
-            changeState();
-        }
-        function changeState()
-        {
-            include("config.php");
-            $A = $_POST['btnStat'];
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "SELECT `Status` FROM `Patients` WHERE `PID`=$A ";
-            $resultS = $conn->query($query);
-            foreach ($resultS as $rowS) {
-                try {
-                    if ($rowS[0] == "Inactive") {
-                        $conn = new PDO($db, $un, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = "UPDATE `Patients` SET `Status`=? WHERE `PID`=$A";
-                        $st = $conn->prepare($query);
-                        $st->bindValue(1, "Active", PDO::PARAM_STR);
-                        $st->execute();
-                        echo "<script> alert('Patient Added!');</script>";
-                    } else {
-                        $conn = new PDO($db, $un, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = "UPDATE `Patients` SET `Status`=? WHERE `PID`=$A";
-                        $st = $conn->prepare($query);
-                        $st->bindValue(1, "Inactive", PDO::PARAM_STR);
-                        $st->execute();
-                        echo "<script> alert('Patient removed!');</script>";
-                    }
-                } catch (PDOException $th) {
-                    echo $th->getMessage();
-                }
-            }
-        }
+<div class="container features CardBgCol" id="full_table">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <form method="post" enctype="multipart/form-data">
+                <div >
+                    <?php
 
-        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-        ?>
-    </form>
+                    include 'repository/PatientService.php';
+                    $profiles = new PatientService();
+                    $result=$profiles->getAllPatient();
+
+                    echo '<div >';
+                    echo '<table class="table" style="border:solid #dee2e6 1px;">';
+                    echo '<thead class="thead-dark">';
+                    echo '<tr>
+                     <th scope="col">NIC</th>
+                     <th scope="col">Name</th>
+                     <th scope="col">Email</th>
+                     <th scope="col">No</th>
+                     <th scope="col">Address </th>
+                     <th scope="col"></th>
+              </tr>';
+                    echo '</thead>';
+                    foreach ($result as $row) {
+                        echo '<tbody>';
+                        echo '<tr class="rw">';
+                        echo '<td style="vertical-align: middle;"> <input type="hidden" value="' . $row[1] . '">' . $row[1] . '</td>';
+                        echo '<td style="vertical-align: middle;"> <input type="hidden" value="' . $row[0] . '">' . $row[0] . '</td>';
+                        echo '<td style="vertical-align: middle;"> <input type="hidden"  value="' . $row[2] . '">' . $row[2] . '</td>';
+                        echo '<td style="vertical-align: middle;"> <input type="hidden" value="' . $row[3] . '">' . $row[3] . '</td>';
+                        echo '<td style="vertical-align: middle;"> <input type="hidden"  value="' . $row[4] . '">' . $row[4] . '</td>';
+                        echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnView" type="submit"  value="' . $row[1] . '">View  </button></td>';
+
+                        echo '</tr>';
+                        echo ' </tbody>';
+                    }
+                    echo '</table>';
+                    echo '</div>';
+                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+                    ?>
+                </div>
+                <form method="post" enctype="multipart/form-data">
+        </div>
+    </div>
 </div>
+<?php
+if (isset($_POST["btnView"])) {
+    $_SESSION["pNic"] =$_POST["btnView"];
+    echo '<script>window.location.href = "patient_report.php";</script>';
+}
+
+?>
+<form method="post" enctype="multipart/form-data">
+    <div id="result"></div>
+</form>
 <img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            var query = $(this).val();
+            if (query != "") {
+                $.ajax({
+                    url: 'ajax/get_register.php',
+                    method: 'POST',
+                    data: {
+                        query: query
+                    },
+                    success: function (data) {
+                        $('#result').html(data);
+                        $('#result').css('display', 'block');
+                        $('#full_table').css('display', 'none');
+
+                    }
+                });
+            } else {
+                $('#result').css('display', 'none');
+                $('#full_table').css('display', 'block');
+            }
+        });
+    });
+
+    document.getElementById("clearBtn").onclick = function clear() {
+        document.getElementById("search").value = " ";
+        document.getElementById("full_table").style.display = "block";
+        document.getElementById("result").style.display = "none";
+    }
+</script>
 </body>
 </html>

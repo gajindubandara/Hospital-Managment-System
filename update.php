@@ -7,7 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Update Patient</title>
+    <title>Update</title>
     <link rel="shortcut icon" type="image/jpg" href="images/favicon.ico"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,34 +22,66 @@ session_start();
     <div class="row center">
         <div class="col-md-8 CardBgCol">
             <form method="post" enctype="multipart/form-data">
-                <h3 class="feature-title">Update patient profile</h3>
+                <h3 class="feature-title">Update </h3>
                 <?php
                 try {
-                    $editP = $_SESSION["editNo"];
-                    $conn = new PDO($db, $un, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = $query = "SELECT `PID`, `Name`, `BDay`, `No`, `Email`, `Address`,`Day` FROM `Patients` Where `PID`= $editP";
-                    $result = $conn->query($query);
+                    $num = $_SESSION["p_un"];
+                    include 'repository/PatientService.php';
+                    $profile = new PatientService();
+                    $result=$profile->getPatient($num);
+
                     foreach ($result as $row) {
-                        echo '  <div class="form-group"> Name:';
-                        echo '<input type="text" class="form-control" name="pName" value="' . $row[1] . '" required >';
-                        echo '</div>';
-                        echo '  <div class="form-group"> Birth Date:';
-                        echo '<input type="date" class="form-control" name="pAge" value="' . $row[2] . '" required >';
-                        echo '</div>';
-                        echo '  <div class="form-group"> Number:';
-                        echo '<input type="number" class="form-control" name="pNo" value="' . $row[3] . '" required >';
-                        echo '</div>';
-                        echo '  <div class="form-group"> Email:';
-                        echo '<input type="email" class="form-control" name="pEmail" value="' . $row[4] . '" required >';
-                        echo '</div>';
-                        echo '  <div class="form-group"> Address:';
-                        echo '<input type="text" class="form-control" name="pAddress" value="' . $row[5] . '" required >';
-                        echo '</div>';
-                        echo '  <div class="form-group"> Modified Date:';
-                        $date = date("Y-m-d");
-                        echo $date;
-                        echo '</div>';
+                        echo'<div class="form-group">
+                    Name:
+                    <input type="text" class="form-control" name="addName" value="' . $row[0] . '" required>
+                </div>
+                <div class="form-group">
+                    NIC:
+                    <input type="text" class="form-control" name="addNIC" value="' . $row[1] . '" readonly>
+                </div>
+                <div class="form-group">
+                    Email:
+                    <input type="email" class="form-control" name="addEmail" value="' . $row[2] . '" required>
+                </div>
+                <div class="form-group">
+                    Contact Number:
+                    <input type="number" class="form-control" name="addNum" value="' . $row[4] . '" required>
+                </div>
+                <div class="form-group">
+                    Address:
+                    <input type="text" class="form-control" name="addAddress" value="' . $row[5] . '" required>
+                </div>
+
+                <div class="form-group">
+                    Birth Date:
+                    <input type="date" class="form-control" name="addDob" value="' . $row[6] . '" required>
+                </div>
+
+                <div class="form-group">
+                    Blood group:
+                    <select class="form-control" name="addBG" required>
+                        <option value="O+" name="" ';if($row[7]=="O+") echo ' selected="selected"'; echo'>O positive</option>
+                        <option value="O-" name="" ';if($row[7]=="O-") echo ' selected="selected"'; echo'>O negative</option>
+                        <option value="A+" name=""';if($row[7]=="A+") echo ' selected="selected"'; echo'>A positive</option>
+                        <option value="A-" name="" ';if($row[7]=="A-") echo ' selected="selected"'; echo'>A negative</option>
+                        <option value="B+" name="" ';if($row[7]=="B+") echo ' selected="selected"'; echo' >B positive</option>
+                        <option value="B-" name="" ';if($row[7]=="B-") echo ' selected="selected"'; echo'>B negative</option>
+                        <option value="AB+" name="" ';if($row[7]=="AB+") echo ' selected="selected"'; echo'>AB positive</option>
+                        <option value="AB-" name="" ';if($row[7]=="AB-") echo ' selected="selected"'; echo'>AB negative</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    Gender:
+                    <div class="addRadio" style="margin-left: 13%">
+                        <input type="radio" name="addGender" value="Male"  ';if($row[8]=="Male") echo 'checked'; echo' >
+                        <label>Male</label><br>
+                        <input type="radio" name="addGender" value="Female" ';if($row[8]=="Female") echo ' checked'; echo'>
+                        <label>Female</label><br>
+                        <input type="radio" name="addGender" value="Other"';if($row[8]=="Other") echo ' checked'; echo'>
+                        <label>Other</label><br>
+                    </div>
+                </div>';
+
                         echo '<input type="submit" class="btn btn-primary" value="Update" name="btnUpdate">';
                         echo '<input type="submit" style="margin-top: 10px;margin-bottom: 10px;" class="btn btn-primary" value="Cancel" name="btnCan">';
                     }
@@ -65,18 +97,39 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnUpdate'])) {
         try {
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "UPDATE `Patients` SET `Name`=?,`BDay`=?,`No`=?,`Email`=?,`Address`=?,`Day`=? WHERE `PID`=$editP";
-            $st = $conn->prepare($query);
-            $st->bindValue(1, $_POST["pName"], PDO::PARAM_STR);
-            $st->bindValue(2, $_POST["pAge"], PDO::PARAM_STR);
-            $st->bindValue(3, $_POST["pNo"], PDO::PARAM_STR);
-            $st->bindValue(4, $_POST["pEmail"], PDO::PARAM_STR);
-            $st->bindValue(5, $_POST["pAddress"], PDO::PARAM_STR);
-            $st->bindValue(6, $date, PDO::PARAM_STR);
-            $st->execute();
-            echo "<script> alert('Patient updated Successfully!');</script>";
+            include 'model/Patient.php';
+            $patient=new Patient();
+
+            $name = $patient->setName($_POST['addName']);
+            $nic = $patient->setNic($_POST['addNIC']);
+            $email = $patient->setEmail($_POST['addEmail']);
+            $no = $patient->setTelNo($_POST['addNum']);
+            $address = $patient->setAddress($_POST['addAddress']);
+            $dob = $patient->setDob($_POST['addDob']);
+            $bloodGroup = $patient->setBloodGroup($_POST['addBG']);
+            $gender = $patient->setGender($_POST['addGender']);
+
+
+            //            Write to db
+            try {
+
+                $update = new PatientService();
+                $check=$update->updatePatient($patient);
+
+
+                if ($check==1){
+
+                    echo "<script> alert('Updated Successful!');</script>";
+                    echo '<script>window.location.href = "myprofile.php";</script>';
+                }
+                else{
+                    echo "<script> alert(' Failed!');</script>";
+                }
+            }
+            catch(Exception $ex){
+                echo $ex;
+
+            }
         } catch (PDOException $th) {
             echo $th->getMessage();
         }
@@ -86,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnCan'])) {
-        echo '<script>window.location.href = "register.php";</script>';
+        echo '<script>window.location.href = "myprofile.php";</script>';
     }
 }
 ?>

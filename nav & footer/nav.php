@@ -26,14 +26,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="admin.php">Home</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_view_inquires.php">Inquires</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Manage Doctors
                 </a>
                 <div class="dropdown-menu" style="background-color:#343434" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" style="color: white" href="doc_register.php">Doctors Register</a>
-                    <a class="dropdown-item" style="color: white" href="add_doctor.php">Add A New Doctor</a>
-                    <a class="dropdown-item" style="color: white" href="change_password_Dadmin.php">Reset Doctor Password</a>
+                    <a class="dropdown-item" style="color: white" href="doc_reg.php">Add A New Doctor</a>
+                    <a class="dropdown-item" style="color: white" href="admin_view_bookings.php">Bookings</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -42,9 +45,7 @@
                 </a>
                 <div class="dropdown-menu" style="background-color:#343434" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" style="color: white" href="register.php">Patient Register</a>
-                    <a class="dropdown-item" style="color: white" href="report.php">View Patient Records</a>
-                    <a class="dropdown-item" style="color: white" href="add.php">Add A New Patient</a>
-                    <a class="dropdown-item" style="color: white" href="change_password_admin.php">Reset Patient Password</a>
+                    <a class="dropdown-item" style="color: white" href="registration.php">Add A New Patient</a>
                 </div>';
             } else if (isset($_SESSION["d_un"])) {
                 echo '
@@ -52,13 +53,13 @@
                 <a class="nav-link" href="index_d.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="report.php">Reports</a>
+                <a class="nav-link" href="doc_view_bookings.php">Appointments</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="register.php">Patient Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="add.php">New Patient</a>
+                <a class="nav-link" href="doc_profile.php"> <i class="fas fa-user-alt"></i> My profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="newDiagnose.php"> Add Diagnose</a>
@@ -70,6 +71,12 @@
                 echo '
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="booking.php">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="inquires.php">Inquiries</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="myprofile.php"> <i class="fas fa-user-alt"></i> My Profile</a>
@@ -97,7 +104,7 @@
                     } elseif (isset($_SESSION["d_un"])) {
                         unset($_SESSION["d_un"]);
                         unset($_SESSION["d_name"]);
-                        echo '<script>window.location.href = "doctorlogin.php";</script>';
+                        echo '<script>window.location.href = "doc_login.php";</script>';
                     }
                 }
                 ?>

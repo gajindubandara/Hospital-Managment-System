@@ -36,16 +36,16 @@ session_start(); ?>
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (isset($_POST["logAdmin"])) {
                         try {
-                            $conn = new PDO($db, $un, $password);
-                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                            $query = "SELECT `username` FROM `D-passwords` WHERE  `password`=? and `username`=? ";
-                            $st = $conn->prepare($query);
-                            $st->bindValue(1, $_POST["A_PW"], PDO::PARAM_STR);
-                            $st->bindValue(2, $_POST["A_UN"], PDO::PARAM_STR);
-                            $st->execute();
-                            $result = $st->fetch();
-                            if ($result[0] == $_POST["A_UN"]) {
-                                $_SESSION["a_un"] = $result[0];
+//                            $conn = new PDO($db, $un, $password);
+//                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//                            $query = "SELECT `username` FROM `D-passwords` WHERE  `password`=? and `username`=? ";
+//                            $st = $conn->prepare($query);
+//                            $st->bindValue(1, $_POST["A_PW"], PDO::PARAM_STR);
+//                            $st->bindValue(2, $_POST["A_UN"], PDO::PARAM_STR);
+//                            $st->execute();
+//                            $result = $st->fetch();
+                            if ($_POST["A_UN"] =="admin" ) {
+                                $_SESSION["a_un"] = "admin";
                                 echo '<script>window.location.href = "admin.php";</script>';
                             } else {
                                 echo '<script>alert("Incorrect user name or password")</script>';

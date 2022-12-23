@@ -19,7 +19,6 @@ include("config.php");
 <div class="main-container">
     <div class="heading">
         <h1 class="heading__title">Clinic Management System</h1>
-        <p class="heading__credits">Designed by Team 404</p>
     </div>
     <div class="cards">
         <div class="card card-1">

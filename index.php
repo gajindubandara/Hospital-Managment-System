@@ -26,8 +26,6 @@ if (isset($_SESSION["p_un"])) {
         <h1 class="heading__title" style="margin-top: 30px !important;">Clinic Management System</h1>
         <p class="heading__credits" style="margin-bottom: 0px !important;  font-weight: 400;"> Our System Software helps
             deliver superior healthcare delivery for doctors, clinics and hospitals.</p>
-        <p class="heading__credits" style="    margin-bottom: 10px !important;font-weight: 400;font-size: 25px;">
-            Designed by Team Error 404</p>
         <div class="heart-box">
             <img src="images/favicon.ico" class="heart">
         </div>

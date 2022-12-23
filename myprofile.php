@@ -19,6 +19,7 @@ session_start();
 <div class="container features" style="margin-bottom: 0px !important;">
     <div class="row center">
         <div class="col-lg-4 col-md-4 col-sm-6">
+
             <h3 class="feature-title">My Profile</h3>
         </div>
     </div>
@@ -26,51 +27,49 @@ session_start();
 <div class="container features" style="margin-top: 0px !important;">
     <div class="row center" style="margin-top: 50px">
         <div class=" CardBgCol col-md-8">
+            <form method="post" enctype="multipart/form-data">
             <?php
             try {
                 $num = $_SESSION["p_un"];
-                $conn = new PDO($db, $un, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query = "SELECT `PID`, `Name`, `Bday`, `No`, `Email`, `Address`, `BG`, `Gender`,`NIC` FROM `Patients` WHERE PID= $num ";
-                $result = $conn->query($query);
+                include 'repository/PatientService.php';
+                $profile = new PatientService();
+                $result=$profile->getPatient($num);
+
                 echo '<table class="table">';
                 foreach ($result as $row) {
                     echo '<tbody>';
-                    echo '<tr>';
-                    echo '<td><b>Patient Number:</b></td>';
+                    echo '<td><b>Name:</b></td>';
                     echo '<td>' . $row[0] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td><b>Name:</b></td>';
-                    echo '<td>' . $row[1] . '</td>';
-                    echo '</tr>';
-                    echo '<tr>';
-                    echo '<td><b>Birth Date:</b></td>';
-                    echo '<td>' . $row[2] . '</td>';
-                    echo '</tr>';
-                    echo '<tr>';
                     echo '<td><b> Phone Number:</b></td>';
-                    echo '<td>' . $row[3] . '</td>';
+                    echo '<td>' . $row[4] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
                     echo '<td><b>Email:</b></td>';
-                    echo '<td>' . $row[4] . '</td>';
+                    echo '<td>' . $row[2] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
                     echo '<td><b>Address:</b></td>';
                     echo '<td>' . $row[5] . '</td>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td><b>Blood Group:</b></td>';
+                    echo '<td><b>NIC:</b></td>';
+                    echo '<td>' . $row[1] . '</td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<td><b>Date of Birth:</b></td>';
                     echo '<td>' . $row[6] . '</td>';
+                    echo '</tr>';
                     echo '</tr>';
                     echo '<tr>';
                     echo '<td><b>Gender:</b></td>';
-                    echo '<td>' . $row[7] . '</td>';
+                    echo '<td>' . $row[8] . '</td>';
+                    echo '</tr>';
                     echo '</tr>';
                     echo '<tr>';
-                    echo '<td><b>NIC:</b></td>';
-                    echo '<td>' . $row[8] . '</td>';
+                    echo '<td><b>Blood Group:</b></td>';
+                    echo '<td>' . $row[7] . '</td>';
                     echo '</tr>';
                     echo ' </tbody>';
                 }
@@ -79,10 +78,27 @@ session_start();
                 echo $th->getMessage();
             }
             error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+
+            echo '<input type="submit" style="margin-top: 10px; margin-bottom: 10px" class="btn btn-primary"  value="Edit Information" name="btnUpdate">';
+
+
             ?>
+            </form>
         </div>
     </div>
 </div>
+<?php
+//if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//    if (isset($_POST['btnCan'])) {
+//        echo '<script>window.location.href = "index.php";</script>';
+//    }
+//}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['btnUpdate'])) {
+        echo '<script>window.location.href = "update.php";</script>';
+    }
+}
+?>
 <img src="images/img.jpg" class="img-bg" style="margin-top: 10px">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -42,30 +42,41 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["change"])) {
         try {
-            $num = $_SESSION["d_un"];
-            $conn = new PDO($db, $un, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $query = "SELECT `Password` FROM `doctors` Where `DID`= $num";
-            $st = $conn->prepare($query);
-            $st->execute();
-            $result = $st->fetch();
-            $pw = md5($_POST["pOPW"]);
-            if ($pw == $result[0]) {
+
+            include
+            $dnum = $_SESSION["d_un"];
+
+
+            include 'repository/DoctorService.php';
+            $profile = new DoctorService();
+            $result=$profile->getDoctor($dnum);
+
+
+            foreach ($result as $row) {
+                $pw = md5($_POST["pOPW"]);
+            if ($pw == $row[3]) {
                 if ($_POST["pNPW"] == $_POST["pRNPW"]) {
-                    $conn = new PDO($db, $un, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $query = "UPDATE `doctors` SET `Password`=? Where `DID`=$num";
-                    $st = $conn->prepare($query);
                     $npw = md5($_POST["pNPW"]);
-                    $st->bindValue(1, $npw, PDO::PARAM_STR);
-                    $st->execute();
-                    echo "<script> alert('Password updated Successfully!');</script>";
+
+                    $updateDPass = new DoctorService();
+                    $check=$updateDPass->updateDocPassword($npw,$dnum);
+
+                    if($check==1){
+                        echo "<script> alert('Password updated Successfully!');</script>";
+                    }
+                    else{
+                        echo "<script> alert('Password update failed!');</script>";
+                    }
+
                 } else {
                     echo "<script> alert('The reentered password does not match to the new password! ');</script>";
                 }
             } else {
                 echo '<script>alert("Enter the correct old password")</script>';
             }
+            }
+
+
         } catch (PDOException $th) {
             echo $th->getMessage();
         }

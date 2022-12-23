@@ -16,20 +16,32 @@ include("config.php");
 </head>
 <body class="bg">
 <?php include 'nav & footer/nav.php' ?>
-<div class="container features">
+
+
+<div class="container features" id="form">
     <div class="row center">
         <div class="col-md-8 CardBgCol">
             <h3 class="feature-title">Add new Diagnose</h3>
-            <form method="post" enctype="multipart/form-data">
+
+            <form action="" method="post">
+
                 <div class="form-group">
-                    <input type="number" class="form-control" placeholder="Patient Number" name="dPatient" required>
+                    <!--                    <div class="row center">-->
+                    <input type="text" name="Patient" id="NIC" placeholder="NIC" class="form-control" onInput="checkNIC()" required/>
+                    <span id="check-NIC"></span>
+                    <!--                    </div>-->
+
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Diagnosis" rows="4" name="dDiagnosis"
+                    <textarea class="form-control" placeholder="Diagnosis" rows="4" name="Diagnosis"
                               required></textarea>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Medications" rows="4" name="dMedications"
+                    <textarea class="form-control" placeholder="Medications" rows="4" name="Medications"
+                              required></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Diagnosis Remarks" rows="4" name="Remarks"
                               required></textarea>
                 </div>
                 <div class="form-group">
@@ -39,45 +51,85 @@ include("config.php");
                     ?>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Add Diagnosis" name="addDiagnosis"
-                       style="margin-bottom: 10px">
-            </form>
-            <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (isset($_POST['addDiagnosis'])) {
-                    try {
-                        $conn = new PDO($db, $un, $password);
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        $query = "INSERT INTO `Diagnosis`(`Patient`, `Diagnosis`, `Medications`, `Date`,`Doc`) 
-                            VALUES (?,?,?,?,?)";
-                        $st = $conn->prepare($query);
-                        $doc = $_SESSION["d_un"];
-                        $st->bindValue(1, $_POST["dPatient"], PDO::PARAM_STR);
-                        $st->bindValue(2, $_POST["dDiagnosis"], PDO::PARAM_STR);
-                        $st->bindValue(3, $_POST["dMedications"], PDO::PARAM_STR);
-                        $st->bindValue(4, $date, PDO::PARAM_STR);
-                        $st->bindValue(5, $doc, PDO::PARAM_STR);
-                        $st->execute();
-                        echo "<script> alert('Diagnosis Added Successfully!');</script>";
-                    } catch (PDOException $th) {
-                        echo "<script> alert('Invalid patient number!');</script>";
+                       style="margin-bottom: 10px" id="submit">
 
-                    }
-                }
-            }
-            ?>
+
+            </form>
         </div>
     </div>
 </div>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['addDiagnosis'])) {
+        try {
+            $doc = $_SESSION["d_un"];
+
+            include 'model/Diagnosis.php';
+            $diag =new Diagnosis();
+
+
+            $pid=$diag->setPatientId($_POST["Patient"]);
+            $did=$diag->setDoctorId($doc);
+            $date=$diag->setDate($date);
+            $diagnosis=$diag->setCauseOfDisease($_POST["Diagnosis"]);
+            $medications=$diag->setMedication($_POST["Medications"]);
+            $remarks=$diag->setDiagnosisRemarks($_POST["Remarks"]);
+
+
+
+
+
+            //Write to db
+            try {
+                include 'repository/DiagnosisService.php';
+                $add = new DiagnosisService();
+                $check=$add->addDiagnosis($diag);
+
+
+                if ($check==1){
+                    echo "<script> alert('Diagnosis added Successfully!');</script>";
+                }
+                else{
+                    echo "<script> alert('Diagnosis adding failed!');</script>";
+                }
+            }
+            catch(Exception $ex){
+                echo $ex;
+            }
+        } catch (PDOException $th) {
+            echo $th;
+        }
+    }
+}
+?>
+
 <img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function checkNIC() {
+        $.ajax({
+            url: "ajax/check_for_NIC.php",
+            data: 'NIC=' + $("#NIC").val(),
+            type: "POST",
+            success: function (data) {
+                $("#check-NIC").html(data);
+            }
+        });
+    }
+</script>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"-->
+<!--        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
+<!--        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
+<!--        crossorigin="anonymous"></script>-->
+</body>
+</html>
 </body>
 </html>
