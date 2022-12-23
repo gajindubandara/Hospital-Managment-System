@@ -6,6 +6,10 @@ interface IDiagnosis
 
     public function getPatientDiagnosis($nic);
 
+    public function deleteDiagnosis($id);
+
+
+
 }
 class DiagnosisService implements IDiagnosis
 {
@@ -27,7 +31,6 @@ class DiagnosisService implements IDiagnosis
             $query = "INSERT INTO `diagnosis`( `pid`, `did`, `date`, `diagnosis`, `med`, `remarks`) 
                         VALUES (?,?,?,?,?,?)";
             $st = $conn->prepare($query);
-//            $st->bindValue(1, $id, PDO::PARAM_STR);
             $st->bindValue(1, $pid, PDO::PARAM_STR);
             $st->bindValue(2, $did, PDO::PARAM_STR);
             $st->bindValue(3, $date, PDO::PARAM_STR);
@@ -46,8 +49,22 @@ class DiagnosisService implements IDiagnosis
     public function getPatientDiagnosis($nic)
     {
         $conn=getCon();
-        $query = "SELECT `pid`, `did`, `date`, `diagnosis`, `med`, `remarks` FROM `diagnosis` WHERE `pid`=$nic";
+        $query = "SELECT `pid`, `did`, `date`, `diagnosis`, `med`, `remarks`,`id` FROM `diagnosis` WHERE `pid`=$nic ORDER BY `date` DESC";
         $result = $conn->query($query);
         return $result;
+    }
+
+    public function deleteDiagnosis($id)
+    {
+        try {
+            $conn = getCon();
+            $query = "DELETE FROM `diagnosis` WHERE `id` =$id ";
+            $st = $conn->prepare($query);
+            $st->execute();
+            return 1;
+        }
+        catch(SQLiteException $ex){
+            return 0;
+        }
     }
 }

@@ -90,22 +90,18 @@ session_start();
 
         try {
             $num = $_SESSION["pNic"];
-
             include 'repository/DiagnosisService.php';
             include 'repository/DoctorService.php';
             $ap = new DiagnosisService();
             $result=$ap->getPatientDiagnosis($num);
             $doc = new DoctorService();
 
-
-
-
             echo '<div class="container features">
             <div class="row center" >
             <div class=" CardBgCol col-md-8">';
             echo '<form method="post">';
-            foreach ($result as $row) {
 
+            foreach ($result as $row) {
                 echo '<div class="datacard features CardBgCol">';
                 echo '<h5 class="dataCard-header">' . $row[2] . '</h5>';
                 echo '<div class="dataCard-body">';
@@ -117,7 +113,7 @@ session_start();
                     echo '<p class="card-text" style="color: #4b4a4a; text-align: end;"> Diagnosed by Dr. ' . $r[0] . '</p>';
                 }
                 if (isset($_SESSION["a_un"])) {
-                    echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="' . $row[4] . '">Delete Record </button></td>';
+                    echo '<td><button class="recordDel  btn-secondary btn-block" name="delRecord" type="submit"  value="' . $row[6] . '">Delete Record </button></td>';
                 }
                 echo '</div>';
                 echo '</div>';
@@ -127,29 +123,33 @@ session_start();
         } catch (PDOException $th) {
 
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['delRecord'])) {
+//        include 'repository/DiagnosisService.php';
+//        $ds = new DiagnosisService();
+        $recordId=$_POST['delRecord'];
+//        echo "<script> alert(".$recordId.");</script>";
+        try {
+
+            $check=$ap->deleteDiagnosis($recordId);
+
+                if ($check==1){
+                    echo "<script> alert('Record deleted!');</script>";
+                    echo '<script>window.location.href = "patient_report.php";</script>';
+
+                }
+                else{
+                    echo "<script> alert('failed!');</script>";
+                }
+            } catch (PDOException $th) {
+                echo $th->getMessage();
+            }
+    }
+}
 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
-<?php
-//if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//    if (isset($_POST['delRecord'])) {
-//        try {
-//            $day = $_POST['delRecord'];
-//            $num = $_SESSION["ps"];
-//            $dayString = strval($day);
-//            $numString = strval($num);
-//            $conn = new PDO($db, $un, $password);
-//            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//            $query = "DELETE  FROM `Diagnosis` WHERE `Patient`='$numString' AND `Date`='$dayString'";
-//            $st = $conn->prepare($query);
-//            $st->execute();
-//            echo "<script> alert('Record deleted!');</script>";
-//        } catch (PDOException $th) {
-//            echo $th->getMessage();
-//        }
-//    }
-//}
-//error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-//?>
+
 <img src="images/img.jpg" class="img-bg">
 <?php include 'nav & footer/footer.php' ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
