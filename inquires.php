@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("config.php");
-require("login-check/logincheck_A.php");
+require("login-check/logincheck_P.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
