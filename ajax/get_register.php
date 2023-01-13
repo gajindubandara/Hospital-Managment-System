@@ -1,9 +1,6 @@
 <?php
-$database="mysql:dbname=cms";
-$username="root";
-$password="";
-$conn = new PDO($database, $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include '../config.php';
+$conn = getCon();
 if (isset($_POST['query'])) {
     $query = "SELECT  `name`, `nic`, `email`, `no`, `address` FROM patient WHERE nic LIKE '{$_POST['query']}%' LIMIT 100";
     $result = $conn->query($query);

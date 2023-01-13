@@ -198,7 +198,7 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                         changeYear: false,
                         stepMonths: 0,
                         minDate: 0,
-                        beforeShowDay: enableAllTheseDays,
+                        // beforeShowDay: enableAllTheseDays,
                     });
                     // }
                     $( "#date" ).datepicker("refresh");

@@ -147,7 +147,7 @@ require("login-check/logincheck_A.php");
 
 
                 function enableAllTheseDays(date) {
-                    var sdate = $.datepicker.formatDate( "d/m/yy", date)
+                    var sdate = $.datepicker.formatDate( "dd/mm/yy", date)
                     if($.inArray(sdate, dayList) != -1) {
                         return [true];
                     }

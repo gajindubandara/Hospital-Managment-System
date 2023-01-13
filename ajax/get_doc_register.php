@@ -1,9 +1,6 @@
 <?php
-$database="mysql:dbname=cms";
-$username="root";
-$password="";
-$conn = new PDO($database, $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include '../config.php';
+$conn = getCon();
 if (isset($_POST['query'])) {
     $query = "SELECT  `name`, `nic`, `sField` FROM doctor WHERE nic LIKE '{$_POST['query']}%' LIMIT 100";
     $result = $conn->query($query);
@@ -28,16 +25,22 @@ if (isset($_POST['query'])) {
             echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" value="' . $row[1] . '">' . $row[1] . '</td>';
             echo '<td style="vertical-align: middle;"> <input type="hidden" name="pName[]" value="' . $row[0] . '">' . $row[0] . '</td>';
             echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" value="' . $row[2] . '">' . $row[2] . '</td>';
-            echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnEdit" type="submit"  value="' . $row[1] . '">View  </button></td>';
+            echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnView" type="submit"  value="' . $row[1] . '">View  </button></td>';
             echo '</tr>';
             echo ' </tbody>';
         }
         echo '</table>';
         echo '</div> </div></div>';
+//        if (isset($_POST["btnView"])) {
+//            $_SESSION["dNic"] =$_POST["btnView"];
+//            echo '<script>window.location.href = "admin_view_doc_profile.php";</script>';
+//        }
     } else {
         echo "
 <span  style='color:red; margin-left: auto; margin-right: auto; display: table; margin-top: 50px;' class='features CardBgCol' > No doctor available for this NIC number</span>
       ";
+
     }
 }
 ?>
+<!--View doc button not working-->

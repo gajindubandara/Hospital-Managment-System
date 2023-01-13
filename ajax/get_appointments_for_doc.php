@@ -1,11 +1,7 @@
 <?php
 session_start();
-include "config.php";
-$database="mysql:dbname=cms";
-$username="root";
-$password="";
-$conn = new PDO($database, $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include '../config.php';
+$conn = getCon();
 
 if(!empty($_POST["date"])) {
     $bookedTokens="";

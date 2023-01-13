@@ -264,7 +264,7 @@ require("login-check/logincheck_P.php");
 
 
             function enableAllTheseDays(date) {
-                var sdate = $.datepicker.formatDate( "d/m/yy", date)
+                var sdate = $.datepicker.formatDate( "dd/mm/yy", date)
                 if($.inArray(sdate, dayList) != -1) {
                     return [true];
                 }
@@ -277,8 +277,7 @@ require("login-check/logincheck_P.php");
                     minDate: 0,
                     beforeShowDay: enableAllTheseDays,
                 });
-            // }
-            $( "#date" ).datepicker("refresh");
+                $( "#date" ).datepicker("refresh");
                 }
             });
         }

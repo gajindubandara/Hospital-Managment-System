@@ -55,7 +55,7 @@ include("config.php");
 
                 <div class="form-group">
                     Qualifications:
-                    <input type="text" class="form-control" name="qual" required>
+                    <input type="text" class="form-control" name="qual" placeholder="Ex-MBBS/PHD" required>
                 </div>
                 <div class="form-group">
                     Specialized Field:

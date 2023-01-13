@@ -1,10 +1,6 @@
 <?php
-include "config.php";
-$database="mysql:dbname=cms";
-$username="root";
-$password="";
-$conn = new PDO($database, $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+include '../config.php';
+$conn = getCon();
 if(!empty($_POST["NIC"])) {
     $query = "SELECT `name` FROM patient WHERE nic='" . $_POST["NIC"] . "'";
     $result = $conn->query($query);

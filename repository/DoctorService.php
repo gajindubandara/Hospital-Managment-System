@@ -11,6 +11,7 @@ interface IDoctor
     public function deleteDoctor($doctorId);
 
     public function getAllDoctors();
+    public function getActiveDoctors();
 
     public function checkLogin($nic,$pw);
 
@@ -151,5 +152,12 @@ class DoctorService implements IDoctor
         } catch (SQLiteException $ex) {
             return 0;
         }
+    }
+
+    public function getActiveDoctors()
+    {
+        $conn = getCon();
+        $query = 'SELECT `name`,`sField`, `qual`, `rps`, `ppd`, `state` FROM `doctor` WHERE `state`="active"';
+        return $conn->query($query);
     }
 }
