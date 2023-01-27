@@ -61,18 +61,18 @@ foreach ($result as $row) {
             }
 
     echo'</div>';
-    if ($row[5] == "open") {
+    if ($row[5] == "1") {
         $iconColor = "green";
         $state="Review Pending";
         $style="display:block";
         $btn="Review";
-    } else if($row[5] == "inProgress") {
+    } else if($row[5] == "2") {
         $iconColor = "yellow";
         $state="In Progress";
         $style="display:block";
         $btn="Complete";
     }
-    else if($row[5] == "finished") {
+    else if($row[5] == "3") {
         $iconColor = "blue";
         $state="Finished";
         $style="display:none";

@@ -77,15 +77,14 @@ require("login-check/logincheck_P.php");
         echo '<div class="dataCard-body">';
         echo '<h5 class="card-title">' . $row[2] . '</h5>';
         echo '<p class="card-text">Inquire ID :- ' . $row[0] . '</p>';
-        if ($row[5] == "open") {
+        if ($row[5] == "1") {
             $iconColor = "green";
             $state="Review Pending";
-        } else if($row[5] == "inProgress") {
+        } else if($row[5] == "2") {
             $iconColor = "yellow";
             $state="In Progress";
         }
-        else if($row[5] == "finished") {
-
+        else if($row[5] == "3") {
             $iconColor = "blue";
             $state="Finished";
         }
@@ -110,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $i->setDescription($_POST['dis']);
         $i->setDate($date);
         $i->setPid($_SESSION["p_un"]);
-        $i->setState("open");
+        $i->setState("1");
 
         $result=$is->addInquire($i);
 

@@ -58,7 +58,7 @@ class InquireService implements IInquire
         try{
             $conn=getCon();
 
-            $query = "SELECT `id`, `title`, `dis`, `date`, `pid`, `state` FROM `inquire`";
+            $query = "SELECT `id`, `title`, `dis`, `date`, `pid`, `state` FROM `inquire` ORDER BY `state`";
             $result = $conn->query($query);
             return $result;
         }catch(SQLiteException $ex){
