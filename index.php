@@ -175,6 +175,7 @@ if (isset($_SESSION["p_un"])) {
                  if (res.length >= 8) {
                      let tempProfileCount =8;
                      let profileCount =res.length;
+                     console.log(profileCount)
                      let initialPart = res.slice(0, 8);
                      $("#doc-show-more").show();
 
@@ -190,7 +191,7 @@ if (isset($_SESSION["p_un"])) {
                      //display 8 more with a click
                      $('#doc-show-more').click(function () {
                          tempProfileCount+=8;
-                         let nextPart =res.slice(tempProfileCount-6,tempProfileCount);
+                         let nextPart =res.slice(tempProfileCount-8,tempProfileCount);
 
                          //mustache render - next part
                          let nextProfileSet = Mustache.render(
