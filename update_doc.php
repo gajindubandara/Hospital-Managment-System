@@ -114,6 +114,10 @@ session_start();
                         <input type="checkbox" name="day_list[]" value="Friday" ';if (in_array("Friday", $checked_arr)){echo 'checked'; }echo'><label>Friday</label><br/>
                         <input type="checkbox" name="day_list[]" value="Saturday" ';if (in_array("Saturday", $checked_arr)){echo 'checked'; }echo'><label>Saturday</label><br/>
                     </div>
+                </div>
+                 <div class="form-group">
+                    Profile Image Url:
+                    <input type="text" class="form-control" name="imgUrl" value="'.$row[13].'" required>
                 </div>';
                         echo '<input type="submit" class="btn btn-primary"  value="Update" name="btnUpdate">';
                         echo '<input type="submit" style="margin-top: 10px; margin-bottom: 10px" class="btn btn-primary"  value="Cancel" name="btnCan">';
@@ -150,6 +154,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $address=$doc->setAddress($_POST["address"]);
             $rps=$doc->setRatePerSession($_POST["rps"]);
             $ppd=$doc->setNoOfPatientsPerDay($_POST["ppd"]);
+            $img=$doc->setImageUrl($_POST["imgUrl"]);
+
 
             $days=$doc->setAvailableDays($lang);
 

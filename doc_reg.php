@@ -119,13 +119,10 @@ include("config.php");
                     $md5cpw = md5($_POST["addCPW"]);
                     ?>
                 </div>
-
-                <!--                <div class="form-group">-->
-                <!--                    Date:-->
-                <!--                    --><?php //$date = date("Y-m-d");
-                //                    echo $date;
-                //                    ?>
-                <!--                </div>-->
+                <div class="form-group">
+                    Profile Image Url:
+                    <input type="text" class="form-control" name="img" required>
+                </div>
                 <input type="submit" class="btn btn-primary" value="Register" name="btnCreate"
                        style="margin-bottom: 10px">
             </div>
@@ -156,7 +153,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $address=$doc->setAddress($_POST["address"]);
                 $rps=$doc->setRatePerSession($_POST["rps"]);
                 $ppd=$doc->setNoOfPatientsPerDay($_POST["ppd"]);
-
+                $state=$doc->setState("active");
+                $img=$doc->setImageUrl($_POST["img"]);
                 $days=$doc->setAvailableDays($lang);
 
 
@@ -175,8 +173,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 }
                 catch(Exception $ex){
-//                    echo $ex;
-                    echo "<script> alert('There is an existing account to this NIC number!');</script>";
+                    echo $ex;
+//                    echo "<script> alert('There is an existing account to this NIC number!');</script>";
                 }
             } else {
                 echo "<script> alert('Passwords does not match');</script>";

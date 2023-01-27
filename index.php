@@ -122,7 +122,7 @@ if (isset($_SESSION["p_un"])) {
             <div class="docCard">
                 <div>
                     <div class="row" style=" justify-content: center">
-                      <img src="https://www.meme-arsenal.com/memes/c84b011e5940d554f2cf8018ddf32ed2.jpg" class="avatar">
+                      <img src="{{imgUrl}}" class="avatar">
                     </div>
                     <div class="row profile ">
                         <div class="name">{{name}}</div>

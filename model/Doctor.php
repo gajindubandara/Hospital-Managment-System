@@ -14,7 +14,24 @@ class Doctor
     private $ratePerSession;
     private $noOfPatientsPerDay;
     private $availableDays;
-    private $deleteState;
+    private $state;
+    private $imageUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * @param mixed $imageUrl
+     */
+    public function setImageUrl($imageUrl): void
+    {
+        $this->imageUrl = $imageUrl;
+    }
 
 
     public function __construct(){}
@@ -36,7 +53,7 @@ class Doctor
      * @param $availableDays
      * @param $deleteState
      */
-    public function __construct_1($id, $name, $nic, $email, $password, $telNo, $gender, $specializedField, $qualifications, $address, $ratePerSession, $noOfPatientsPerDay, $availableDays, $deleteState)
+    public function __construct_1($id, $name, $nic, $email, $password, $telNo, $gender, $specializedField, $qualifications, $address, $ratePerSession, $noOfPatientsPerDay, $availableDays, $State,$imageUrl)
     {
         $this->id = $id;
         $this->name = $name;
@@ -51,7 +68,8 @@ class Doctor
         $this->ratePerSession = $ratePerSession;
         $this->noOfPatientsPerDay = $noOfPatientsPerDay;
         $this->availableDays = $availableDays;
-        $this->deleteState = $deleteState;
+        $this->state = $State;
+        $this->imageUrl = $imageUrl;
     }
 
     /**
@@ -265,17 +283,17 @@ class Doctor
     /**
      * @return mixed
      */
-    public function getDeleteState()
+    public function getState()
     {
-        return $this->deleteState;
+        return $this->state;
     }
 
     /**
-     * @param mixed $deleteState
+     * @param mixed $state
      */
-    public function setDeleteState($deleteState)
+    public function setState($state)
     {
-        $this->deleteState = $deleteState;
+        $this->state = $state;
     }
 
 

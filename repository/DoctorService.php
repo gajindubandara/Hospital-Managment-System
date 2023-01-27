@@ -39,10 +39,11 @@ class DoctorService implements IDoctor
             $ratePerSession = $doctor->getRatePerSession();
             $noOfPatientsPerDay = $doctor->getNoOfPatientsPerDay();
             $availableDays = $doctor->getAvailableDays();
-            $deleteState = "active";
+            $state = $doctor->getState();
+            $imgUrl =$doctor->getImageUrl();
 
-            $query = "INSERT INTO `doctor`(`name`, `nic`, `email`, `password`, `no`, `gender`, `sField`, `qual`, `address`, `rps`, `ppd`, `days`, `state`)
-                    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO `doctor`(`name`, `nic`, `email`, `password`, `no`, `gender`, `sField`, `qual`, `address`, `rps`, `ppd`, `days`, `state`,`imgUrl`)
+                    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $st = $conn->prepare($query);
             $st->bindValue(1, $name, PDO::PARAM_STR);
             $st->bindValue(2, $nic, PDO::PARAM_STR);
@@ -56,7 +57,8 @@ class DoctorService implements IDoctor
             $st->bindValue(10, $ratePerSession, PDO::PARAM_STR);
             $st->bindValue(11, $noOfPatientsPerDay, PDO::PARAM_STR);
             $st->bindValue(12, $availableDays, PDO::PARAM_STR);
-            $st->bindValue(13, $deleteState, PDO::PARAM_STR);
+            $st->bindValue(13, $state, PDO::PARAM_STR);
+            $st->bindValue(14, $imgUrl, PDO::PARAM_STR);
             $st->execute();
             return 1;
         }catch (SQLiteException $ex){
@@ -67,7 +69,7 @@ class DoctorService implements IDoctor
     public function getDoctor($nic)
     {
         $conn = getCon();
-        $query = "SELECT `name`, `nic`, `email`, `password`, `no`, `gender`, `sField`, `qual`, `address`, `rps`, `ppd`, `days`, `state` FROM `doctor` WHERE `nic` =$nic ";
+        $query = "SELECT `name`, `nic`, `email`, `password`, `no`, `gender`, `sField`, `qual`, `address`, `rps`, `ppd`, `days`, `state`,`imgUrl` FROM `doctor` WHERE `nic` =$nic ";
         $result = $conn->query($query);
         return $result;
     }
@@ -87,9 +89,10 @@ class DoctorService implements IDoctor
             $ratePerSession = $doctor->getRatePerSession();
             $noOfPatientsPerDay = $doctor->getNoOfPatientsPerDay();
             $availableDays = $doctor->getAvailableDays();
+            $img = $doctor->getImageUrl();
 
             $query = "UPDATE `doctor` SET `name`=?,`nic`=?,`email`=?,`no`=?,`gender`=?,`sField`=?,`qual`=?,`address`=?,`rps`=?,`ppd`=?,
-                    `days`=? WHERE `nic` =$nic";
+                    `days`=?,`imgUrl`=? WHERE `nic` =$nic";
             $st = $conn->prepare($query);
             $st->bindValue(1, $name, PDO::PARAM_STR);
             $st->bindValue(2, $nic, PDO::PARAM_STR);
@@ -102,6 +105,7 @@ class DoctorService implements IDoctor
             $st->bindValue(9, $ratePerSession, PDO::PARAM_STR);
             $st->bindValue(10, $noOfPatientsPerDay, PDO::PARAM_STR);
             $st->bindValue(11, $availableDays, PDO::PARAM_STR);
+            $st->bindValue(12, $img, PDO::PARAM_STR);
             $st->execute();
             return 1;
         } catch (SQLiteException $ex) {
@@ -159,7 +163,7 @@ class DoctorService implements IDoctor
     public function getActiveDoctors()
     {
         $conn = getCon();
-        $query = 'SELECT `name`,`sField`, `qual`, `rps`, `ppd`, `state` FROM `doctor` WHERE `state`="active"';
+        $query = 'SELECT `name`,`sField`, `qual`, `rps`, `ppd`, `state`,`imgUrl` FROM `doctor` WHERE `state`="active"';
         return $conn->query($query);
     }
 
