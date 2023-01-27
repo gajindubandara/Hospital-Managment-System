@@ -83,14 +83,35 @@ session_start();
                         echo '<td><b>Available Days:</b></td>';
                         echo '<td>' . $row[11] . '</td>';
                         echo '</tr>';
+                        echo '<tr>';
+                        echo '<td><b>State:</b></td>';
+                        echo '<td>' . $row[12] . '</td>';
+                        echo '</tr>';
                         echo ' </tbody>';
+                        echo '</table>';
+                        echo'  <input type="submit" class="btn btn-primary" value="Change State" name="btnState"
+                       style="margin-bottom: 20px">';
+
+                        if (isset($_POST["btnState"])) {
+                            $nic=$row[1];
+                            if($row[12]=="active"){
+                                $newState="inactive";
+                            }else{
+                                $newState="active";
+                            }
+                            $result=$profile->changeState($nic,$newState);
+                            echo "<script> alert('State Changed!');</script>";
+                            echo '<script>window.location.href = "doc_register.php";</script>';
+
+                        }
                     }
-                    echo '</table>';
+
                 } catch (PDOException $th) {
                     echo $th->getMessage();
                 }
                 error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                 ?>
+
             </form>
         </div>
     </div>

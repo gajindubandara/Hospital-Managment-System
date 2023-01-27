@@ -16,6 +16,8 @@ interface IDoctor
     public function checkLogin($nic,$pw);
 
     public function updateDocPassword($password,$nic);
+
+    public function changeState($nic,$state);
 }
 
 class DoctorService implements IDoctor
@@ -159,5 +161,19 @@ class DoctorService implements IDoctor
         $conn = getCon();
         $query = 'SELECT `name`,`sField`, `qual`, `rps`, `ppd`, `state` FROM `doctor` WHERE `state`="active"';
         return $conn->query($query);
+    }
+
+    public function changeState($nic,$state)
+    {
+        try {
+            $conn = getCon();
+            $query = "UPDATE `doctor` SET `state`=? WHERE `nic` =$nic";
+            $st = $conn->prepare($query);
+            $st->bindValue(1, $state, PDO::PARAM_STR);
+            $st->execute();
+            return 1;
+        } catch (SQLiteException $ex) {
+            return 0;
+        }
     }
 }

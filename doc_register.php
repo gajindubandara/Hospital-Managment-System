@@ -48,6 +48,7 @@ session_start();
                      <th scope="col">NIC</th>
                      <th scope="col">Name</th>
                      <th scope="col">Specialized Field</th>
+                     <th scope="col" >State</th>
                      <th scope="col"></th>
               </tr>';
                     echo '</thead>';
@@ -57,10 +58,17 @@ session_start();
                         echo '<td style="vertical-align: middle;"> <input type="hidden" value="' . $row[2] . '">' . $row[2] . '</td>';
                         echo '<td style="vertical-align: middle;"> <input type="hidden" value="' . $row[1] . '">' . $row[1] . '</td>';
                         echo '<td style="vertical-align: middle;"> <input type="hidden"  value="' . $row[7] . '">' . $row[7] . '</td>';
+                        if($row[13]=="active"){
+                            $iconColor="green";
+                        }else{
+                            $iconColor="red";
+                        }
+                        echo '<td style="vertical-align: middle;"><i class="fas fa-circle" style="color:' . $iconColor . '"></i></td>';
                         echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnView" type="submit"  value="' . $row[2] . '">View  </button></td>';
 
                         echo '</tr>';
                         echo ' </tbody>';
+
                     }
                     echo '</table>';
                     echo '</div>';
