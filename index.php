@@ -34,107 +34,45 @@ if (isset($_SESSION["p_un"])) {
     include 'nav & footer/loginNav.php';
 }
 
-//include 'repository/DoctorService.php';
-//$profiles = new DoctorService();
-//$result=$profiles->getAllDoctors();
-//$arr = array();
-//foreach ($result as $row){
-//    $objArray =array();
-//    for($i=0;$i<14;$i++){
-//        array_push($objArray,$row[$i]);
-//    }
-//    array_push($arr,$objArray);
-//}
-//echo '<script>console.log('.json_encode($arr).')</script>';
-
-
-include 'repository/DoctorService.php';
-$profiles = new DoctorService();
-$result=$profiles->getAllDoctors();
-$arr = array();
-
-foreach ($result as $row){
-    $objArray = array('name'=>$row[1],'field'=>$row[7],);
-//    $objArray =array();
-//    for($i=0;$i<14;$i++){
-//        array_push($objArray,$row[$i]);
-//    }
-    array_push($arr,$objArray);
-}
-//echo json_encode($arr);
 
 ?>
 
-<!--<div class="container features CardBgCol">-->
-<!--    <div class="heading" style="margin-top: 0px !important;">-->
-<!--        <h1 class="heading__title" style="margin-top: 30px !important;">Clinic Management System</h1>-->
-<!--        <p class="heading__credits" style="margin-bottom: 0px !important;  font-weight: 400;"> Our System Software helps-->
-<!--            deliver superior healthcare delivery for doctors, clinics and hospitals.</p>-->
-<!--        <div class="heart-box">-->
-<!--            <img src="images/favicon.ico" class="heart">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<!--<div class="container features CardBgCol">-->
-<!--        <div class="heading" style="margin-top: 0px !important;">-->
-<!--            <h1 class="heading__title" style="margin-top: 30px !important;">Our Doctors</h1>-->
-<!--            <p class="heading__credits" style="margin-bottom: 0px !important;  font-weight: 400;"> Our System Software helps-->
-<!--                deliver superior healthcare delivery for doctors, clinics and hospitals.</p>-->
-<!---->
-<!--        </div>-->
-<!--    <div class="row center">-->
-<!--        <div class="card-doc p-3">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--                <div class="image">-->
-<!--                    <img src="https://www.meme-arsenal.com/memes/c84b011e5940d554f2cf8018ddf32ed2.jpg" class="rounded" width="155" >-->
-<!--                </div>-->
-<!--                <div class="ml-3 w-100">-->
-<!--                    <h4 class="mb-0 mt-0">hello </h4>-->
-<!--                    <span>Mbbs</span>-->
-<!--                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">-->
-<!--                        <div class="d-flex flex-column">-->
-<!--                            <span class="articles">Articles</span>-->
-<!--                            <span class="number1">00</span>-->
-<!--                        </div>-->
-<!--                        <div class="d-flex flex-column">-->
-<!--                            <span class="followers">Followers</span>-->
-<!--                            <span class="number2">000</span>-->
-<!--                        </div>-->
-<!--                        <div class="d-flex flex-column">-->
-<!--                            <span class="rating">Rating</span>-->
-<!--                            <span class="number3">00</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                                    <div class="button mt-2 d-flex flex-row align-items-center">-->
-<!--                                        <button class="btn btn-sm btn-outline-primary w-100">Chat</button>-->
-<!--                                        <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>-->
-<!--                                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--      <script>-->
-<!--          //let users = --><?php ////echo json_encode($arr); ?>;
-<!--//          //   console.log(users);-->
-<!--//      </script>-->
-<!--//-->
-<!--//-->
-<!--//    </div>-->
-<!--//    </div>-->
-<!--//</div>-->
-
-<div id="doctors_div" class="container features CardBgCol">
+<div class="container features CardBgCol" id="doctors">
     <div class="heading" style="margin-top: 0px !important;">
         <h1 class="cardTitle" style="margin-top: 30px !important;">Our Doctors</h1>
     </div>
+<form action="" method="post">
+    <ul class="ks-cboxtags">
+        <li><input type="checkbox" id="checkboxOne" value="All" onclick="onSelect('All')" name="All" checked><label for="checkboxOne">All</label></li>
+        <li><input type="checkbox" id="checkboxTwo" value="Anesthesiologist" onclick="onSelect('Anesthesiologist')" name="a" ><label for="checkboxTwo">Anesthesiologist</label></li>
+        <li><input type="checkbox" id="checkboxThree" value="Cardiologist" onclick="onSelect('Cardiologist')" name="cxz"><label for="checkboxThree">Cardiologist</label></li>
+        <li><input type="checkbox" id="checkboxFour" value="Dermatologist" onclick="onSelect('Dermatologist')"><label for="checkboxFour">Dermatologist</label></li>
+        <li><input type="checkbox" id="checkboxFive" value="Endocrinologist" onclick="onSelect('Endocrinologist')"><label for="checkboxFive">Endocrinologist</label></li>
+        <li><input type="checkbox" id="checkboxSix" value="Family medicine" onclick="onSelect('Family medicine')"><label for="checkboxSix">Family medicine</label></li>
+        <li><input type="checkbox" id="checkboxSeven" value="Gastroenterologist" onclick="onSelect('Gastroenterologist')"><label for="checkboxSeven">Gastroenterologist</label></li>
+        <li><input type="checkbox" id="checkboxEight" value="Infectious disease" onclick="onSelect('Infectious disease')"><label for="checkboxEight">Infectious disease</label></li>
+        <li><input type="checkbox" id="checkboxNine" value="Internal Medicine" onclick="onSelect('Internal Medicine')"><label for="checkboxNine">Internal Medicine</label></li>
+        <li><input type="checkbox" id="checkboxTen" value="Nephrologist" onclick="onSelect('Nephrologist')"><label for="checkboxTen">Nephrologist</label></li>
+        <li><input type="checkbox" id="checkboxEleven" value="Obstetrician" onclick="onSelect('Obstetrician')"><label for="checkboxEleven">Obstetrician</label></li>
+        <li><input type="checkbox" id="checkboxTwelve" value="Oncologist" onclick="onSelect('Oncologist')"><label for="checkboxTwelve">Oncologist</label></li>
+        <li><input type="checkbox" id="checkboxThirteen" value="Ophthalmologist" onclick="onSelect('Ophthalmologist')"><label for="checkboxThirteen">Ophthalmologist</label></li>
+        <li><input type="checkbox" id="checkboxFourteen" value="Otolaryngologist" onclick="onSelect('Otolaryngologist')"><label for="checkboxFourteen">Otolaryngologist</label></li>
+        <li><input type="checkbox" id="checkboxFifteen" value="Pediatrician" onclick="onSelect('Pediatrician')"><label for="checkboxFifteen">Pediatrician</label></li>
+        <li><input type="checkbox" id="checkboxSixteen" value="Physician executive" onclick="onSelect('Physician executive')"><label for="checkboxSixteen">Physician executive</label></li>
+        <li><input type="checkbox" id="checkboxSeventeen" value="Psychiatrist" onclick="onSelect('Psychiatrist')"><label for="checkboxSeventeen">Psychiatrist</label></li>
+        <li><input type="checkbox" id="checkboxEighteen" value="Pulmonologist" onclick="onSelect('Pulmonologist')"><label for="checkboxEighteen">Pulmonologist</label></li>
+        <li><input type="checkbox" id="checkboxNineteen" value="Radiologist" onclick="onSelect('Radiologist')"><label for="checkboxNineteen">Radiologist</label></li>
+        <li><input type="checkbox" id="checkboxTwenty" value="Surgeon" onclick="onSelect('Surgeon')"><label for="checkboxTwenty">Surgeon</label></li>
+    </ul>
 
+</form>
+    <span id="check-NIC"></span>
     <!-- Profile cards goes here -->
-    <div id="docCards">
-    </div>
+    <div id="docCards"></div>
+    <div id="noData" class="noData">No Available Doctors!</div>
     <div class="row justify-content-center" id="btnDoc" style="visibility:hidden;">
         <button id="doc-show-more" class="btn btn-link" style="margin: 0px">SEE MORE</button>
-        <a id="doc-show-less" class="btn btn-link " style="margin: 0px" href="#doctors_div">SEE LESS</a>
+        <a id="doc-show-less" class="btn btn-link " style="margin: 0px" href="#doctors">SEE LESS</a>
     </div>
 </div>
 
@@ -177,119 +115,116 @@ foreach ($result as $row){
 <!--Mustache.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
-
-
-
 <script type="text/html" id="templateDocCards">
-    <div class="row center">
-    {{#data}}
-        <div class="card-doc p-3">
-            <div class="d-flex align-items-center">
-                <div class="image">
-                    <img src="https://www.meme-arsenal.com/memes/c84b011e5940d554f2cf8018ddf32ed2.jpg" class="rounded" width="155" >
-                </div>
-                <div class="ml-3 w-100">
-                    <h4 class="mb-0 mt-0">{{name}} </h4>
-                    <span>{{field}}</span>
-                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                        <div class="d-flex flex-column">
-                            <span class="articles">Qualification</span>
-                            <span class="number1">{{qual}}</span>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="followers">Rate</span>
-                            <span class="number2">Rs.{{rps}}</span>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="rating">Ppd</span>
-                            <span class="number3">{{ppd}}</span>
-                        </div>
+    <div class="row">
+        {{#data}}
+        <div class="col-md-3">
+            <div class="docCard">
+                <div>
+                    <div class="row" style=" justify-content: center">
+                      <img src="https://www.meme-arsenal.com/memes/c84b011e5940d554f2cf8018ddf32ed2.jpg" class="avatar">
+                    </div>
+                    <div class="row profile ">
+                        <div class="name">{{name}}</div>
+                        <div class="name qualification">{{field}}</div>
                     </div>
                 </div>
             </div>
         </div>
-    {{/data}}
+        {{/data}}
     </div>
 </script>
 
 
 <script>
-    $(function () {
-        //let doctors = <?php //echo json_encode($arr); ?>//;
-        //let doctors = <?php //include 'ajax/get_active_docs.php' ; ?>//;
-        //console.log(doctors);
-        loadDocs();
+
+    $(document).ready(function(){
+        $('input:checkbox').click(function() {
+            $('input:checkbox').not(this).prop('checked', false);
+        });
     });
 
+    $(function () {
+        $('#noData').hide();
+        onSelect("All");
+    });
 
+    function onSelect(field){
+        console.log("<?php echo $_POST["cb"] ;?>")
+         $.ajax({
+             url: "ajax/get_doc_by_field.php",
+             data: 'option=' + field,
+             type: "POST",
+             success: function (data) {
 
-    function loadDocs() {
-        $.ajax({
-            type: 'post',
-            url: 'ajax/get_active_docs.php',
-            success: function (data) {
-                document.getElementById('btnDoc').style.visibility = "visible";
+                 document.getElementById('btnDoc').style.visibility = "visible";
+                 let obj ;
+                 try{
+                     obj = JSON.parse(data);
+                     $("#noData").hide();
+                 }catch(err){
+                     console.log("null")
+                     $("#noData").show();
+                 }
+                 let res = [];
+                 for(let i in obj)
+                     res.push(obj[i]);
+                 console.log(res);
 
+                 //slice array to two parts
+                 if (res.length >= 8) {
+                     let tempProfileCount =8;
+                     let profileCount =res.length;
+                     let initialPart = res.slice(0, 8);
+                     $("#doc-show-more").show();
 
-                var obj = JSON.parse(data);
-                var res = [];
+                     //mustache render - initial part
+                     let initialProfileSet = Mustache.render(
+                         $('#templateDocCards').html(), { 'data': initialPart }
+                     );
 
-                for(var i in obj)
-                    res.push(obj[i]);
-                    console.log(res);
+                     //display first 8
+                     $('#docCards').html(initialProfileSet);
+                     $('#doc-show-less').hide();
 
-                //slice array to two parts
-                if (res.length >= 6) {
-                    let tempProfileCount =6;
-                    let profileCount =res.length;
-                    let initialPart = res.slice(0, 6);
+                     //display 8 more with a click
+                     $('#doc-show-more').click(function () {
+                         tempProfileCount+=8;
+                         let nextPart =res.slice(tempProfileCount-6,tempProfileCount);
 
-                    //mustache render - initial part
-                    let initialProfileSet = Mustache.render(
-                        $('#templateDocCards').html(), { 'data': initialPart }
-                    );
+                         //mustache render - next part
+                         let nextProfileSet = Mustache.render(
+                             $('#templateDocCards').html(), { 'data': nextPart });
+                         $(nextProfileSet).appendTo('#docCards').hide().fadeIn(1000);
+                         $("#doc-show-less").show();
 
-                    //display first 6
-                    $('#docCards').html(initialProfileSet);
-                    $('#doc-show-less').hide();
+                         if(tempProfileCount>=profileCount){
+                             $('#doc-show-more').hide();
+                         }
+                     });
 
-                    //display 6 more with a click
-                    $('#doc-show-more').click(function () {
-                        tempProfileCount+=6;
-                        let nextPart =res.slice(tempProfileCount-6,tempProfileCount);
+                     $("#doc-show-less").click(function () {
+                         $("#docCards").html(initialProfileSet);
+                         $("#doc-show-more").show();
+                         $("#doc-show-less").hide();
+                         tempProfileCount=8;
+                     });
+                 }
+                 else {
+                     //mustache render
+                     let content = Mustache.render(
+                         $('#templateDocCards').html(), { 'data': res });
 
-                        //mustache render - next part
-                        let nextProfileSet = Mustache.render(
-                            $('#templateDocCards').html(), { 'data': nextPart });
-                        $(nextProfileSet).appendTo('#docCards').hide().fadeIn(1000);
-                        $("#doc-show-less").show();
+                     //display first 6
+                     $('#docCards').html(content);
 
-                        if(tempProfileCount>=profileCount){
-                            $('#doc-show-more').hide();
-                        }
-                    });
-
-                    $("#doc-show-less").click(function () {
-                        $("#docCards").html(initialProfileSet);
-                        $("#doc-show-more").show();
-                        $("#doc-show-less").hide();
-                    });
-                } else {
-                    //mustache render
-                    let content = Mustache.render(
-                        $('#templateDocCards').html(), { 'data': res });
-
-                    //display first 6
-                    $('#docCards').html(content);
-
-                    //hide button
-                    $('#doc-show-more').hide();
-                    $('#doc-show-less').hide();
-                }
-            }
-        });
+                     //hide button
+                     $('#doc-show-more').hide();
+                     $('#doc-show-less').hide();
+                 }
+             }
+         });
     }
 </script>
-
 </body>
 </html>
