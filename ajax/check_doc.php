@@ -2,7 +2,7 @@
 include '../config.php';
 $conn = getCon();
 if(!empty($_POST["SF"])) {
-    $query = "SELECT `name`,`nic` FROM `doctor` WHERE `sField`='" . $_POST["SF"] . "'";
+    $query = "SELECT `name`,`nic` FROM `doctor` WHERE `sField`='" . $_POST["SF"] . "' && `state`='active'";
     $result = $conn->query($query);
     $count = $result->rowCount();
     if($count>0) {
