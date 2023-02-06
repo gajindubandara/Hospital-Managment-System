@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2022 at 05:17 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Feb 05, 2023 at 05:47 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,24 +41,30 @@ CREATE TABLE `doctor` (
   `rps` varchar(10) NOT NULL,
   `ppd` varchar(10) NOT NULL,
   `days` varchar(100) NOT NULL,
-  `state` varchar(10) NOT NULL
+  `state` varchar(10) NOT NULL,
+  `imgUrl` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `name`, `nic`, `email`, `password`, `no`, `gender`, `sField`, `qual`, `address`, `rps`, `ppd`, `days`, `state`) VALUES
-(2, 'Bruce', '13241234', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 'asdasd', '21/A ,Wasanakanda Road', '1500', '9', 'Monday', 'active'),
-(9, 'Saman', '1', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Female', 'Endocrinologist', 'sa', '21/A ,Wasanakanda Road', '100000', '2', 'Monday', 'active'),
-(10, 'Ben', '2', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', '21', '21/A ,Wasanakanda Road', '3000', '4', 'Sunday,Monday', 'active'),
-(11, 'Tony Stark', '5', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Female', 'Nephrologist', 'asdasd', '21/A ,Wasanakanda Road KAtu', '4500', '10', 'Sunday,Monday,Saturday', 'active'),
-(13, 'Gajindu Bandara', '8', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Nephrologist', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Thursday,Friday,Saturday', 'active'),
-(14, 'Gajindu Bandara', '00000', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 'asdasd', '21/A ,Wasanakanda Road', '1000', '10', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active'),
-(15, 'Steven', '22', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', '12', '21/A ,Wasanakanda Road', '100', '12', 'Sunday,Monday,Wednesday,Thursday,Saturday', 'active'),
-(16, 'Gajindu Bandara', '777', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Anesthesiologist', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active'),
-(17, 'Gajindu Bandara', '66', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Family medicine', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active'),
-(18, 'Gajindu Bandara', '1234', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Obstetricians', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active');
+INSERT INTO `doctor` (`id`, `name`, `nic`, `email`, `password`, `no`, `gender`, `sField`, `qual`, `address`, `rps`, `ppd`, `days`, `state`, `imgUrl`) VALUES
+(2, 'Bruce', '13241234', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 'MBBS', '21/A ,Wasanakanda Road', '1500', '9', 'Monday', 'inactive', 'https://www.meme-arsenal.com/memes/c84b011e5940d554f2cf8018ddf32ed2.jpg'),
+(9, 'Saman', '1', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Female', 'Endocrinologist', 'sa', '21/A ,Wasanakanda Road', '100000', '2', 'Monday', 'active', 'https://www.pngitem.com/pimgs/m/43-432350_funny-ugly-face-cartoon-hd-png-download.png'),
+(10, 'Ben', '2', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', '21', '21/A ,Wasanakanda Road', '3000', '4', 'Sunday,Monday', 'active', 'https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/cartoon-funny-teasing-face_Qk6e-G_thumb.jpg'),
+(11, 'Tony Stark', '5', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Female', 'Nephrologist', 'asdasd', '21/A ,Wasanakanda Road KAtu', '4500', '10', 'Sunday,Monday,Saturday', 'active', 'https://img.freepik.com/premium-vector/cartoon-stupid-face-happy-smile-vector-emoji-with-open-mouth-long-sticking-tongue-joyful-facial-expression-with-goggle-eyes-funny-glad-character-positive-feelings-isolated-white-background_8071-8342.jpg?w=2000'),
+(13, 'Iraj', '8', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Nephrologist', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0dcuSp8xhNbTXYZEFpchZDxlZYDx88B_rbQ&usqp=CAU'),
+(14, 'Gajindu Bandara', '00000', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 'asdasd', '21/A ,Wasanakanda Road', '1000', '10', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://www.nicepng.com/png/detail/12-120844_happy-memes-sticker-funny-faces-cartoon-troll.png'),
+(15, 'Steven', '22', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', '12', '21/A ,Wasanakanda Road', '100', '12', 'Sunday,Monday,Wednesday,Thursday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUoNgS608Jys2nu3eftRk2A_wUoYwNmAHiUA&usqp=CAU'),
+(16, 'Sadakalum', '777', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Anesthesiologist', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXPh1rZ4lB62qQpyEGmqdJDwupKn6lVZKyWg&usqp=CAU'),
+(17, 'Devanam Piyathissa', '66', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Family medicine', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkPcnAwApmqjkvXM_ZeKPTr1Dv5l2EiGaQ1g&usqp=CAU'),
+(18, 'Dutu Gamunu', '1234', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Obstetricians', 'asdasd', '21/A ,Wasanakanda Road', '1', '1', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdtrKQaSsNFx4h3nIqXHfy-PDlsHcU69VkuA&usqp=CAU'),
+(19, 'Saman Edirimuni', '99', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Anesthesiologist', 'sad', '21/A ,Wasanakanda Road', '3500', '5', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvfIVGB8yZ5kfTJJguyyg81IF-WcittMKQ6BGdNhxSdwSsl2oTwhmT6B5CVnQfZNrO4XA&usqp=CAU'),
+(20, 'Kevin Levin', '9900', 'kevin@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 'sad', 'asdadad', '2500', '8', 'Sunday', 'active', 'https://www.meme-arsenal.com/memes/c84b011e5940d554f2cf8018ddf32ed2.jpg'),
+(21, 'xz', '77', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 'ret', '21/A ,Wasanakanda Road', '5647', '5', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0lI5BjRkSP7ZWYlIM4SXYuGUO9yf2IrYNiPYibLhbNagsRM5VYNnDpaKM-5o9JI-egUk&usqp=CAU'),
+(22, 'dfhdgh', '7766', 'gajindukb@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '0766786225', 'Male', 'Cardiologist', 't', '21/A ,Wasanakanda Road', '567', '6', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTODAWFIViR2xd0TuGnzPfbHaBrwu3HLW43ug&usqp=CAU'),
+(24, 'Sanath Nishantha', '6786547', 'a@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '324', 'Male', 'Anesthesiologist', 'mbs', 'qwwa23', '2345', '2', 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday', 'active', 'https://cdn5.vectorstock.com/i/1000x1000/92/89/hipster-avatar-image-vector-19639289.jpg');
 
 --
 -- Indexes for dumped tables
@@ -79,7 +85,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

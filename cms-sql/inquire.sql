@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2022 at 05:17 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Feb 05, 2023 at 05:48 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,9 +41,13 @@ CREATE TABLE `inquire` (
 --
 
 INSERT INTO `inquire` (`id`, `title`, `dis`, `date`, `pid`, `state`) VALUES
-(1, 'hello', 'hh s ahdh hhasd yhiu0a9er tfryusad h ', '2022-11-16', '11', 'open'),
-(2, 'sdf', 'asd', '2022-11-16', '11', 'open'),
-(3, 'not working', 'asdasdad asdasd', '2022-11-16', '11', 'open');
+(1, 'hello', 'hh s ahdh hhasd yhiu0a9er tfryusad h ', '2022-11-16', '11', '3'),
+(2, 'sdf', 'asd', '2022-11-16', '11', '3'),
+(3, 'not working', 'asdasdad asdasd', '2022-11-16', '11', '1'),
+(4, 'Poor customer care', 'blah  blah', '2022-12-22', '11', '3'),
+(5, 'Bad Quality', 'afafsd sfsdfaf sdaf', '2022-12-22', '11', '2'),
+(6, 'sdfds', 'sdf', '2023-01-13', '11', '1'),
+(7, 'Bug', 'bah blah', '2023-02-03', '111', '1');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +67,7 @@ ALTER TABLE `inquire`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

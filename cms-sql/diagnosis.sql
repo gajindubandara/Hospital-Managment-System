@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2022 at 05:17 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Feb 05, 2023 at 05:47 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,9 +43,11 @@ CREATE TABLE `diagnosis` (
 
 INSERT INTO `diagnosis` (`id`, `pid`, `did`, `date`, `diagnosis`, `med`, `remarks`) VALUES
 (2, '11', '1', '2022-11-12', '1', '1', '1'),
-(3, '111', '1', '2022-11-12', 'Heart Attack', 'Morphine', 'hello world!'),
 (4, '11', '1', '2022-11-12', 'asdasda', 'sadada', 'asdasd'),
-(8, '111', '1', '2022-11-12', 'asdsad', 'asdsadad', 'asdasd');
+(9, '111', '1', '2022-09-08', 'jigiadisgfigi', 'sdfsdf', 'dsfdsfsfsf'),
+(11, '111', '1', '2022-11-21', 's', 'a', 'a'),
+(12, '111', '1', '2022-12-14', 's', 's', 's'),
+(13, '111', '1', '2022-09-16', 'sa', 'as', 'as');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +67,7 @@ ALTER TABLE `diagnosis`
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
