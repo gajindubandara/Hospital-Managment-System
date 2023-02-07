@@ -18,6 +18,10 @@ include("config.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+<!--    stat card-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.3.1/css/all.min.css" rel="stylesheet">
+
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
             integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
@@ -34,7 +38,7 @@ if (isset($_SESSION["p_un"])) {
     include 'nav & footer/loginNav.php';
 }
 
-
+include 'repository/getStats.php';
 ?>
 
 <div class="container features CardBgCol">
@@ -47,20 +51,81 @@ if (isset($_SESSION["p_un"])) {
         <div class="heart-box">
             <img src="images/favicon.ico" class="heart">
         </div>
+        <div class="header-body" style="margin: 40px 0px 40px 0px">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="statCard card-stats mb-4 mb-xl-0">
+                        <div class="statCard-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="statCard-title text-uppercase text-muted mb-0">Our Doctors</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        <?php
+                                        $profile = new getStats();
+                                        echo $result=$profile->getNoOfDocs();
+                                        ?>
+                                    </span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        <i class="fas fa-stethoscope"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="statCard card-stats mb-4 mb-xl-0">
+                        <div class="statCard-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="statCard-title text-uppercase text-muted mb-0"> Total Users</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        <?php
+                                        $profile = new getStats();
+                                        echo $result=$profile->getNoOfUsers();
+                                        ?>
+                                    </span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="statCard card-stats mb-4 mb-xl-0">
+                        <div class="statCard-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="statCard-title text-uppercase text-muted mb-0">Appointments</h5>
+                                    <span class="h2 font-weight-bold mb-0">
+                                        <?php
+                                        $profile = new getStats();
+                                        echo $result=$profile->getNoOfAppointments();
+                                        ?>
+                                    </span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<!--<div class="container features ">-->
-<!--    <div class="row center CardBgCol">-->
-<!--        <div class=" col-md-12 ">-->
-<!--            <h1 class="cardTitle">Our Hospital</h1>-->
-<!--            <div class="map-responsive">-->
-<!--                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3957.5881070161327!2d80.6322636!3d7.2876155!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae36882b22910bf%3A0x82b71793a1e570c5!2sNational%20Hospital%20-%20Kandy!5e0!3m2!1sen!2slk!4v1648022317800!5m2!1sen!2slk"-->
-<!--                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+
+
 
 <div class="container features ">
     <div class="row center CardBgCol">
@@ -79,6 +144,8 @@ if (isset($_SESSION["p_un"])) {
         </div>
     </div>
 </div>
+
+
 <?php include 'nav & footer/footer.php' ?>
 <!-- Core -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

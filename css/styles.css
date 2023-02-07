@@ -545,3 +545,50 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     margin: 50px;
 }
 /*End of  profile cards*/
+
+/*stat card css*/
+.statCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: .375rem;
+    background-color: #fff;
+    background-clip: border-box;
+    height: 150px;
+
+}
+
+.statCard-body {
+    padding: 1.5rem;
+    flex: 1 1 auto;
+    margin-top: 15px;
+}
+
+.statCard-title {
+    margin-bottom: 1.25rem;
+}
+
+.icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon i {
+    font-size: 2.25rem;
+}
+
+.icon-shape {
+    display: inline-flex;
+    padding: 12px;
+    text-align: center;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-shape i {
+    font-size: 1.25rem;
+}
