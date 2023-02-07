@@ -21,6 +21,9 @@
                 <a class="nav-link" href="index.php"> Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="doctors.php"> Our Doctors</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="login.php"> Login</a>
             </li>
             <li class="nav-item">

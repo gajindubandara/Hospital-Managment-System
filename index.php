@@ -37,68 +37,44 @@ if (isset($_SESSION["p_un"])) {
 
 ?>
 
-<div class="container features CardBgCol" id="doctors">
+<div class="container features CardBgCol">
     <div class="heading" style="margin-top: 0px !important;">
-        <h1 class="cardTitle" style="margin-top: 30px !important;">Our Doctors</h1>
-    </div>
-<form action="" method="post">
-    <ul class="ks-cboxtags">
-        <li><input type="checkbox" id="checkboxOne" value="All" onclick="onSelect('All')" name="All" checked><label for="checkboxOne">All</label></li>
-        <li><input type="checkbox" id="checkboxTwo" value="Anesthesiologist" onclick="onSelect('Anesthesiologist')" name="a" ><label for="checkboxTwo">Anesthesiologist</label></li>
-        <li><input type="checkbox" id="checkboxThree" value="Cardiologist" onclick="onSelect('Cardiologist')" name="cxz"><label for="checkboxThree">Cardiologist</label></li>
-        <li><input type="checkbox" id="checkboxFour" value="Dermatologist" onclick="onSelect('Dermatologist')"><label for="checkboxFour">Dermatologist</label></li>
-        <li><input type="checkbox" id="checkboxFive" value="Endocrinologist" onclick="onSelect('Endocrinologist')"><label for="checkboxFive">Endocrinologist</label></li>
-        <li><input type="checkbox" id="checkboxSix" value="Family medicine" onclick="onSelect('Family medicine')"><label for="checkboxSix">Family medicine</label></li>
-        <li><input type="checkbox" id="checkboxSeven" value="Gastroenterologist" onclick="onSelect('Gastroenterologist')"><label for="checkboxSeven">Gastroenterologist</label></li>
-        <li><input type="checkbox" id="checkboxEight" value="Infectious disease" onclick="onSelect('Infectious disease')"><label for="checkboxEight">Infectious disease</label></li>
-        <li><input type="checkbox" id="checkboxNine" value="Internal Medicine" onclick="onSelect('Internal Medicine')"><label for="checkboxNine">Internal Medicine</label></li>
-        <li><input type="checkbox" id="checkboxTen" value="Nephrologist" onclick="onSelect('Nephrologist')"><label for="checkboxTen">Nephrologist</label></li>
-        <li><input type="checkbox" id="checkboxEleven" value="Obstetrician" onclick="onSelect('Obstetrician')"><label for="checkboxEleven">Obstetrician</label></li>
-        <li><input type="checkbox" id="checkboxTwelve" value="Oncologist" onclick="onSelect('Oncologist')"><label for="checkboxTwelve">Oncologist</label></li>
-        <li><input type="checkbox" id="checkboxThirteen" value="Ophthalmologist" onclick="onSelect('Ophthalmologist')"><label for="checkboxThirteen">Ophthalmologist</label></li>
-        <li><input type="checkbox" id="checkboxFourteen" value="Otolaryngologist" onclick="onSelect('Otolaryngologist')"><label for="checkboxFourteen">Otolaryngologist</label></li>
-        <li><input type="checkbox" id="checkboxFifteen" value="Pediatrician" onclick="onSelect('Pediatrician')"><label for="checkboxFifteen">Pediatrician</label></li>
-        <li><input type="checkbox" id="checkboxSixteen" value="Physician executive" onclick="onSelect('Physician executive')"><label for="checkboxSixteen">Physician executive</label></li>
-        <li><input type="checkbox" id="checkboxSeventeen" value="Psychiatrist" onclick="onSelect('Psychiatrist')"><label for="checkboxSeventeen">Psychiatrist</label></li>
-        <li><input type="checkbox" id="checkboxEighteen" value="Pulmonologist" onclick="onSelect('Pulmonologist')"><label for="checkboxEighteen">Pulmonologist</label></li>
-        <li><input type="checkbox" id="checkboxNineteen" value="Radiologist" onclick="onSelect('Radiologist')"><label for="checkboxNineteen">Radiologist</label></li>
-        <li><input type="checkbox" id="checkboxTwenty" value="Surgeon" onclick="onSelect('Surgeon')"><label for="checkboxTwenty">Surgeon</label></li>
-    </ul>
-
-</form>
-    <span id="check-NIC"></span>
-    <!-- Profile cards goes here -->
-    <div id="docCards"></div>
-    <div id="noData" class="noData">No Available Doctors!</div>
-    <div class="row justify-content-center" id="btnDoc" style="visibility:hidden;">
-        <button id="doc-show-more" class="btn btn-link" style="margin: 0px">SEE MORE</button>
-        <a id="doc-show-less" class="btn btn-link " style="margin: 0px" href="#doctors">SEE LESS</a>
-    </div>
-</div>
-
-</div>
-
-<div class="container features ">
-    <div class="row center CardBgCol">
-        <div class=" col-md-12 ">
-            <h1 class="cardTitle">Our Hospital</h1>
-            <div class="map-responsive">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3957.5881070161327!2d80.6322636!3d7.2876155!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae36882b22910bf%3A0x82b71793a1e570c5!2sNational%20Hospital%20-%20Kandy!5e0!3m2!1sen!2slk!4v1648022317800!5m2!1sen!2slk"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+        <h1 class="heading__title" style="margin-top: 30px !important;">Clinic Management System</h1>
+        <p class="heading__credits" style="margin-bottom: 0px !important;  font-weight: 400;"> Our System Software helps
+            deliver superior healthcare delivery for doctors, clinics and hospitals.</p>
+                <p class="heading__credits" style="    margin-bottom: 10px !important;font-weight: 400;font-size: 25px;">
+                    Designed by Team Enigma</p>
+        <div class="heart-box">
+            <img src="images/favicon.ico" class="heart">
         </div>
     </div>
 </div>
-</div>
+
+<!--<div class="container features ">-->
+<!--    <div class="row center CardBgCol">-->
+<!--        <div class=" col-md-12 ">-->
+<!--            <h1 class="cardTitle">Our Hospital</h1>-->
+<!--            <div class="map-responsive">-->
+<!--                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3957.5881070161327!2d80.6322636!3d7.2876155!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae36882b22910bf%3A0x82b71793a1e570c5!2sNational%20Hospital%20-%20Kandy!5e0!3m2!1sen!2slk!4v1648022317800!5m2!1sen!2slk"-->
+<!--                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="container features ">
     <div class="row center CardBgCol">
         <div class=" col-md-12 ">
             <h1 class="cardTitle">About Us!</h1>
             <!--            <p class="aboutUs"><i class="fa fa-plus-square" style='font-size:48px;color:black'></i></p>-->
             <p class="aboutUs" style="margin-bottom: 20px">
-                Team error 404 clinic management system ideal for health care professionals on the move or who are
-                working from different hospitals. It's equivalent app can be access throw website on any mobile
-                devices so you can access your medical patient record system anywhere you are.
+                Family-Care Clinic Management Sri Lanka is dedicated to providing quality healthcare to families in the
+                community. We offer online appointments for your convenience, making it easy to access our services from
+                the comfort of your own home. Our team of experienced medical professionals is committed to delivering
+                the best possible care to every patient. With a warm and welcoming environment, you can trust that you
+                and your loved ones are in good hands at Family-Care Clinic Management Sri Lanka. We believe in putting
+                the needs of our patients first, and work tirelessly to ensure that everyone who walks through our doors
+                receives the care and attention they deserve.
             </p>
         </div>
     </div>
@@ -115,117 +91,5 @@ if (isset($_SESSION["p_un"])) {
 <!--Mustache.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
-<script type="text/html" id="templateDocCards">
-    <div class="row">
-        {{#data}}
-        <div class="col-md-3">
-            <div class="docCard">
-                <div>
-                    <div class="row" style=" justify-content: center">
-                      <img src="{{imgUrl}}" class="avatar">
-                    </div>
-                    <div class="row profile ">
-                        <div class="name">{{name}}</div>
-                        <div class="name qualification">{{field}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{/data}}
-    </div>
-</script>
-
-
-<script>
-
-    $(document).ready(function(){
-        $('input:checkbox').click(function() {
-            $('input:checkbox').not(this).prop('checked', false);
-        });
-    });
-
-    $(function () {
-        $('#noData').hide();
-        onSelect("All");
-    });
-
-    function onSelect(field){
-        console.log("<?php echo $_POST["cb"] ;?>")
-         $.ajax({
-             url: "ajax/get_doc_by_field.php",
-             data: 'option=' + field,
-             type: "POST",
-             success: function (data) {
-
-                 document.getElementById('btnDoc').style.visibility = "visible";
-                 let obj ;
-                 try{
-                     obj = JSON.parse(data);
-                     $("#noData").hide();
-                 }catch(err){
-                     console.log("null")
-                     $("#noData").show();
-                 }
-                 let res = [];
-                 for(let i in obj)
-                     res.push(obj[i]);
-                 console.log(res);
-
-                 //slice array to two parts
-                 if (res.length >= 8) {
-                     let tempProfileCount =8;
-                     let profileCount =res.length;
-                     console.log(profileCount)
-                     let initialPart = res.slice(0, 8);
-                     $("#doc-show-more").show();
-
-                     //mustache render - initial part
-                     let initialProfileSet = Mustache.render(
-                         $('#templateDocCards').html(), { 'data': initialPart }
-                     );
-
-                     //display first 8
-                     $('#docCards').html(initialProfileSet);
-                     $('#doc-show-less').hide();
-
-                     //display 8 more with a click
-                     $('#doc-show-more').click(function () {
-                         tempProfileCount+=8;
-                         let nextPart =res.slice(tempProfileCount-8,tempProfileCount);
-
-                         //mustache render - next part
-                         let nextProfileSet = Mustache.render(
-                             $('#templateDocCards').html(), { 'data': nextPart });
-                         $(nextProfileSet).appendTo('#docCards').hide().fadeIn(1000);
-                         $("#doc-show-less").show();
-
-                         if(tempProfileCount>=profileCount){
-                             $('#doc-show-more').hide();
-                         }
-                     });
-
-                     $("#doc-show-less").click(function () {
-                         $("#docCards").html(initialProfileSet);
-                         $("#doc-show-more").show();
-                         $("#doc-show-less").hide();
-                         tempProfileCount=8;
-                     });
-                 }
-                 else {
-                     //mustache render
-                     let content = Mustache.render(
-                         $('#templateDocCards').html(), { 'data': res });
-
-                     //display first 6
-                     $('#docCards').html(content);
-
-                     //hide button
-                     $('#doc-show-more').hide();
-                     $('#doc-show-less').hide();
-                 }
-             }
-         });
-    }
-</script>
 </body>
 </html>

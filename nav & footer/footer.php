@@ -20,7 +20,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <h6 class="text-uppercase font-weight-bold">Contact</h6>
                 <uL>
-                    <li>devteam@gmail.com</li>
+                    <li>enigma@gmail.com</li>
                     <li>+94 123456789</li>
                 </uL>
             </div>
