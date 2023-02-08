@@ -38,8 +38,8 @@ if(!empty($_POST["date"])) {
             if($row[4]=="active"){
                 echo '<td style="vertical-align: middle; "> <input type="hidden" name="pID[]" >Session Queued</td>';
             }
-            else if($row[4]=="canceled"){
-                echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" >Session Canceled</td>';
+            else if($row[4]=="cancelled"){
+                echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" >Session Cancelled</td>';
             }
             else if($row[4]=="completed"){
                 echo '<td style="vertical-align: middle; "> <input type="hidden" name="pID[]" >Session Completed</td>';
