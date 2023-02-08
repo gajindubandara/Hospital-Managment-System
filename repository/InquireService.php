@@ -69,11 +69,11 @@ class InquireService implements IInquire
     public function changeState($id,$state)
     {
         try {
-            // $conn = getCon();
-            // $query = "UPDATE `inquire` SET `state`=? WHERE `id` =$id";
-            // $st = $conn->prepare($query);
-            // $st->bindValue(1, $state, PDO::PARAM_STR);
-            // $st->execute();
+            $conn = getCon();
+            $query = "UPDATE `inquire` SET `state`=? WHERE `id` =$id";
+            $st = $conn->prepare($query);
+            $st->bindValue(1, $state, PDO::PARAM_STR);
+            $st->execute();
             return 1;
         } catch (SQLiteException $ex) {
             return 0;

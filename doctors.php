@@ -37,7 +37,7 @@ if (isset($_SESSION["p_un"])) {
 
 ?>
 
-<div class="container features CardBgCol" id="doctors">
+<div class="container features CardBgCol" id="doctors" style="margin-bottom: 200px">
     <div class="heading" style="margin-top: 0px !important;">
         <h1 class="cardTitle" style="margin-top: 30px !important;">Our Doctors</h1>
     </div>

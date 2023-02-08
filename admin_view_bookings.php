@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 include("config.php");
 require("login-check/logincheck_A.php");
