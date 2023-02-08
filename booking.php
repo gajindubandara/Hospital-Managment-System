@@ -176,10 +176,10 @@ require("login-check/logincheck_P.php");
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if (isset($_POST['delRecord'])) {
 
-                        $cancel=$myApp->changeAppointmentState($_POST['delRecord'],"canceled");
+                        $cancel=$myApp->changeAppointmentState($_POST['delRecord'],"cancelled");
 
                         if($cancel==1){
-                            echo "<script> alert('Appointment canceled!');</script>";
+                            echo "<script> alert('Appointment cancelled!');</script>";
                             echo '<script>window.location.href = "booking.php";</script>';
                         }
                     }

@@ -90,9 +90,13 @@ session_start();
                             }
                             echo '<td style="vertical-align: middle;"> <input type="hidden" value="' . $row[2] . '">' . $row[2] . '</td>';
 
-                            if($row[5]!="completed"){
+                            if($row[5]=="active"){
                                 echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnCom" type="submit"  value="' . $row[0] . '">Finish Session  </button></td>';
-                            }else{
+                            }
+                            else if($row[5] =="cancelled"){
+                                echo '<td style="vertical-align: middle; text-align: center;"> <input type="hidden" >Session Cancelled</td>';
+                            }
+                            else{
                                 echo '<td style="vertical-align: middle; text-align: center;"> <input type="hidden" >Session Finished</td>';
                             }
                             echo '</tr>';
