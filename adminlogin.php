@@ -44,7 +44,7 @@ session_start(); ?>
 //                            $st->bindValue(2, $_POST["A_UN"], PDO::PARAM_STR);
 //                            $st->execute();
 //                            $result = $st->fetch();
-                            if ($_POST["A_UN"] =="admin" ) {
+                            if ($_POST["A_UN"] =="admin" && $_POST["A_PW"] =="admin") {
                                 $_SESSION["a_un"] = "admin";
                                 echo '<script>window.location.href = "admin.php";</script>';
                             } else {
