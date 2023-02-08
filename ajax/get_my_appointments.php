@@ -39,6 +39,15 @@ if(!empty($_POST["date"])) {
             if($row[2]==$formatDate) {
                 echo '<script>window.location.href = "doc_view_bookings.php";</script>';
             }
+            if($row[5]=="active"){
+                echo  '<td style="vertical-align: middle; text-align: center;"> <input type="hidden" >Session Queued</td>';
+            }
+            else if($row[5] =="cancelled"){
+                echo '<td style="vertical-align: middle; text-align: center;"> <input type="hidden" >Session Cancelled</td>';
+            }
+            else{
+                echo '<td style="vertical-align: middle; text-align: center;"> <input type="hidden" >Session Finished</td>';
+            }
             echo '</tr>';
             echo ' </tbody>';
         }

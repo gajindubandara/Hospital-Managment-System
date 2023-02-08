@@ -9,7 +9,7 @@ if (isset($_POST['query'])) {
     if ($count > 0) {
         echo '<div class="container features CardBgCol" id="resCon">
             <div class="row justify-content-md-center">
-                <div class="col-md-12">';
+                <div class="col-md-12"><form method="post">';
         echo '<table class="table" style="border:solid #dee2e6 1px;">';
         echo '<thead class="thead-dark">';
         echo '<tr>
@@ -30,12 +30,17 @@ if (isset($_POST['query'])) {
             echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" value="' . $row[2] . '">' . $row[2] . '</td>';
             echo '<td style="vertical-align: middle;"> <input type="hidden" name="pName[]" value="' . $row[3] . '">' . $row[3] . '</td>';
             echo '<td style="vertical-align: middle;"> <input type="hidden" name="pID[]" value="' . $row[4] . '">' . $row[4] . '</td>';
-            echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnEdit" type="submit"  value="' . $row[1] . '">View  </button></td>';
+            echo '<td style="vertical-align: middle;"><button class="btn btn-primary"  style="margin: auto" name="btnView" type="submit"  value="' . $row[1] . '">View  </button></td>';
+            
+            if (isset($_POST["btnView"])) {
+                $_SESSION["pNic"] =$_POST["btnView"];
+                echo '<script>window.location.href = "patient_report.php";</script>';
+            }
             echo '</tr>';
             echo ' </tbody>';
         }
         echo '</table>';
-        echo '</div> </div></div>';
+        echo '</form></div> </div></div>';
     }
     else {
         echo "<span  style='color:red; margin-left: auto; margin-right: auto; display: table; margin-top: 50px;' class='features CardBgCol' > No user available for this NIC number</span>";
