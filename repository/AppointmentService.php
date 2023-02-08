@@ -30,7 +30,7 @@ class AppointmentService implements IAppointment
 
 
             $query = "INSERT INTO `bookings`( `pid`, `did`, `date`, `token`,`state`) 
-                        VALUES (?,?,?,?)";
+                        VALUES (?,?,?,?,?)";
             $st = $conn->prepare($query);
             $st->bindValue(1, $pid, PDO::PARAM_STR);
             $st->bindValue(2, $did, PDO::PARAM_STR);
