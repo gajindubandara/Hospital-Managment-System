@@ -94,11 +94,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $inquireId=$_POST['changeState'];
         $getInquire=$is->getById($inquireId);
         foreach ($getInquire as $row) {
-            if ($row[5]== "open") {
-                $result=$is->changeState($inquireId,"inProgress");
+            if ($row[5]== "1") {
+                $result=$is->changeState($inquireId,"2");
             }
-            else if ($row[5]== "inProgress") {
-                $result=$is->changeState($inquireId,"finished");
+            else if ($row[5]== "2") {
+                $result=$is->changeState($inquireId,"3");
             }
         }
 
