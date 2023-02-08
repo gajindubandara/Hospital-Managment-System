@@ -82,25 +82,11 @@ include("config.php");
                 <div class="form-group">
                     Create a new password:
                     <input type="password" class="form-control" name="addPW" required>
-                    <?php
-                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-                    $md5pw = md5($_POST["addPW"]);
-                    ?>
                 </div>
                 <div class="form-group">
                     Confirm Password:
                     <input type="password" class="form-control" name="addCPW" required>
-                    <?php
-                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-                    $md5cpw = md5($_POST["addCPW"]);
-                    ?>
                 </div>
-<!--                <div class="form-group">-->
-<!--                    Date:-->
-<!--                    --><?php //$date = date("Y-m-d");
-//                    echo $date;
-//                    ?>
-<!--                </div>-->
                 <input type="submit" class="btn btn-primary" value="Register" name="btnAdd"
                        style="margin-bottom: 10px">
             </div>
@@ -109,8 +95,14 @@ include("config.php");
 </form>
 
 <?php
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnAdd'])) {
+        $md5pw = md5($_POST["addPW"]);
+        $md5cpw = md5($_POST["addCPW"]);
+        error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
         try {
             if($md5pw == $md5cpw){
 

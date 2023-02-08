@@ -106,18 +106,10 @@ include("config.php");
                 <div class="form-group">
                     Create a new password:
                     <input type="password" class="form-control" name="addPW" required>
-                    <?php
-                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-                    $md5pw = md5($_POST["addPW"]);
-                    ?>
                 </div>
                 <div class="form-group">
                     Confirm Password:
                     <input type="password" class="form-control" name="addCPW" required>
-                    <?php
-                    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-                    $md5cpw = md5($_POST["addCPW"]);
-                    ?>
                 </div>
                 <div class="form-group">
                     Profile Image Url:
@@ -133,6 +125,9 @@ include("config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['btnCreate'])) {
         try {
+            $md5pw = md5($_POST["addPW"]);
+            $md5cpw = md5($_POST["addCPW"]);
+            error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
             if($md5pw == $md5cpw){
 
                 //Get available days

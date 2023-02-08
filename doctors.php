@@ -123,7 +123,7 @@ if (isset($_SESSION["p_un"])) {
     });
 
     function onSelect(field){
-        console.log("<?php echo $_POST["cb"] ;?>")
+
         $.ajax({
             url: "ajax/get_doc_by_field.php",
             data: 'option=' + field,

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("config.php");
-//require("login-check/logincheck_P.php");
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 ?>
 <!DOCTYPE html>
 <html lang="en">

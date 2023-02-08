@@ -24,7 +24,7 @@ error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="User ID" name="P_NIC">
+                            <input type="text" class="form-control" placeholder="User ID" name="P_NIC">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password" name="P_PW">

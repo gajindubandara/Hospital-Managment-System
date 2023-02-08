@@ -23,7 +23,7 @@ session_start(); ?>
                 <form method="post">
                     <div class="loginInfo">
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Doctor ID" name="D_NIC" required>
+                            <input type="text" class="form-control" placeholder="Doctor ID" name="D_NIC" required>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password" name="D_PW" required>
