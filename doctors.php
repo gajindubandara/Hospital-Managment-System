@@ -136,7 +136,7 @@ if (isset($_SESSION["p_un"])) {
                     obj = JSON.parse(data);
                     $("#noData").hide();
                 }catch(err){
-                    console.log("null")
+                    // console.log("null")
                     $("#noData").show();
                 }
                 let res = [];
